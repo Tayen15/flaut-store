@@ -96,22 +96,22 @@ class="bg-white-500 text-center text-white-600 dark:bg-white-600 dark:text-white
         </h6>
         <p class="mb-4">
           <a href="#!" class="text-white-600 dark:text-white-200"
-            >Angular</a
+            >Baju</a
           >
         </p>
         <p class="mb-4">
           <a href="#!" class="text-white-600 dark:text-white-200"
-            >React</a
+            >Celana</a
           >
         </p>
         <p class="mb-4">
           <a href="#!" class="text-white-600 dark:text-white-200"
-            >Vue</a
+            >Topi</a
           >
         </p>
         <p>
           <a href="#!" class="text-white-600 dark:text-white-200"
-            >Laravel</a
+            >Sepatu</a
           >
         </p>
       </div>

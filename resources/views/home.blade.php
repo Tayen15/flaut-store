@@ -36,9 +36,11 @@
             <h2 class="my-4 font-bold text-3xl  sm:text-4xl ">About <span class="text-orange-600">Our Company</span>
             </h2>
             <p class="text-gray-700">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, commodi
-                doloremque, fugiat illum magni minus nisi nulla numquam obcaecati placeat quia, repellat tempore
-                voluptatum.
+            Dapatkan gaya yang tak tertandingi dengan koleksi terbaru kami! Jelajahi ragam pilihan baju terkini yang dirancang untuk memenuhi segala kebutuhan gaya Anda. Nikmati diskon spesial yang akan membuat pengalaman belanja Anda semakin menggembirakan. 
+            Kami memberikan layanan pengiriman gratis untuk setiap pembelian di atas jumlah tertentu. Belanja sepuasnya tanpa perlu khawatir ongkos kirim!
+             Berkualitas tinggi dan penuh perhatian, setiap produk kami dirancang dengan detail yang cermat untuk memberikan kenyamanan dan gaya tanpa kompromi.
+             Dengan situs web dan aplikasi mobile kami yang user-friendly, belanja baju menjadi lebih mudah dan menyenangkan. Pilih, bayar, dan tunggu paket istimewa Anda tiba di depan pintu.
+            Jangan lewatkan kesempatan ini untuk memperbarui lemari pakaian Anda dengan gaya yang selalu trendi dan terkini. Kunjungi toko online kami sekarang dan temukan penawaran yang menggiurkan!
             </p>
         </div>
     </div>
