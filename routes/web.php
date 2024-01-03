@@ -22,3 +22,14 @@ Route::get('/', function () {
 Route::resource('catalog', CatalogController::class);
 
 Route::resource('news', CatalogController::class);
+
+use Illuminate\Support\Facades\DB;
+
+Route::get('/test-database', function () {
+    try {
+        DB::connection()->getPdo();
+        return 'Connected to the database!';
+    } catch (\Exception $e) {
+        return 'Unable to connect to the database. Error: ' . $e->getMessage();
+    }
+});
