@@ -1,7 +1,1 @@
-import '../path/to/your/styles.css';
-
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
-}
-
-export default MyApp;
+import './bootstrap';
