@@ -1,10 +1,11 @@
 import { defineConfig } from 'vite';
-import VitePluginLaravel from 'laravel-vite-plugin';
+import laravel from 'laravel-vite-plugin';
 
-export default {
-  plugins: [
-    VitePluginLaravel({
-      /* Konfigurasi tambahan jika diperlukan */
-    }),
-  ],
-};
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: ['resources/css/app.css', 'resources/js/app.js'],
+            refresh: true,
+        }),
+    ],
+});
