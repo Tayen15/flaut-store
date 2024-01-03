@@ -1,8 +1,6 @@
 @include('layouts.main')
 @section('content')
-
 <div>
-     <h1>woooi</h1>
+     <h1>Contact Us</h1>
 </div>
-
 @endsection

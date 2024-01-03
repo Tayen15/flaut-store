@@ -6,7 +6,7 @@
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
      @vite('resources/css/app.css')
 </head>
-<body>
+<body class="antialiased">
      <header>
           @include('components.header')
      </header>
