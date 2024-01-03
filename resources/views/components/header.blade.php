@@ -36,7 +36,7 @@
             <a href="{{ route('home') }}" class="text-cyan-800 rounded-md px-3 py-2 text-xl font-medium" aria-current="page">Home</a>
             <a href="{{ route('catalog.index') }}" class="text-cyan-800 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Catalog</a>
             <a href="{{ route('news.index') }}" class="text-cyan-800 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">News</a>
-            <a href="{{ route('contact') }}" class="text-cyan-800 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Contact Us</a>
+            {{-- <a href="{{ route('contact') }}" class="text-cyan-800 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Contact Us</a> --}}
           </div>
         </div>
       </div>

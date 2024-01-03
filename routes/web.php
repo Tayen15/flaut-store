@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', function () {
-    return view('home');
-});
-
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
+
+Route::resource('catalog', CatalogController::class);
+
+Route::resource('news', CatalogController::class);
