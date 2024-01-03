@@ -40,7 +40,7 @@
             Kami memberikan layanan pengiriman gratis untuk setiap pembelian di atas jumlah tertentu. Belanja sepuasnya tanpa perlu khawatir ongkos kirim!
              Berkualitas tinggi dan penuh perhatian, setiap produk kami dirancang dengan detail yang cermat untuk memberikan kenyamanan dan gaya tanpa kompromi.
              Dengan situs web dan aplikasi mobile kami yang user-friendly, belanja baju menjadi lebih mudah dan menyenangkan. Pilih, bayar, dan tunggu paket istimewa Anda tiba di depan pintu.
-            Jangan lewatkan kesempatan ini untuk memperbarui lemari pakaian Anda dengan gaya yang selalu trendi dan terkini. Kunjungi toko online kami sekarang dan temukan penawaran yang menggiurkan!
+            Jangan lewatkan kesempatan ini untuk memperbarui lemari pakaian Anda dengan gaya yang selalu trendi dan terkini. 
             </p>
         </div>
     </div>
