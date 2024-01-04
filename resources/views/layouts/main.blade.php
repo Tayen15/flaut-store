@@ -26,35 +26,40 @@
      </footer>
      <script>
           document.addEventListener("DOMContentLoaded", function () {
-               const navbar = document.getElementById("navbar");
-               const ahref = document.getElementById("text-nav");
-               const ahref2 = document.getElementById("text-nav-2");
-               const ahref3 = document.getElementById("text-nav-3");
-               const logoImage = document.querySelector("#navbar img");
-          
-               window.addEventListener("scroll", function () {
-                    if (window.scrollY > 0) {
-                         navbar.classList.remove("bg-transparent");
-                         navbar.classList.add("bg-white");
-               
-                         ahref.classList.remove("text-white");
-                         ahref2.classList.remove("text-white");
-                         ahref3.classList.remove("text-white");
+          const navbar = document.getElementById("navbar");
+          const ahref = document.getElementById("text-nav");
+          const ahref2 = document.getElementById("text-nav-2");
+          const ahref3 = document.getElementById("text-nav-3");
 
-                         logoImage.classList.add("h-16");
-                         logoImage.classList.add("mt-2");
-                    } else {
-                         navbar.classList.remove("bg-white");
-                         navbar.classList.add("bg-transparent");
-               
-                         ahref.classList.add("text-white");
-                         ahref2.classList.add("text-white");
-                         ahref3.classList.add("text-white");
+          // Fungsi untuk menetapkan warna navbar dan teks
+          function setNavbarColor(scrollPosition) {
+               if (scrollPosition > 0 || window.location.pathname !== "/") {
+                    navbar.classList.remove("bg-transparent");
+                    navbar.classList.add("bg-black");
+                    ahref.classList.add("text-white");
+                    ahref2.classList.add("text-white");
+                    ahref3.classList.add("text-white");
+               } else {
+                    navbar.classList.remove("bg-black");
+                    navbar.classList.add("bg-transparent");
+                    ahref.classList.remove("text-white");
+                    ahref2.classList.remove("text-white");
+                    ahref3.classList.remove("text-white");
+               }
+          }
 
-                         logoImage.classList.remove("h-16");
-                    }
-               });
+          // Fungsi untuk menangkap perubahan scroll
+          function handleScroll() {
+               setNavbarColor(window.scrollY);
+          }
+
+          // Inisialisasi warna navbar
+          setNavbarColor(window.scrollY);
+
+          // Menambahkan event listener untuk scroll
+          window.addEventListener("scroll", handleScroll);
           });
+
      </script>
         
         
