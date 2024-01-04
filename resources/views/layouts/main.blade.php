@@ -22,6 +22,7 @@
                const ahref = document.getElementById("text-nav");
                const ahref2 = document.getElementById("text-nav-2");
                const ahref3 = document.getElementById("text-nav-3");
+               const logoImage = document.querySelector("#navbar img");
           
                window.addEventListener("scroll", function () {
                     if (window.scrollY > 0) {
@@ -31,6 +32,8 @@
                          ahref.classList.remove("text-white");
                          ahref2.classList.remove("text-white");
                          ahref3.classList.remove("text-white");
+
+                         logoImage.classList.add("h-16");
                     } else {
                          navbar.classList.remove("bg-white");
                          navbar.classList.add("bg-transparent");
@@ -38,6 +41,8 @@
                          ahref.classList.add("text-white");
                          ahref2.classList.add("text-white");
                          ahref3.classList.add("text-white");
+
+                         logoImage.classList.remove("h-16");
                     }
                });
           });
