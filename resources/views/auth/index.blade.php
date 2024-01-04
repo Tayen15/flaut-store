@@ -11,7 +11,7 @@
 <body>
     <div class="flex justify-center items-center h-screen bg-indigo-600">
         <div class="w-96 p-6 shadow-lg bg-white rounded-md">
-            <h1 class="text-3xl block text-center font-semibold"><i class="fa-solid fa-user"></i> Login</h1>
+            <h1 class="text-3xl block text-center font-semibold"><i class="fa-solid fa-user"></i> Login Admin</h1>
             <hr class="mt-3">
             <div class="mt-3">
                 <label for="username" class="block text-base mb-2">Username</label>
