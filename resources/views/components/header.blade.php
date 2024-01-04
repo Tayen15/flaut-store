@@ -18,7 +18,7 @@
       </div>
       <div class="flex-shrink-0 flex items-center">
         <a href="#" class="flex-shrink-0">
-          <img src="https://cdn.discordapp.com/attachments/976824443743645696/1192123790822490143/flaut.1.png?ex=65a7eecc&is=659579cc&hm=8ce619c9ba0bd01ad13f7dcadd620337a7599a51cfd47b09c7f7de218a33328a&" alt="" class="h-10 w-auto">
+          <img src="https://cdn.discordapp.com/attachments/976824443743645696/1192365071083503636/flaut.1_2.png?ex=65a8cf82&is=65965a82&hm=f9183fea4ca358dcf057572f73030e26994e91bf27d7617cf0487ea80d910438&" alt="" class="h-10 w-auto">
         </a>
       </div>
       <div class="hidden sm:ml-10 sm:block">
