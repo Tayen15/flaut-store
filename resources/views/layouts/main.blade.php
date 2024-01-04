@@ -24,23 +24,25 @@
                const ahref3 = document.getElementById("text-nav-3");
           
                window.addEventListener("scroll", function () {
-               if (window.scrollY > 0) {
-                    navbar.classList.remove("bg-transparent");
-                    navbar.classList.add("bg-white");
-                    ahref.classList.remove("text-white-on-top");
-                    ahref.classList.add("text-black");
-                    ahref2.classList.add("text-black");
-                    ahref3.classList.add("text-black");
-               } else {
-                    navbar.classList.remove("bg-white");
-                    navbar.classList.add("bg-transparent");
-                    ahref.classList.remove("text-black");
-                    ahref2.classList.remove("text-black");
-                    ahref3.classList.remove("text-black");
-               }
+                    if (window.scrollY > 0) {
+                         navbar.classList.remove("bg-transparent");
+                         navbar.classList.add("bg-white");
+               
+                         ahref.classList.remove("text-white");
+                         ahref2.classList.remove("text-white");
+                         ahref3.classList.remove("text-white");
+                    } else {
+                         navbar.classList.remove("bg-white");
+                         navbar.classList.add("bg-transparent");
+               
+                         ahref.classList.add("text-white");
+                         ahref2.classList.add("text-white");
+                         ahref3.classList.add("text-white");
+                    }
                });
           });
-        </script>
+     </script>
+        
         
 </body>
 </html>
