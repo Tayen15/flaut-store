@@ -1,4 +1,4 @@
-<nav class="fixed w-full top-0 transition-all ease-in-out duration-700 bg-transparent z-50" id="navbar">
+<nav class="fixed w-full top-0 transition-all ease-in-out duration-500 bg-transparent z-50" id="navbar">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
