@@ -30,6 +30,7 @@
           const ahref = document.getElementById("text-nav");
           const ahref2 = document.getElementById("text-nav-2");
           const ahref3 = document.getElementById("text-nav-3");
+          const logoImage = document.querySelector("#navbar img");
 
           function setNavbarColor(scrollPosition) {
                if (scrollPosition > 0 || window.location.pathname !== "/") {
@@ -38,10 +39,12 @@
                     ahref.classList.add("text-white");
                     ahref2.classList.add("text-white");
                     ahref3.classList.add("text-white");
+                    logoImage.classList.add("h-16");
+                    logoImage.classList.add("mt-1");
                } else {
                     navbar.classList.remove("bg-black");
                     navbar.classList.add("bg-transparent");
-
+                    logoImage.classList.remove("h-16");
                }
           }
 
