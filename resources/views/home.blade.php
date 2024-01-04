@@ -9,7 +9,6 @@
         <h1 class="text-5xl font-bold mb-4 text-orange-600">F L A U T.</h1>
         <h2 class="text-5xl font-bold mb-4">Welcome to flaut. fashion store </h2>
         <p class="text-xl mb-8">Discover amazing many of fashion and more</p>
-        <a href="#" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full">Get Started</a>
     </div>
 </div>
 
