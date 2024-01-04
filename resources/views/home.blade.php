@@ -22,7 +22,7 @@
 
 
 
-<div class="sm:flex items-center max-w-screen-xl">
+<div class="sm:flex items-center max-w-screen-xl mt-10 mb-10">
     <div class="sm:w-1/2 p-10">
         <div class="image object-center text-center">
             <img src="https://cdn.discordapp.com/attachments/976824443743645696/1192114617116266607/WbQnbas.png?ex=65a7e641&is=65957141&hm=0a918bfbf1f86862de9502a7c159061239e6300c28265580b9c589b058545431&">

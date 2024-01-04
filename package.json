@@ -2,9 +2,8 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "npm run development",
-        "watch": "npm run watch",
-        "dev-server": "npm run development && php artisan serve"
+        "dev": "vite",
+        "build": "vite build"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.16",
