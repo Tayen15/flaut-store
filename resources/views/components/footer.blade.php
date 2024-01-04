@@ -169,8 +169,5 @@
 
 <!--Copyright section-->
 <div class="bg-black-200 p-6 text-center dark:bg-black-700">
-<span> &copy; 2024 Copyright:</span>
-<a
-     class="font-semibold text-white-600 dark:text-white-400"
-     >flaut</a>
+     <span class=" "> &copy; 2024 <span class="font-semibold">Flaut.</span></span>
 </div>
