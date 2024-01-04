@@ -14,7 +14,6 @@
 
 
 <style>
-   /* Tambahkan gaya font untuk elemen dengan class font-libre-baskerville */
    .font-libre-baskerville {
        font-family: 'Libre Baskerville', serif;
        
