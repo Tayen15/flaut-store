@@ -14,31 +14,86 @@
   }
   ```
 -->
-<div class="bg-white">
-    <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-      <h2 class="text-2xl font-bold tracking-tight text-gray-900">Catalog</h2>
-  
-      <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-        <div class="group relative">
-          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-            <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+      <div
+        class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0"
+      >
+        <!-- left side -->
+        <div class="flex flex-col justify-center p-8 md:p-14">
+          <span class="mb-3 text-4xl font-bold">Welcome back</span>
+          <span class="font-light text-gray-400 mb-8">
+            Welcom back! Please enter your details
+          </span>
+          <div class="py-4">
+            <span class="mb-2 text-md">Email</span>
+            <input
+              type="text"
+              class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+              name="email"
+              id="email"
+            />
           </div>
-          <div class="mt-4 flex justify-between">
-            <div>
-              <h3 class="text-sm text-gray-700">
-                <a href="#">
-                  <span aria-hidden="true" class="absolute inset-0"></span>
-                  Basic Tee
-                </a>
-              </h3>
-              <p class="mt-1 text-sm text-gray-500">Black</p>
+          <div class="py-4">
+            <span class="mb-2 text-md">Password</span>
+            <input
+              type="password"
+              name="pass"
+              id="pass"
+              class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            />
+          </div>
+          <div class="flex justify-between w-full py-4">
+            <div class="mr-24">
+              <input type="checkbox" name="ch" id="ch" class="mr-2" />
+              <span class="text-md">Remember for 30 days</span>
             </div>
-            <p class="text-sm font-medium text-gray-900">$35</p>
+            <span class="font-bold text-md">Forgot password</span>
+          </div>
+          <button
+            class="w-full bg-black text-white p-2 rounded-lg mb-6 hover:bg-white hover:text-black hover:border hover:border-gray-300"
+          >
+            Sign in
+          </button>
+          <button
+            class="w-full border border-gray-300 text-md p-2 rounded-lg mb-6 hover:bg-black hover:text-white"
+          >
+            <img src="google.svg" alt="img" class="w-6 h-6 inline mr-2" />
+            Sign in with Google
+          </button>
+          <div class="text-center text-gray-400">
+            Dont'have an account?
+            <span class="font-bold text-black">Sign up for free</span>
           </div>
         </div>
-  
-        <!-- More products... -->
+        <!-- {/* right side */} -->
+        <div class="relative">
+          <img
+            src="image.jpg"
+            alt="img"
+            class="w-[400px] h-full hidden rounded-r-2xl md:block object-cover"
+          />
+          <!-- text on image  -->
+          <div
+            class="absolute hidden bottom-10 right-6 p-6 bg-white bg-opacity-30 backdrop-blur-sm rounded drop-shadow-lg md:block"
+          >
+            <span class="text-white text-xl"
+              >We've been uesing Untitle to kick"<br />start every new project
+              and can't <br />imagine working without it."
+            </span>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </body>
+</html>
 @endsection
