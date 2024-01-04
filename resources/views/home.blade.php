@@ -8,29 +8,29 @@
         <div class="order-2 text-center text-white font-libre-baskerville">
             <h1 class="text-5xl font-bold mb-4 text-orange-600">F L A U T.</h1>
             <h2 class="text-5xl font-bold mb-4">Welcome to flaut. fashion store </h2>
-            <p class="text-xl mb-8">Discover amazing many of fashion and more</p>
+            <p class="text-xl mb-8">Discover many amazing fashions and more</p>
         </div>
     </div>
 </section>
 
 {{-- About Us --}}
-<section id="about-us">
-    <div class="sm:flex items-center max-w-screen-xl mt-10 mb-10">
+<section id="about-us" class="mt-10 mb-10">
+    <div class="sm:flex items-center max-w-screen-xl">
         <div class="sm:w-1/2 p-10">
             <div class="image object-center text-center">
-                <img src="https://cdn.discordapp.com/attachments/976824443743645696/1192365071083503636/flaut.1_2.png?ex=65a8cf82&is=65965a82&hm=f9183fea4ca358dcf057572f73030e26994e91bf27d7617cf0487ea80d910438&">
+                <img src="https://cdn.discordapp.com/attachments/976824443743645696/1192365071083503636/flaut.1_2.png?ex=65a8cf82&is=65965a82&hm=f9183fea4ca358dcf057572f73030e26994e91bf27d7617cf0487ea80d910438&" alt="Flaut Image">
             </div>
         </div>
         <div class="about sm:w-1/2 p-5">
             <div class="text">
                 <span class="text-gray-500 border-b-2 border-orange-600 uppercase">About us</span>
-                <h2 class="my-4 font-bold text-3xl  sm:text-4xl ">About <span class="text-orange-600">Our Company</span></h2>
+                <h2 class="my-4 font-bold text-3xl sm:text-4xl">About <span class="text-orange-600">Our Company</span></h2>
                 <div class="sm:flex">
                     <p class="text-gray-700 sm:w-1/2 pr-2">
-                        Dapatkan gaya yang tak tertandingi dengan koleksi terbaru kami! Jelajahi ragam pilihan baju terkini yang dirancang untuk memenuhi segala kebutuhan gaya Anda. Nikmati diskon spesial yang akan membuat pengalaman belanja Anda semakin menggembirakan. Kami memberikan layanan pengiriman gratis untuk setiap pembelian di atas jumlah tertentu. Belanja sepuasnya tanpa perlu khawatir ongkos kirim!
+                        Selamat datang di Flaut, destinasi fashion online yang memahami bahwa gaya adalah ungkapan dari keunikan diri. Flaut didirikan dengan visi untuk memberikan inspirasi fashion yang tak terlupakan, di mana setiap orang dapat menemukan gaya yang mencerminkan kepribadian mereka.
                     </p>
                     <p class="text-gray-700 sm:w-1/2 pl-2">
-                        Berkualitas tinggi dan penuh perhatian, setiap produk kami dirancang dengan detail yang cermat untuk memberikan kenyamanan dan gaya tanpa kompromi. Dengan situs web dan aplikasi mobile kami yang user-friendly, belanja baju menjadi lebih mudah dan menyenangkan. Pilih, bayar, dan tunggu paket istimewa Anda tiba di depan pintu. Jangan lewatkan kesempatan ini untuk memperbarui lemari pakaian Anda dengan gaya yang selalu trendi dan terkini.
+                        Flaut memberikan pengalaman berbelanja yang tak tertandingi dengan koleksi terbaru kami. Jelajahi ragam pilihan baju terkini yang dirancang untuk memenuhi segala kebutuhan gaya Anda. Berkualitas tinggi dan penuh perhatian, setiap produk kami dirancang dengan detail yang cermat untuk memberikan kenyamanan dan gaya tanpa kompromi.
                     </p>
                 </div>
             </div>
