@@ -1,4 +1,4 @@
-<nav class="fixed w-full top-0 transition-all ease-in-out duration-300 bg-transparent" id="navbar">
+<nav class="fixed w-full top-0 transition-all ease-in-out duration-300 bg-transparent z-50" id="navbar">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -17,7 +17,7 @@
         </button>
       </div>
       <div class="flex-shrink-0 flex items-center">
-        <a href="#" class="flex-shrink-0">
+        <a href="{{ route('home') }}" class="flex-shrink-0">
           <img src="https://cdn.discordapp.com/attachments/976824443743645696/1192365071083503636/flaut.1_2.png?ex=65a8cf82&is=65965a82&hm=f9183fea4ca358dcf057572f73030e26994e91bf27d7617cf0487ea80d910438&" alt="" class="h-10 w-auto">
         </a>
       </div>

@@ -1,4 +1,4 @@
-@include('main')
+@extends('layouts.main')
 @section('content')
     
 @endsection

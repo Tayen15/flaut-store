@@ -31,7 +31,6 @@
           const ahref2 = document.getElementById("text-nav-2");
           const ahref3 = document.getElementById("text-nav-3");
 
-          // Fungsi untuk menetapkan warna navbar dan teks
           function setNavbarColor(scrollPosition) {
                if (scrollPosition > 0 || window.location.pathname !== "/") {
                     navbar.classList.remove("bg-transparent");
@@ -42,21 +41,16 @@
                } else {
                     navbar.classList.remove("bg-black");
                     navbar.classList.add("bg-transparent");
-                    ahref.classList.remove("text-white");
-                    ahref2.classList.remove("text-white");
-                    ahref3.classList.remove("text-white");
+
                }
           }
 
-          // Fungsi untuk menangkap perubahan scroll
           function handleScroll() {
                setNavbarColor(window.scrollY);
           }
 
-          // Inisialisasi warna navbar
           setNavbarColor(window.scrollY);
 
-          // Menambahkan event listener untuk scroll
           window.addEventListener("scroll", handleScroll);
           });
 
