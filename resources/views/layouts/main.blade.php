@@ -39,12 +39,10 @@
                     ahref.classList.add("text-white");
                     ahref2.classList.add("text-white");
                     ahref3.classList.add("text-white");
-                    logoImage.classList.add("h-16");
                     logoImage.classList.add("mt-1");
                } else {
                     navbar.classList.remove("bg-black");
                     navbar.classList.add("bg-transparent");
-                    logoImage.classList.remove("h-16");
                }
           }
 

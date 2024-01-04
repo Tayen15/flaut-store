@@ -16,9 +16,9 @@
           </svg>
         </button>
       </div>
-      <div class="flex-shrink-0 flex items-center">
+      <div class="flex-shrink-0 flex items-center w-10">
         <a href="{{ route('home') }}" class="flex-shrink-0">
-          <img src="https://cdn.discordapp.com/attachments/976824443743645696/1192365071083503636/flaut.1_2.png?ex=65a8cf82&is=65965a82&hm=f9183fea4ca358dcf057572f73030e26994e91bf27d7617cf0487ea80d910438&" alt="" class="h-10 w-auto">
+          <img src="https://cdn.discordapp.com/attachments/976824443743645696/1192365071083503636/flaut.1_2.png?ex=65a8cf82&is=65965a82&hm=f9183fea4ca358dcf057572f73030e26994e91bf27d7617cf0487ea80d910438&" alt="" class="h-16 w-auto lg:h-20 lg:w-auto">
         </a>
       </div>
       <div class="hidden sm:ml-10 sm:block">
