@@ -5,6 +5,14 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
      @vite('resources/css/app.css')
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap">
+     <style>
+          .font-libre-baskerville {
+              font-family: 'Libre Baskerville', serif;
+              
+          }
+     </style>
+
 </head>
 <body class="antialiased">
      <header>
@@ -34,6 +42,7 @@
                          ahref3.classList.remove("text-white");
 
                          logoImage.classList.add("h-16");
+                         logoImage.classList.add("mt-2");
                     } else {
                          navbar.classList.remove("bg-white");
                          navbar.classList.add("bg-transparent");

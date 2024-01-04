@@ -8,7 +8,7 @@ class CatalogController extends Controller
 {
     public function index()
     {
-        // Your index logic here
+        return view('catalog.index');
     }
 
     public function create()

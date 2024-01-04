@@ -20,8 +20,8 @@ Route::get('/', function () {
 })->name('home');
 
 Route::resource('catalog', CatalogController::class);
-
-Route::resource('news', CatalogController::class);
+Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
+Route::get('/news', [CatalogController::class, 'index'])->name('news.index');
 
 use Illuminate\Support\Facades\DB;
 
