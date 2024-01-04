@@ -62,10 +62,16 @@ function getRandomColor() {
                          ahref2.classList.add("text-white");
                          ahref3.classList.add("text-white");
                          logoImage.classList.add("mt-1");
+                         navbar.classList.add("border-b-2");
+                         navbar.classList.add("border-gray-300");
+                         navbar.classList.add("shadow-lg");
 
                     } else {
                          navbar.classList.remove("bg-black");
                          navbar.classList.add("bg-transparent");
+                         navbar.classList.remove("border-b-2");
+                         navbar.classList.remove("border-gray-300");
+                         navbar.classList.remove("shadow-lg");
                     }
                }
 
