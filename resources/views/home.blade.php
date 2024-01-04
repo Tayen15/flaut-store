@@ -6,9 +6,9 @@
 
 <div class="flex flex-col h-screen items-center justify-center bg-no-repeat bg-cover bg-contain" style="background-image: url('https://cdn.discordapp.com/attachments/976824443743645696/1192125787650932856/Flaut.jpg?ex=65a7f0a8&is=65957ba8&hm=c90f5a7586c6bffda6c1734f203e22aa8ffd82118b49aff1f0212d8113aae0fd&'); background-size: cover;">
     <div class="order-2 text-center text-white font-libre-baskerville">
-        <h1 class="text-5xl font-bold mb-4">F L A U T</h1>
-        <h2 class="text-5xl font-bold mb-4">Welcome to Our Website</h2>
-        <p class="text-xl mb-8">Discover amazing features and more</p>
+        <h1 class="text-5xl font-bold mb-4 text-orange-600">F L A U T.</h1>
+        <h2 class="text-5xl font-bold mb-4">Welcome to flaut. fashion store </h2>
+        <p class="text-xl mb-8">Discover amazing many of fashion and more</p>
         <a href="#" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full">Get Started</a>
     </div>
 </div>
@@ -18,6 +18,7 @@
    /* Tambahkan gaya font untuk elemen dengan class font-libre-baskerville */
    .font-libre-baskerville {
        font-family: 'Libre Baskerville', serif;
+       
    }
 </style>
 
