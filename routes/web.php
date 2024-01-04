@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\NewsController;
@@ -35,3 +36,6 @@ Route::get('/test-database', function () {
         return 'Unable to connect to the database. Error: ' . $e->getMessage();
     }
 });
+
+Route::resource('auth', AuthController::class);
+Route::get('/auth', [AuthController::class, 'index'])->name('auth.index');
