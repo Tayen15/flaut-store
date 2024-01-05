@@ -20,6 +20,8 @@ use App\Http\Controllers\NewsController;
 Route::group(['middleware' => 'web'], function () {
     Route::get('/auth', [AuthController::class, 'index'])->name('login');
     Route::post('/auth', [AuthController::class, 'postLogin'])->name('auth');
+
+    Route::get('/panel', [CatalogController::class, 'index'])->name('panel.index');
 });
 
 
