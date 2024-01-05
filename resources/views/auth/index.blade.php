@@ -16,8 +16,8 @@
             <form method="POST" action="{{ route('auth') }}">
                 @csrf
                 <div class="mt-3">
-                    <label for="username" class="block text-base mb-2">Username</label>
-                    <input type="text" name="email" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" placeholder="Enter Username..." />
+                    <label for="username" class="block text-base mb-2">Email</label>
+                    <input type="text" name="email" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" placeholder="Enter Email..." />
                 </div>
                 <div class="mt-3">
                     <label for="password" class="block text-base mb-2">Password</label>
