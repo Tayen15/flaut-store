@@ -62,8 +62,6 @@ function getRandomColor() {
                          ahref2.classList.add("text-white");
                          ahref3.classList.add("text-white");
                          logoImage.classList.add("mt-1");
-                         navbar.classList.add("border-b-2");
-                         navbar.classList.add("border-gray-300");
                          navbar.classList.add("shadow-lg");
 
                     } else {
