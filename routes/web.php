@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\NewsController;
@@ -15,6 +16,8 @@ use App\Http\Controllers\NewsController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::resource('auth', AuthController::class);
+Route::get('/auth', [AuthController::class, 'index'])->name('auth.index');
 
 Route::get('/', function () {
     return view('home');
@@ -30,7 +33,11 @@ Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index
 Route::resource('news', NewsController::class);
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 
-use Illuminate\Support\Facades\DB;
+
+
+
+
+Route::post('/postlogin', [AuthController::class, 'postLogin'])->name('postlogin');
 
 Route::get('/test-database', function () {
     try {
@@ -38,8 +45,4 @@ Route::get('/test-database', function () {
         return 'Connected to the database!';
     } catch (\Exception $e) {
         return 'Unable to connect to the database. Error: ' . $e->getMessage();
-    }
-});
-
-Route::resource('auth', AuthController::class);
-Route::get('/auth', [AuthController::class, 'index'])->name('auth.index');
+}});

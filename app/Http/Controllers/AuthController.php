@@ -3,41 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class AuthController extends Controller
 {
+    // ... metode lainnya ...
+
+    public function postLogin(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Jika autentikasi berhasil, alihkan ke halaman utama
+            return redirect()->route('index');
+        }
+
+        // Jika autentikasi gagal, kembali ke halaman login dengan pesan error
+        return redirect()->route('auth.index')->with('error', 'Invalid credentials');
+    }
+
     public function index()
     {
-        return view('auth.index');
-    }
-
-    public function create()
-    {
-        // Your create logic here
-    }
-
-    public function store(Request $request)
-    {
-        // Your store logic here
-    }
-
-    public function show($id)
-    {
-        // Your show logic here
-    }
-
-    public function edit($id)
-    {
-        // Your edit logic here
-    }
-
-    public function update(Request $request, $id)
-    {
-        // Your update logic here
-    }
-
-    public function destroy($id)
-    {
-        // Your destroy logic here
+        // Your logic for the index page
+        return view('home');
     }
 }
