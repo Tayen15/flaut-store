@@ -16,8 +16,12 @@ use App\Http\Controllers\NewsController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/auth', [AuthController::class, 'index'])->name('login');
-Route::post('/auth', [AuthController::class, 'postLogin']);
+
+Route::group(['middleware' => 'web'], function () {
+    Route::get('/auth', [AuthController::class, 'index'])->name('login');
+    Route::post('/auth', [AuthController::class, 'postLogin'])->name('auth');
+});
+
 
 Route::get('/', function () {
     return view('home');

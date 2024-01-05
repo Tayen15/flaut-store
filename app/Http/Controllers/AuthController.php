@@ -15,7 +15,7 @@ class AuthController extends Controller
             return redirect()->route('home');
         }
 
-        return redirect()->route('home')->with('error', 'Invalid credentials');
+        return redirect()->route('login')->with('error', 'Invalid credentials. Please check your email and password.');
     }
 
     public function index()
