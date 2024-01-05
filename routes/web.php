@@ -16,8 +16,8 @@ use App\Http\Controllers\NewsController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::resource('auth', AuthController::class);
-Route::get('/auth', [AuthController::class, 'index'])->name('auth.index');
+Route::get('/auth', [AuthController::class, 'index'])->name('login');
+Route::post('/auth', [AuthController::class, 'postLogin']);
 
 Route::get('/', function () {
     return view('home');
@@ -32,12 +32,6 @@ Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index
 
 Route::resource('news', NewsController::class);
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
-
-
-
-
-
-Route::post('/postlogin', [AuthController::class, 'postLogin'])->name('postlogin');
 
 Route::get('/test-database', function () {
     try {
