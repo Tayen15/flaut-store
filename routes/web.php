@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/auth', [AuthController::class, 'index'])->name('login');
     Route::post('/auth', [AuthController::class, 'postLogin'])->name('auth');
 
-    Route::get('/panel', [CatalogController::class, 'index'])->name('panel.index');
+    Route::resource('panel', AdminController::class);
+    Route::get('/panel', [AdminController::class, 'index'])->name('panel.index');
 });
 
 

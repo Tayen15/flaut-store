@@ -10,7 +10,7 @@ class CatalogController extends Controller
     public function index()
     {
         $catalogs = Catalog::all(); // Mengambil semua data dari model Catalog
-        return view('catalog.index', compact('catalogs'));
+        //return view('catalog.index', compact('catalogs'));
     }
 
     public function create()
