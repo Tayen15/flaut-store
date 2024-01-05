@@ -1,31 +1,68 @@
-@extends('layouts.only-header')
-
+@extends('layouts.main')
 @section('content')
-<div class="container my-24 mx-auto md:px-6">
-    <!-- Section: Design Block -->
-    <section class="mb-32 text-center">
-        <div class="mx-auto max-w-[700px] md:px-3 text-black">
-            <h2 class="mb-12 text-3xl font-bold">Contact us</h2>
-            <form>
-                <!-- ... Bagian-bagian formulir ... -->
-                <div class="relative mb-6 text-black" data-te-input-wrapper-init>
-                    <input type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none text-black" id="exampleInputName" />
-                    <label class="pointer-events-none font-bold absolute top-2 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none text-black" for="exampleInputName">Name</label>
-                </div>
-                <div class="relative mb-6 text-black" data-te-input-wrapper-init>
-                    <input type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none text-black" id="exampleInputEmail" />
-                    <label class="pointer-events-none font-bold absolute top-2 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none text-black" for="exampleInputEmail">Email address</label>
-                </div>
-                <div class="relative mb-6 text-black" data-te-input-wrapper-init>
-                    <input type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none text-black" id="exampleInputMessage" />
-                    <label class="pointer-events-none font-bold absolute top-2 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none text-black" for="exampleInputMessage">Message</label>
-                </div>
-                <button type="submit" class="bg-black text-white px-4 py-2 rounded hover:bg-black focus:outline-none focus:ring focus:border-indigo-500">
-                    Send
-                </button>
+<div class="relative flex items-top justify-center min-h-screen bg-white dark:bg-gray-900 sm:items-center sm:pt-0">
+    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+        <div class="mt-8 overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
+                    <h1 class="text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">
+                        Get in touch
+                    </h1>
+                    <p class="text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">
+                        Fill in the form to start a conversation
+                    </p>
 
-            </form>
+                    <div class="flex items-center mt-8 text-gray-600 dark:text-gray-400">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-6 h-6 text-gray-500">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <div class="ml-4 text-md tracking-wide font-semibold">
+                            Acme Inc, Street, State, Postal Code
+                        </div>
+                    </div>
+
+                    <div class="flex items-center mt-4 text-gray-600 dark:text-gray-400">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-6 h-6 text-gray-500">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <div class="ml-4 text-md tracking-wide font-semibold">
+                            +44 1234567890
+                        </div>
+                    </div>
+
+                    <div class="flex items-center mt-2 text-gray-600 dark:text-gray-400">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-6 h-6 text-gray-500">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <div class="ml-4 text-md tracking-wide font-semibold">
+                            info@acme.org
+                        </div>
+                    </div>
+                </div>
+
+                <form class="p-6 flex flex-col justify-center">
+                    <div class="flex flex-col">
+                        <label for="name" class="sr-only">Full Name</label>
+                        <input type="text" name="name" id="name" placeholder="Full Name" class="w-full mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none">
+                    </div>
+
+                    <div class="flex flex-col mt-2">
+                        <label for="email" class="sr-only">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Email" class="w-full mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none">
+                    </div>
+                    <div class="flex flex-col mt-2">
+                            <label for="tel" class="hidden">Number</label>
+                            <input type="tel" name="tel" id="tel" placeholder="Telephone Number" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none">
+                     </div>
+
+                    <button type="submit" class="md:w-32 bg-indigo-600 hover:bg-blue-dark text-white font-bold py-3 px-6 rounded-md mt-3 hover:bg-indigo-500 transition ease-in-out duration-300">
+                     Submit
+                    </button>
+
+                </form>
+            </div>
         </div>
-    </section>
+    </div>
 </div>
 @endsection
