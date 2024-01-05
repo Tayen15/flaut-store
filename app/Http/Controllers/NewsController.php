@@ -3,41 +3,46 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\News;
 
 class NewsController extends Controller
 {
     public function index()
     {
-        return view('news.index');
+        $news = News::all();
+        return view('news.index', compact('news'));
     }
 
     public function create()
     {
-        // Your create logic here
+        return view('news.create');
     }
 
     public function store(Request $request)
     {
-        // Your store logic here
+        News::create($request->all());
+        return redirect()->route('news.index');
     }
 
-    public function show($id)
+    public function show(News $news)
     {
-        // Your show logic here
+        return view('news.show', compact('news'));
     }
 
-    public function edit($id)
+    public function edit(News $news)
     {
-        // Your edit logic here
+        return view('news.edit', compact('news'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, News $news)
     {
-        // Your update logic here
+        $news->update($request->all());
+        return redirect()->route('news.index');
     }
 
-    public function destroy($id)
+    public function destroy(News $news)
     {
-        // Your destroy logic here
+        $news->delete();
+        return redirect()->route('news.index');
     }
 }
