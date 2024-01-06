@@ -20,7 +20,22 @@ class NewsController extends Controller
 
     public function store(Request $request)
     {
-        News::create($request->all());
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'publish_date' => 'required',
+            'author' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+    
+        // Ubah direktori penyimpanan gambar
+        $imagePath = $request->file('image')->store('image');
+        $imageName = basename($imagePath);
+    
+        $validatedData['image'] = $imageName;
+    
+        News::create($validatedData);
+    
         return redirect()->route('news.index');
     }
 

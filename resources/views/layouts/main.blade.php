@@ -12,7 +12,6 @@
               
           }
      </style>
-
 </head>
 <body class="antialiased">
      <header>
@@ -33,12 +32,11 @@
           @include('components.footer')
      </footer>
      <script>
+          const specificColors = ['rgb(234, 88, 12)', '#FFFFFF', '#000000'];
 
-const specificColors = ['rgb(234, 88, 12)', '#FFFFFF', '#000000'];
-
-function getRandomColor() {
-    return specificColors[Math.floor(Math.random() * specificColors.length)];
-}
+          function getRandomColor() {
+               return specificColors[Math.floor(Math.random() * specificColors.length)];
+          }
 
           function changeColor(element, characters) {
                const color = getRandomColor();
@@ -51,8 +49,9 @@ function getRandomColor() {
                const ahref2 = document.getElementById("text-nav-2");
                const ahref3 = document.getElementById("text-nav-3");
                const logoImage = document.querySelector("#navbar img");
-
                const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+               const element = document.getElementById('flaut');
+               const charactersToColor = ['F', 'L', 'A', 'U', 'T', '.'];
 
                function setNavbarColor(scrollPosition) {
                     if (scrollPosition > 0 || window.location.pathname !== "/") {
@@ -63,7 +62,6 @@ function getRandomColor() {
                          ahref3.classList.add("text-white");
                          logoImage.classList.add("mt-1");
                          navbar.classList.add("shadow-lg");
-
                     } else {
                          navbar.classList.remove("bg-black");
                          navbar.classList.add("bg-transparent");
@@ -73,41 +71,32 @@ function getRandomColor() {
                     }
                }
 
-               scrollToTopBtn.addEventListener('click', function () {
-                    // Scroll to the top of the page
-                    window.scrollTo({
-                         top: 0,
-                         behavior: 'smooth'
-                    });
-               });               
-
                function handleScroll() {
                     setNavbarColor(window.scrollY);
 
                     if (window.scrollY) {
                          scrollToTopBtn.classList.remove('hidden');
-                         
                     } else {
                          scrollToTopBtn.classList.add('hidden');
-
                     }
+               }
 
+               function colorFlaut() {
+                    changeColor(element, charactersToColor);
                }
 
                setNavbarColor(window.scrollY);
-
                window.addEventListener("scroll", handleScroll);
+               setInterval(colorFlaut, 350);
 
-               const element = document.getElementById('flaut');
-               const charactersToColor = ['F', 'L', 'A', 'U', 'T', '.'];
-
-               setInterval(function () {
-                    changeColor(element, charactersToColor);
-               }, 350);
+               scrollToTopBtn.addEventListener('click', function () {
+                    window.scrollTo({
+                         top: 0,
+                         behavior: 'smooth'
+                    });
+               });
           });
 
      </script>
-        
-        
 </body>
 </html>

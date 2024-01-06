@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('content');
             $table->date('publish_date');
             $table->string('author');
+            $table->string('image'); 
             $table->timestamps();
         });
     }
@@ -29,3 +30,4 @@ return new class extends Migration
         Schema::dropIfExists('news');
     }
 };
+
