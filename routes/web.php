@@ -28,9 +28,9 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/contact', function () {
-    return view(('contact'));
-})->name('contact');
+Route::get('/about-us', function () {
+    return view(('about-us'));
+})->name('about-us');
 
 Route::resource('catalog', CatalogController::class);
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
