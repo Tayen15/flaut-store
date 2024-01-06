@@ -27,7 +27,7 @@
                 <h2 class="my-4 font-bold text-3xl sm:text-4xl">About <span class="text-orange-600">Our Company</span></h2>
                 <div class="sm:flex">
                     <p class="text-gray-700 sm:w-1/2 pr-2">
-                        Selamat datang di Flaut, destinasi fashion online yang memahami bahwa gaya adalah ungkapan dari keunikan diri. Flaut didirikan dengan visi untuk memberikan inspirasi fashion yang tak terlupakan, di mana setiap orang dapat menemukan gaya yang mencerminkan kepribadian mereka.
+                        Selamat datang di Flaut, destinasi fashion online yang memahami bahwa gaya adalah ungkapan dari keunikan diri. Flaut didirikan dengan visi untuk memberikan inspirasi fashion yang tak terlupakan, di mana setiap orang dapat menemukan gaya yang mencerminkan kepribadian pembeli.
                     </p>
                     <p class="text-gray-700 sm:w-1/2 pl-2">
                         Flaut memberikan pengalaman berbelanja yang tak tertandingi dengan koleksi terbaru kami. Jelajahi ragam pilihan baju terkini yang dirancang untuk memenuhi segala kebutuhan gaya Anda. Berkualitas tinggi dan penuh perhatian, setiap produk kami dirancang dengan detail yang cermat untuk memberikan kenyamanan dan gaya tanpa kompromi.
