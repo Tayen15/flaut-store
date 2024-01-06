@@ -22,11 +22,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/auth', [AuthController::class, 'index'])->name('login');
     Route::post('/auth', [AuthController::class, 'postLogin'])->name('auth');
 
-    Route::resource('panel', AdminController::class);
-    Route::get('/panel', [AdminController::class, 'index'])->name('panel.index');
+
 });
-
-
 Route::get('/', function () {
     return view('home');
 })->name('home');
@@ -43,6 +40,8 @@ Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 
 Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
 Route::post('/news', [NewsController::class, 'store'])->name('news.store');
+
+
 
 Route::get('/test-database', function () {
     try {
