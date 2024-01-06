@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\CarouselImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,8 @@ Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
 Route::post('/news', [NewsController::class, 'store'])->name('news.store');
 
+Route::get('/carousel/create', [CarouselImageController::class, 'create'])->name('carousel.create');
+Route::post('/carousel/store', [CarouselImageController::class, 'store'])->name('carousel.store');
 
 
 Route::get('/test-database', function () {
