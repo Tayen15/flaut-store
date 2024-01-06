@@ -24,11 +24,8 @@
             </div>
             <div class="mt-3 flex justify-between items-center">
                 <div>
-                    <input type="checkbox">
-                    <label>Remember Me</label>
-                </div>
-                <div>
-                    <a href="#" class="text-indigo-800 font-semibold">Forgot Password?</a>
+                    <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                    <label for="remember">Remember Me</label>
                 </div>
             </div>
             <div class="mt-5">
