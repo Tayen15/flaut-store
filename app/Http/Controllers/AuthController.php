@@ -15,7 +15,7 @@ class AuthController extends Controller
             return redirect()->route('panel.index');
         }
 
-        return back()->with('error', 'Username or Password is wrong!')->withInput();
+        return back()->with('error', 'Email or Password is wrong!')->withInput();
     }
 
     public function index()
