@@ -19,6 +19,9 @@
 
 <section id="news">
     <div class="mx-auto max-w-2xl px-4 sm:px-6 sm:py-14 lg:max-w-7xl ">
+        <div class="flex justify-between items-center mb-2">
+            <a href="{{ route('catalog.create') }}" class="text-white bg-orange-600 duration-300 hover:bg-orange-700 px-4 py-2 rounded-md text-sm font-medium">Add News</a>
+        </div>
         <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 gap-3 mt-5">
             @forelse($news as $item)
                 <div class="group rounded overflow-hidden shadow-lg max-w-xs relative">
