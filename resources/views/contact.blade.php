@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.only-header')
 @section('content')
 
 <section id="contact">
