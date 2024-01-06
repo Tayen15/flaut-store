@@ -22,10 +22,10 @@ class NewsController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required',
-            'content' => 'required',
             'publish_date' => 'required',
             'author' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'content' => 'required',
         ]);
     
         // Ubah direktori penyimpanan gambar
