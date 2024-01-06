@@ -9,23 +9,24 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('catalogs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
-            $table->decimal('price', 10, 2);
-            $table->string('image')->nullable();
-            $table->string('size')->nullable();
+            $table->text('description')->nullable();
+            $table->string('price');
+            $table->string('category');
+            $table->string('image');
             $table->timestamps();
         });
-
     }
 
-    public function down(): void
+    /**
+     * Reverse the migrations.
+     */
+    public function down()
     {
         Schema::dropIfExists('catalogs');
-
     }
 };

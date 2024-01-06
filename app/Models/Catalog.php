@@ -9,10 +9,10 @@ class Catalog extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'description',
-        'price',
-        // tambahkan kolom lainnya sesuai kebutuhan
-    ];
+    protected $fillable = ['name', 'description', 'price', 'category', 'image'];
+
+    public function getImageUrlAttribute()
+    {
+        return asset('storage/image/' . $this->image);
+    }
 }

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Catalog; // Sesuaikan dengan nama model yang Anda gunakan
+use App\Models\Catalog;
 use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
     public function index()
     {
-        $catalogs = Catalog::all(); // Mengambil semua data dari model Catalog
-        //return view('catalog.index', compact('catalogs'));
+        $catalogs = Catalog::all();
+        return view('catalog.index', compact('catalogs'));
     }
 
     public function create()
@@ -20,21 +20,20 @@ class CatalogController extends Controller
 
     public function store(Request $request)
     {
-        // Validasi request jika diperlukan
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
+        $request->validate([
+            'name' => 'required',
+            'description' => 'nullable',
             'price' => 'required|numeric',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // Proses penyimpanan gambar jika ada
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('catalog_images');
-            $validatedData['image'] = $imagePath;
-        }
+        $imagePath = $request->file('image')->store('image');
+        $imageName = basename($imagePath);
 
-        // Simpan data ke dalam database
+        $validatedData = $request->except('image');
+        $validatedData['image'] = $imageName;
+
         Catalog::create($validatedData);
 
         return redirect()->route('catalog.index')->with('success', 'Catalog item created successfully');
@@ -42,7 +41,7 @@ class CatalogController extends Controller
 
     public function show($id)
     {
-        $catalog = Catalog::findOrFail($id); // Mengambil data berdasarkan ID
+        $catalog = Catalog::findOrFail($id);
         return view('catalog.show', compact('catalog'));
     }
 
@@ -54,7 +53,6 @@ class CatalogController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Validasi request jika diperlukan
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
@@ -62,13 +60,11 @@ class CatalogController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Proses penyimpanan gambar jika ada
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('catalog_images');
             $validatedData['image'] = $imagePath;
         }
 
-        // Perbarui data dalam database
         Catalog::findOrFail($id)->update($validatedData);
 
         return redirect()->route('catalog.index')->with('success', 'Catalog item updated successfully');
@@ -76,7 +72,6 @@ class CatalogController extends Controller
 
     public function destroy($id)
     {
-        // Hapus data berdasarkan ID
         Catalog::findOrFail($id)->delete();
 
         return redirect()->route('catalog.index')->with('success', 'Catalog item deleted successfully');

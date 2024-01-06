@@ -35,6 +35,9 @@ Route::get('/contact', function () {
 Route::resource('catalog', CatalogController::class);
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
 
+Route::get('/catalog/create', [CatalogController::class, 'create'])->name('catalog.create');
+Route::post('/catalog', [CatalogController::class, 'store'])->name('catalog.store');
+
 Route::resource('news', NewsController::class);
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 
