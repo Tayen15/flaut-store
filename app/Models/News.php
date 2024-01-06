@@ -9,10 +9,10 @@ class News extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'content', 'publish_date', 'author', 'image_path'];
+    protected $fillable = ['title', 'content', 'publish_date', 'author', 'image'];
 
     public function getImageUrlAttribute()
     {
-        return asset('storage/' . $this->image_path);
+        return asset('storage/image/' . $this->image);
     }
 }

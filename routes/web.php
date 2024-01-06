@@ -41,6 +41,9 @@ Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index
 Route::resource('news', NewsController::class);
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 
+Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
+Route::post('/news', [NewsController::class, 'store'])->name('news.store');
+
 Route::get('/test-database', function () {
     try {
         DB::connection()->getPdo();
