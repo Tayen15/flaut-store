@@ -29,7 +29,7 @@ class NewsController extends Controller
         ]);
     
         // Ubah direktori penyimpanan gambar
-        $imagePath = $request->file('image')->store('image');
+        $imagePath = $request->file('image')->store('image/news');
         $imageName = basename($imagePath);
     
         $validatedData['image'] = $imageName;

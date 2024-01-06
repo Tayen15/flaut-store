@@ -13,6 +13,6 @@ class News extends Model
 
     public function getImageUrlAttribute()
     {
-        return asset('storage/image/' . $this->image);
+        return asset('storage/image/news/' . $this->image);
     }
 }

@@ -13,6 +13,6 @@ class Catalog extends Model
 
     public function getImageUrlAttribute()
     {
-        return asset('storage/image/' . $this->image);
+        return asset('storage/image/catalog' . $this->image);
     }
 }

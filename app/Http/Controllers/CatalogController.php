@@ -28,7 +28,7 @@ class CatalogController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $imagePath = $request->file('image')->store('image');
+        $imagePath = $request->file('image')->store('image/catalog');
         $imageName = basename($imagePath);
 
         $validatedData = $request->except('image');
