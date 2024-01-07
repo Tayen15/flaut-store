@@ -13,17 +13,18 @@
 </section>
 
 
-<section id="banner" class="text-center">
-    <h2 class="text-3xl font-bold mb-4 mt-10">Our Style</h2>
+<section id="banner" class="text-center mt-10">
+    <h2 class="text-2xl font-bold mb-4 uppercase">Our Style</h2>
 
     <div class="flex px-3 py-3 justify-center items-center">
         @foreach ($carouselImages as $image)
-            <div class="max-w-sm rounded overflow-hidden">
+            <div class="max-w-sm rounded overflow-hidden mx-5">
                 <img src="{{ $image->image_url }}" alt="" class="w-full">
             </div>
         @endforeach
     </div>
 </section>
+
 
 
 @endsection

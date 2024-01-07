@@ -48,6 +48,7 @@ Route::get('/', [CarouselController::class, 'index'])->name('home');
 Route::get('/carousel/create', [CarouselController::class, 'create'])->name('carousel.create');
 Route::post('/carousel/store', [CarouselController::class, 'store'])->name('carousel.store');
 
+
 Route::get('/test-database', function () {
     try {
         DB::connection()->getPdo();

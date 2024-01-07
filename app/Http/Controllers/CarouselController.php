@@ -1,7 +1,5 @@
 <?php
 
-// app/Http/Controllers/CarouselController.php
-
 namespace App\Http\Controllers;
 
 use App\Models\Carousel;
@@ -31,6 +29,7 @@ class CarouselController extends Controller
         $imageName = basename($imagePath);
 
         $validatedData['image'] = $imageName;
+
 
         Carousel::create($validatedData);
 
