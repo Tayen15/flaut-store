@@ -15,8 +15,6 @@
 
 </head>
 <body class="antialiased">
-     <main>
-          @yield('admin')
-     </main>
+     @yield('admin')
 </body>
 </html>
