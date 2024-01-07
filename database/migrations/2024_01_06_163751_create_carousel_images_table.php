@@ -10,7 +10,7 @@ class CreateCarouselImagesTable extends Migration
     {
         Schema::create('carousel_images', function (Blueprint $table) {
             $table->id();
-            $table->string('url');
+            $table->string('image');
             $table->string('alt_text')->nullable();
             $table->timestamps();
         });

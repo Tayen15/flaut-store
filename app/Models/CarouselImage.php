@@ -9,4 +9,9 @@ class CarouselImage extends Model
 {
     use HasFactory;
     protected $fillable = ['url', 'alt_text'];
+
+    public function getImageUrlAttribute()
+    {
+        return asset('storage/image/carousel/' . $this->image);
+    }
 }
