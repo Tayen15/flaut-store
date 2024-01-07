@@ -14,7 +14,7 @@ class AuthController extends Controller
         $remember = $request->has('remember');
 
         if (Auth::attempt($credentials, $remember)) {
-            return redirect()->route('home')->with('administrator', 'Login as administrator');
+            return redirect()->route('dashboard.index')->with('administrator', 'Login as administrator');
         }
 
         return back()->with('error', 'Email or Password is wrong!')->withInput($request->only('email', 'remember'));

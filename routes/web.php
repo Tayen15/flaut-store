@@ -5,6 +5,7 @@ use App\Http\Controllers\CarouselController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NewsController;
 
 /*
@@ -31,6 +32,9 @@ Route::get('/', function () {
 Route::get('/about-us', function () {
     return view(('about-us'));
 })->name('about-us');
+
+Route::resource('dashboard', DashboardController::class);
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 Route::resource('catalog', CatalogController::class);
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
