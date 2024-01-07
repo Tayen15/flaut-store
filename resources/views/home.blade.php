@@ -17,20 +17,9 @@
     <div class="max-w-screen-xl mx-auto">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-<<<<<<< HEAD
-                {{-- @foreach($carouselImage as $key => $image)
+                @foreach($carouselImage as $key => $image)
                     <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
                         <img src="{{ $image->image }}" class="d-block w-100" alt="{{ $image->alt_text }}">
-                    </div>
-                @endforeach --}}
-                @foreach ($carouselImage as $item)
-                    <div class="carousel-item">
-                        <img src="{{ $item->image }}" alt="{{ $item->alt_text }}" class="d-block w-100">
-=======
-                @foreach($carouselImages as $key => $carouselImages)
-                    <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
-                        <img src="{{ $carouselImages->url }}" class="d-block w-100" alt="{{ $carouselImages->alt_text }}">
->>>>>>> 7356f9c5d3c6f705f8e7f2c787ad1dc9685fd180
                     </div>
                 @endforeach
             </div>
