@@ -23,7 +23,7 @@
                             </a>
                         </h3>
                     </div>
-                    <p class="text-sm font-medium text-gray-900">${{ $catalog->price }}</p>
+                    <p class="text-sm font-medium text-gray-900">Rp{{ number_format($catalog->price, 0, ',', '.') }}</p>
                 </div>
             </div>
             @endforeach
