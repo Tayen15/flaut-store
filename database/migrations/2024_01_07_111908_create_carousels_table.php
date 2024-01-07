@@ -4,11 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCarouselImagesTable extends Migration
+return new class extends Migration
 {
-    public function up()
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
-        Schema::create('carousel_images', function (Blueprint $table) {
+        Schema::create('carousels', function (Blueprint $table) {
             $table->id();
             $table->string('image');
             $table->string('alt_text')->nullable();
@@ -16,8 +19,11 @@ class CreateCarouselImagesTable extends Migration
         });
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
-        Schema::dropIfExists('carousel_images');
+        Schema::dropIfExists('carousels');
     }
-}
+};

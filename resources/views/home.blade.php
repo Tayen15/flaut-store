@@ -12,27 +12,18 @@
     </div>
 </section>
 
-{{-- Carousel Images from Database --}}
-<section id="carousel-images" class="mt-10 mb-10">
-    <div class="max-w-screen-xl mx-auto">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                @foreach($carouselImage as $key => $image)
-                    <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
-                        <img src="{{ $image->image }}" class="d-block w-100" alt="{{ $image->alt_text }}">
-                    </div>
-                @endforeach
+
+<section id="banner" class="text-center">
+    <h2 class="text-3xl font-bold mb-4 mt-10">Our Style</h2>
+
+    <div class="flex px-3 py-3 justify-center items-center">
+        @foreach ($carouselImages as $image)
+            <div class="max-w-sm rounded overflow-hidden">
+                <img src="{{ $image->image_url }}" alt="" class="w-full">
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
+        @endforeach
     </div>
 </section>
+
 
 @endsection

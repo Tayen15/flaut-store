@@ -1,24 +1,25 @@
 <?php
 
-// CarouselImageController.php
+// app/Http/Controllers/CarouselController.php
 
 namespace App\Http\Controllers;
 
+use App\Models\Carousel;
 use Illuminate\Http\Request;
-use App\Models\CarouselImage;
 
-class CarouselImageController extends Controller
+class CarouselController extends Controller
 {
     public function index()
     {
-        $carouselImage = CarouselImage::all();
-        return view('home', compact('carouselImage'));
+        $carouselImages = Carousel::all();
+        return view('home', compact('carouselImages'));
     }
 
     public function create()
     {
         return view('carousel.create');
     }
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -31,8 +32,9 @@ class CarouselImageController extends Controller
 
         $validatedData['image'] = $imageName;
 
-        CarouselImage::create($validatedData);
+        Carousel::create($validatedData);
 
         return redirect()->route('home');
     }
 }
+
