@@ -32,7 +32,7 @@ class CarouselController extends Controller
     
         Carousel::create($validatedData);
     
-        return redirect()->route('carousel.create');
+        return redirect()->route('home');
     }
 }
 
