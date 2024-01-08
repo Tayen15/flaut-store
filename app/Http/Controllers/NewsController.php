@@ -51,6 +51,18 @@ class NewsController extends Controller
     public function update(Request $request, News $news)
     {
         $news->update($request->all());
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'content' => 'nullable',
+            'author' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('image/news');
+            $validatedData['image'] = $imagePath;
+        }
+
         return redirect()->route('news.index');
     }
 

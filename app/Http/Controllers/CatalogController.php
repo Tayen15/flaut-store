@@ -61,7 +61,7 @@ class CatalogController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('catalog_images');
+            $imagePath = $request->file('image')->store('image/catalog');
             $validatedData['image'] = $imagePath;
         }
 
