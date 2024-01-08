@@ -19,7 +19,7 @@
     <div class="flex px-3 py-3 justify-center items-center">
         @foreach ($carouselImages as $image)
             <div class="max-w-sm rounded overflow-hidden mx-5">
-                <img src="{{ $image->image_url }}" alt="" class="w-full">
+                <img src="{{ $image->image_url }}" alt="{{ $image->name }}" class="w-full">
             </div>
         @endforeach
     </div>

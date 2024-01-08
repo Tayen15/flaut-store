@@ -21,19 +21,18 @@ class CarouselController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'alt_text' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+            'name' => 'required',
         ]);
-
+    
         $imagePath = $request->file('image')->store('image/carousel');
         $imageName = basename($imagePath);
-
+    
         $validatedData['image'] = $imageName;
-
-
+    
         Carousel::create($validatedData);
-
-        return redirect()->route('home');
+    
+        return redirect()->route('carousel.create');
     }
 }
 

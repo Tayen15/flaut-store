@@ -11,7 +11,7 @@ class Carousel extends Model
 
     protected $fillable = [
         'image',
-        'alt_text',
+        'name',
     ];
 
     public function getImageUrlAttribute()
