@@ -9,7 +9,7 @@ class News extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'content', 'publish_date', 'author', 'image'];
+    protected $fillable = ['title', 'content', 'author', 'image'];
 
     public function getImageUrlAttribute()
     {

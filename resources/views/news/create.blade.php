@@ -1,42 +1,32 @@
-<!-- resources/views/news/create.blade.php -->
-
 @extends('layouts.main')
-
 @section('content')
 
-@if($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
-<div class="bg-white p-10 rounded-md shadow-md mt-20">
-    <h2 class="text-2xl font-bold mb-5">Create News</h2>
+<div class="bg-white mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 rounded-md shadow-md">
+    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Create New News</h2>
     <form action="{{ route('news.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
+        <div class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
+            <div class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
+                <div>
+                    <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+                    <input type="text" name="title" id="title" class="mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
 
-        <div class="mb-4">
-            <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
-            <input type="text" class="mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" id="title" name="title" required>
-        </div>
+                <div>    
+                    <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
+                    <textarea name="content" id="content" rows="4" class="mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                </div>
 
-        <div class="mb-4">
-            <label for="author" class="block text-sm font-medium text-gray-700">Author</label>
-            <input type="text" class="mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" id="author" name="author" required>
-        </div>
+                <div>
+                    <label for="author" class="block text-sm font-medium text-gray-700">Author</label>
+                    <input type="text" name="author" id="author" autocomplete="given-name" class="mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
 
-        <div class="mb-4">
-            <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
-            <input type="file" class="mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" id="image" name="image" accept="image/jpeg, image/png, image/jpg" required>
-        </div>
-
-        <div class="mb-4">
-            <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
-            <textarea id="content" name="content" rows="10" class="mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required></textarea>
+                <div>
+                    <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
+                    <input type="file" name="image" id="image" class="mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
+            </div>
         </div>
 
         <div class="mt-6">
