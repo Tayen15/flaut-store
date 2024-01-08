@@ -50,28 +50,19 @@ class NewsController extends Controller
 
     public function update(Request $request, News $news)
     {
+        $news->update($request->all());
         $validatedData = $request->validate([
             'title' => 'required',
             'content' => 'nullable',
             'author' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-    
-        // If a new image is uploaded, update the image
+
         if ($request->hasFile('image')) {
-            // Ubah direktori penyimpanan gambar
             $imagePath = $request->file('image')->store('image/news');
-            $imageName = basename($imagePath);
-            $validatedData['image'] = $imageName;
-    
-            // Delete the old image file
-            if ($news->image) {
-                Storage::delete('image/news/' . $news->image);
-            }
+            $validatedData['image'] = $imagePath;
         }
-    
-        $news->update($validatedData);
-    
+
         return redirect()->route('news.index');
     }
 

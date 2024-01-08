@@ -33,6 +33,9 @@
                     </div>
                     <div class="px-6 py-2">
                         <div class="font-bold text-xl mb-2">{{ $item->title }}</div>
+                        <div class="text-gray-700 text-base">
+                            {{ $item->content }}
+                        </div>
                     </div>
                     <div class="px-6 pt-3 pb-1">
                         <a href="{{ route('news.edit', $item->id) }}" class="text-white bg-blue-500 duration-300 hover:bg-blue-600 px-4 py-2 rounded-md text-sm font-medium">Edit</a>
