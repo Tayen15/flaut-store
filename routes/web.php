@@ -47,6 +47,7 @@ Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 
 Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
 Route::post('/news/store', [NewsController::class, 'store'])->name('news.store');
+Route::get('/news/{news}/edit', [NewsController::class, 'store'])->name('news.edit');
 
 Route::get('/', [CarouselController::class, 'index'])->name('home');
 Route::get('/carousel/create', [CarouselController::class, 'create'])->name('carousel.create');
