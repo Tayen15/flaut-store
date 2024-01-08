@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('content');
-            $table->date('publish_date');
+            $table->text('content')->nullable();
             $table->string('author');
             $table->string('image'); 
             $table->timestamps();
@@ -30,4 +29,3 @@ return new class extends Migration
         Schema::dropIfExists('news');
     }
 };
-
