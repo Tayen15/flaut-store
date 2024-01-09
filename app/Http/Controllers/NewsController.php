@@ -71,4 +71,9 @@ class NewsController extends Controller
         $news->delete();
         return redirect()->route('news.index');
     }
+    public function indexAdmin()
+    {
+        $news = News::all();
+        return view('dashboard.news.index', compact('news'));
+    }
 }

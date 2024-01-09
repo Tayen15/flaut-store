@@ -33,16 +33,18 @@
                     </div>
                     <div class="px-6 py-2">
                         <div class="font-bold text-xl mb-2">{{ $item->title }}</div>
-                        <div class="text-gray-700 text-base">
-                            {{ $item->content }}
-                        </div>
                     </div>
                     <div class="px-6 pt-3 pb-1">
                         <a href="{{ route('news.edit', $item->id) }}" class="text-white bg-blue-500 duration-300 hover:bg-blue-600 px-4 py-2 rounded-md text-sm font-medium">Edit</a>
                     </div>
+                    <form action="{{ route('news.destroy', $item->id) }}" method="POST" class="inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-white bg-red-500 duration-300 hover:bg-red-600 px-4 py-2 rounded-md text-sm font-medium">Delete</button>
+                    </form>
                 </div>
             @empty
-                <p class="text-center text-xl font-bold mt-5">No updates available</p>
+                <p class="text-center text-xl font-bold mt-5">No updates available</p>  
             @endforelse
         </div>
     </div>

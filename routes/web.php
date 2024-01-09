@@ -32,9 +32,15 @@ Route::get('/', function () {
 Route::get('/about-us', function () {
     return view(('about-us'));
 })->name('about-us');
+// routes/web.php
 
 Route::resource('dashboard', DashboardController::class);
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+// Add custom routes for specific actions
+Route::get('/dashboard/news', 'NewsController@index')->name('dashboard.news');
+Route::get('/dashboard/catalog', 'CatalogController@index')->name('dashboard.catalog');
+Route::get('/dashboard/carousel', 'CarouselController@index')->name('dashboard.carousel');
+
 
 Route::resource('catalog', CatalogController::class);
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
@@ -47,7 +53,6 @@ Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 
 Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
 Route::post('/news/store', [NewsController::class, 'store'])->name('news.store');
-Route::get('/news/{news}/edit', [NewsController::class, 'store'])->name('news.edit');
 
 Route::get('/', [CarouselController::class, 'index'])->name('home');
 Route::get('/carousel/create', [CarouselController::class, 'create'])->name('carousel.create');
