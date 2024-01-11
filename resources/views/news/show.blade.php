@@ -1,7 +1,18 @@
 @extends('layouts.main')
 @section('content')
-<section id="articles" class="pt-16 mt-5 mx-24">
 
+<section id="top">
+    <div class="container">
+        <div class="relative overflow-hidden bg-cover bg-no-repeat" style="background-position: 50%; background-image: url('https://cdn.discordapp.com/attachments/976824443743645696/1192121409753849896/Flaut2.jpg?ex=65b12714&is=659eb214&hm=ee01196069ce783f7d807a7d3127eb63e9fbd897b1251d253b03e6edbb0451a1&'); height: 380px">
+            <div class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed" style="background-color: rgba(0, 0, 0, 0.432)">
+                <div class="flex h-full items-center justify-center">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="articles" class="pt-16 mt-5 mx-24">
     <div class="container mx-auto p-4">
         <article class="bg-white p-8 rounded-lg shadow-md">
             <img src="{{ $news->image_url }}" alt="Gambar Artikel" class="mb-4 rounded-lg">
