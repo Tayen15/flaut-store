@@ -13,7 +13,8 @@
                 @foreach($catalogs as $catalog)
                     <div class="group relative">
                         <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:overflow-hidden group-hover:shadow-xl lg:h-80">
-                            <img src="{{ $catalog->image_url }}" alt="{{ $catalog->name }}" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                            <a href="{{ route('catalog.show', $catalog->id)}}"><img src="{{ $catalog->image_url }}" alt="{{ $catalog->name }}" class="h-full w-full object-cover object-center lg:h-full lg:w-full"></a>
+                            
                         </div>
                         <div class="mt-4 flex justify-between">
                             <div>

@@ -44,7 +44,7 @@
           </button>
 
      </main>
-     <footer class="bg-white-500 text-center text-white-600 dark:bg-white-600 dark:text-white-200 lg:text-left px-20">
+     <footer class="bg-white-500 text-center text-white-600 dark:bg-white-600 dark:text-white-200 lg:text-left">
           @include('components.footer')
      </footer>
      <script>

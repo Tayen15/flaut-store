@@ -24,7 +24,7 @@ class NewsController extends Controller
             'title' => 'required',
             'content' => 'nullable',
             'author' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:6144',
         ]);
     
         // Ubah direktori penyimpanan gambar
