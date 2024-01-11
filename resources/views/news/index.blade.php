@@ -35,6 +35,7 @@
                 </div>
                 <div class="px-6 py-2">
                     <div class="font-normal text-xl mb-2 text-center">{{ $item->title }}</div>
+                    <div class="font-normal text-medium mb-2 text-center">{!! $item->content !!}</div>
                 </div>
                 <div class="flex justify-between items-center px-6 pt-3 pb-5">
                     <a href="{{ route('news.edit', $item->id) }}" class="text-white bg-orange-600 duration-300 hover:bg-orange-700 px-4 py-2 rounded-md text-sm font-medium">Edit</a>
