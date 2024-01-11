@@ -5,19 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use app\Http\Requests\AdminLoginRequest;
 
 class AuthController extends Controller
 {
-    public function postLogin(Request $request)
+    public function postLogin(AdminLoginRequest $request)
     {
-        $credentials = $request->only('email', 'password');
-        $remember = $request->has('remember');
+        $validated = $request->validated();
 
-        if (Auth::attempt($credentials, $remember)) {
-            return redirect()->route('dashboard.index')->with('administrator', 'Login as administrator');
-        }
+        if (!Auth::attempt($validated))
+            return back()->with('error', 'Login Failed')->withInput();
 
-        return back()->with('error', 'Email or Password is wrong!')->withInput($request->only('email', 'remember'));
+        $request->session()->regenerate();
+
+        return redirect()->route('home');
     }
 
     public function index()
