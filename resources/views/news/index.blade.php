@@ -46,10 +46,13 @@
                     </form>
                 </div>
             </div>
+        
         @empty
             <p class="text-center text-xl font-bold mt-5">No updates available</p>  
-        @endforelse
+            
+            @endforelse
         </div>
+        {{ $news->links() }}
     </div>
 </section>
 
