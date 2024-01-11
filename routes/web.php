@@ -36,10 +36,28 @@ Route::get('/about-us', function () {
 
 Route::resource('dashboard', DashboardController::class);
 
-// Add custom routes for specific actions
-Route::get('/dashboard/news', 'NewsController@index')->name('dashboard.news');
-Route::get('/dashboard/catalog', 'CatalogController@index')->name('dashboard.catalog');
-Route::get('/dashboard/carousel', 'CarouselController@index')->name('dashboard.carousel');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+Route::get('/dashboard/news', [DashboardController::class, 'news'])->name('dashboard.news');
+Route::get('/dashboard/news/create', [DashboardController::class, 'createNews'])->name('dashboard.news.create');
+Route::post('/dashboard/news', [DashboardController::class, 'storeNews'])->name('dashboard.news.store');
+Route::get('/dashboard/news/{id}/edit', [DashboardController::class, 'editNews'])->name('dashboard.news.edit');
+Route::put('/dashboard/news/{id}', [DashboardController::class, 'updateNews'])->name('dashboard.news.update');
+Route::delete('/dashboard/news/{id}', [DashboardController::class, 'destroyNews'])->name('dashboard.news.destroy');
+
+Route::get('/dashboard/carousel', [DashboardController::class, 'carouselIndex'])->name('dashboard.carousel');
+Route::get('/dashboard/carousel/create', [DashboardController::class, 'carouselCreate'])->name('dashboard.carousel.create');
+Route::post('/dashboard/carousel/store', [DashboardController::class, 'carouselStore'])->name('dashboard.carousel.store');
+Route::get('/dashboard/carousel/edit/{id}', [DashboardController::class, 'carouselEdit'])->name('dashboard.carousel.edit');
+Route::put('/dashboard/carousel/update/{id}', [DashboardController::class, 'carouselUpdate'])->name('dashboard.carousel.update');
+Route::delete('/dashboard/carousel/destroy/{id}', [DashboardController::class, 'carouselDestroy'])->name('dashboard.carousel.destroy');
+
+Route::get('/dashboard/catalog', [DashboardController::class, 'catalogIndex'])->name('dashboard.catalog');
+Route::get('/dashboard/catalog/create', [DashboardController::class, 'catalogCreate'])->name('dashboard.catalog.create');
+Route::post('/dashboard/catalog/store', [DashboardController::class, 'catalogStore'])->name('dashboard.catalog.store');
+Route::get('/dashboard/catalog/edit/{id}', [DashboardController::class, 'catalogEdit'])->name('dashboard.catalog.edit');
+Route::put('/dashboard/catalog/update/{id}', [DashboardController::class, 'catalogUpdate'])->name('dashboard.catalog.update');
+Route::delete('/dashboard/catalog/destroy/{id}', [DashboardController::class, 'catalogDestroy'])->name('dashboard.catalog.destroy');
 
 
 Route::resource('catalog', CatalogController::class);
