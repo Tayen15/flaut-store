@@ -2,46 +2,38 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="container mx-auto mt-8">
-        <h1 class="text-3xl font-semibold mb-6">Edit Catalog</h1>
-        <form action="{{ route('catalog.update', $news->id) }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
+<section class="max-w-7xl p-6 mx-auto rounded-md shadow-md mt-20">
+    <h1 class="text-xl font-bold text-black capitalize dark:text-black mb-5">Edit News</h1>
+    <form action="{{ route('catalog.update', $catalog->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
 
-            <div class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
-            <div class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
-                <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700">Catalog Name</label>
-                    <input type="text" name="name" id="name" class="mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                </div>
-
-                <div>    
-                    <label for="description" class="block text-sm font-medium text-gray-700">description</label>
-                    <textarea name="description" id="description" rows="4" class="mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
-                </div>
-
-                <div>
-                    <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
-                    <input type="text" name="price" id="price" autocomplete="given-name" class="mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                </div>
-
-                <div>
-                    <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
-                    <input type="file" name="category" id="category" class="mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                </div>
-
-                <div>
-                    <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
-                    <input type="file" name="image" id="image" class="mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                </div>
+        <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+            <div>
+                <label class="text-black font-medium" for="name">catalog name</label>
+                <input id="name" name="name" value="{{ $catalog->name }}" type="text" autocomplete="organization-title" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">
             </div>
+
+            <div>
+                <label class="text-black font-medium" for="author">price</label>
+                <input id="price" name="price" type="number" value="{{ $catalog->price }}" autocomplete="additional-name" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">
+            </div>
+
+            <div>
+                <label class="text-black font-medium" for="passwordConfirmation">description</label>
+                <textarea id="description" name="description" type="textarea" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">{{ $catalog->description }}</textarea>
+            </div>
+
+            <div>
+                <label class="text-black font-medium" for="author">category</label>
+                <input id="category" name="category" type="text" value="{{ $catalog->category }}" autocomplete="additional-name" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">
+            </div>
+
         </div>
 
-        <div class="mt-6">
-            <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Update catalog
-            </button>
+        <div class="flex justify-end mt-6">
+            <button class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:bg-gray-600" type="submit">Save</button>
         </div>
     </form>
-</div>
+</section>
 @endsection

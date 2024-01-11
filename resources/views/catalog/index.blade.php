@@ -19,7 +19,6 @@
                             <div>
                                 <h3 class="text-sm text-gray-700">
                                     <a href="{{ route('catalog.show', $catalog->id) }}">
-                                        <span aria-hidden="true" class="absolute inset-0"></span>
                                         {{ $catalog->name }}
                                     </a>
                                 </h3>
