@@ -38,8 +38,9 @@ class NewsController extends Controller
         return redirect()->route('news.index');
     }
 
-    public function show(News $news)
+    public function show($id)
     {
+        $news = News::findOrFail($id);
         return view('news.show', compact('news'));
     }
 

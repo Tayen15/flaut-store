@@ -30,7 +30,7 @@
                 <div class="relative flex-grow">
                     <img class="w-full h-56 object-cover transition-transform transform group-hover:brightness-75" src="{{ $item->image_url }}" alt="{{ $item->title }}">
                     <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <a href="#" class="text-white font-light text-lg transition-transform transform hover:rounded-full px-7 py-1 bg-transparent border border-white duration-500 hover:bg-white hover:text-black">Read More</a>
+                        <a href="{{ route('news.show', $item->id) }}" class="text-white font-light text-lg transition-transform transform hover:rounded-full px-7 py-1 bg-transparent border border-white duration-500 hover:bg-white hover:text-black">Read More</a>
                     </div>
                 </div>
                 <div class="px-6 py-2">
