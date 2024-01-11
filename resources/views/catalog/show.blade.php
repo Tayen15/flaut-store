@@ -4,11 +4,11 @@
 <section id="detail-catalog" class="pt-16">
      <div class="container mx-auto mt-8">
           <div class="bg-white">
-               <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-               <div class="flex flex-col md:flex-row -mx-4">
-                    <div class="md:flex-1 px-4">
-                         <div class="h-[460px] rounded-lg bg-gray-300">
-                              <img class="w-full h-full object-cover" src="{{ $catalog->image_url }}" alt="{{ $catalog->name }}">
+               <div class="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8">
+               <div class="flex flex-col md:flex-row -mx-1">
+                    <div class="md:flex-1 px-">
+                         <div class="h-[460px] rounded-lg bg-gray-300 aspect-square">
+                              <img class="w-full h-full object-cover " src="{{ $catalog->image_url }}" alt="{{ $catalog->name }}">
                          </div>
                     </div>
                     <div class="md:flex-1 px-4 flex flex-col items-center justify-center">
@@ -19,7 +19,7 @@
                          <div class="flex mb-4">
                              <div class="mr-4">
                                  <span class="font-bold text-gray-700">Price:</span>
-                                 <span class="text-gray-600">Rp{{ number_format($catalog->price, 0, ',', '.') }}</span>
+                                 <span class="text-gray-600">Rp {{ number_format($catalog->price, 0, ',', '.') }}</span>
                              </div>
                          </div>
                          <div class="mb-4">
