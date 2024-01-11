@@ -26,10 +26,6 @@
                     <a id="text-nav" href="{{ route('home') }}" class="text-white hover:bg-orange-600 hover:text-white rounded-md px-3 py-2 text-xl font-medium" aria-current="page">Home</a>
                     <a id="text-nav-2" href="{{ route('catalog.index') }}" class="text-white hover:bg-orange-600 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Catalog</a>
                     <a id="text-nav-3" href="{{ route('news.index') }}" class="text-white hover:bg-orange-600 hover:text-white rounded-md px-3 py-2 text-xl font-medium">News</a>
-                    <a id="text-nav-3" href="{{ route('about-us') }}" class="text-white hover:bg-orange-600 hover:text-white rounded-md px-3 py-2 text-xl font-medium">About Us</a>
-                    @if (session('administrator'))
-                        <span class="text-white bg-orange-600 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Administrator</span>
-                    @endif
                 </div>
             </div>
         </div>

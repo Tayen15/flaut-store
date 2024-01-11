@@ -72,7 +72,7 @@
                const charactersToColor = ['F', 'L', 'A', 'U', 'T', '.'];
 
                function setNavbarColor(scrollPosition) {
-                    if (scrollPosition > 0 || window.location.pathname !== "/") {
+                    if (scrollPosition > 0 || window.location.pathname == "/catalog") {
                          navbar.classList.remove("bg-transparent");
                          navbar.classList.add("bg-black");
                          ahref.classList.add("text-white");
