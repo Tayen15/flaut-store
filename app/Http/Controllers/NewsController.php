@@ -55,13 +55,7 @@ class NewsController extends Controller
             'title' => 'required',
             'content' => 'nullable',
             'author' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('image/news');
-            $validatedData['image'] = $imagePath;
-        }
 
         return redirect()->route('news.index');
     }

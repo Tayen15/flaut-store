@@ -4,7 +4,7 @@
 @section('content')
     <div class="container mx-auto mt-8">
         <h1 class="text-3xl font-semibold mb-6">Edit Catalog</h1>
-        <form action="{{ route('news.update', $news->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('catalog.update', $news->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
