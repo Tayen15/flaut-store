@@ -25,32 +25,31 @@
             <a href="{{ route('news.create') }}" class="text-white bg-orange-600 duration-300 hover:bg-orange-700 px-4 py-2 rounded-md text-sm font-medium">Add News</a>
         </div>
         <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 gap-3 mt-5">
-            @forelse($news as $item)
-                <div class="group rounded overflow-hidden shadow-lg max-w-xs relative">
-                    <div class="relative">
-                        <img class="w-full h-56 object-cover transition-transform transform group-hover:brightness-75" src="{{ $item->image_url }}" alt="{{ $item->title }}">
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <a href="#" class="text-white font-light text-lg transition-transform transform hover:rounded-full px-7 py-1 bg-transparent border border-white duration-500 hover:bg-white hover:text-black">Read More</a>
-                        </div>
-                    </div>
-                    <div class="px-6 py-2">
-                        <div class="font-bold text-xl mb-2">{{ $item->title }}</div>
-                    </div>
-                    <div class="px-6 pt-3 pb-1">
-                        <a href="{{ route('news.edit', $item->id) }}" class="text-white bg-blue-500 duration-300 hover:bg-blue-600 px-4 py-2 rounded-md text-sm font-medium">Edit</a>
-                    </div>
-                    <form action="{{ route('news.destroy', $item->id) }}" method="POST" class="inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="text-white bg-red-500 duration-300 hover:bg-red-600 px-4 py-2 rounded-md text-sm font-medium">Delete</button>
-                    </form>
+    @forelse($news as $item)
+        <div class="group rounded overflow-hidden shadow-lg max-w-xs relative flex flex-col">
+            <div class="relative flex-grow">
+                <img class="w-full h-56 object-cover transition-transform transform group-hover:brightness-75" src="{{ $item->image_url }}" alt="{{ $item->title }}">
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <a href="#" class="text-white font-light text-lg transition-transform transform hover:rounded-full px-7 py-1 bg-transparent border border-white duration-500 hover:bg-white hover:text-black">Read More</a>
                 </div>
-            @empty
-                <p class="text-center text-xl font-bold mt-5">No updates available</p>  
-            @endforelse
+            </div>
+            <div class="px-6 py-2">
+                <div class="font-bold text-xl mb-2">{{ $item->title }}</div>
+            </div>
+            <div class="flex justify-between items-center px-6 pt-3 pb-1">
+                <a href="{{ route('news.edit', $item->id) }}" class="text-white bg-blue-500 duration-300 hover:bg-blue-600 px-4 py-2 rounded-md text-sm font-medium">Edit</a>
+                <form action="{{ route('news.destroy', $item->id) }}" method="POST" class="inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="text-white bg-red-500 duration-300 hover:bg-red-600 px-4 py-2 rounded-md text-sm font-medium">Delete</button>
+                </form>
+            </div>
         </div>
-    </div>
-</section>
+    @empty
+        <p class="text-center text-xl font-bold mt-5">No updates available</p>  
+    @endforelse
+</div>
+
 
 
 <div class="container mt-14 mx-auto md:px-6 p-8 bg-fixed" style="background-image: url('https://cdn.discordapp.com/attachments/976824443743645696/1193148201675526184/download.jpeg?ex=65aba8da&is=659933da&hm=b409f771292a711d2f621606e630ac3a40132c9d011acf468abf86d3129b6c99&')">
