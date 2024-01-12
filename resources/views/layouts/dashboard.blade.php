@@ -143,4 +143,5 @@
         }
     </script>
 </body>
+@include('components.notif')
 </html>
