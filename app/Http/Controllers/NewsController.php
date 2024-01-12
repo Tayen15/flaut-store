@@ -10,13 +10,20 @@ class NewsController extends Controller
     public function index()
     {
         $news = News::paginate(6);
-        return view('news.index', compact('news'));
+        // Tampilkan view untuk publik
+        $publicView = view('news.index', compact('news'));
+
+        // Tampilkan view untuk dashboard
+        $adminView = view('dashboard.news.index', compact('news'));
+
+        // Kembalikan kedua view sebagai response
+        return $publicView->with('adminView', $adminView);
     }
 
-    public function indexNews()
+    public function indexAdmin()
     {
         $news = News::paginate(6);
-        return view('dashboad.news.index', compact('news'));
+        return view('dashboard.news.index', compact('news'));
     }
 
     public function create()
@@ -47,12 +54,18 @@ class NewsController extends Controller
     public function show($id)
     {
         $news = News::findOrFail($id);
-        return view('news.show', compact('news'));
+        return view(['news.index', 'dashboard.news.index'], compact('news'));
+    }
+    
+    public function showAdmin($id)
+    {
+        $news = News::findOrFail($id);
+        return view('dashboard.news.edit', compact('news'));
     }
 
     public function edit(News $news)
     {
-        return view('news.edit', compact('news'));
+        return view('dashboard.news.edit');
     }
 
     public function update(Request $request, News $news)
