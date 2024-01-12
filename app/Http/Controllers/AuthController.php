@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
-use app\Http\Requests\AdminLoginRequest;
+use App\Http\Requests\AdminLoginRequest;
 
 class AuthController extends Controller
 {
@@ -18,7 +17,7 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('home');
+        return view('dashboard.index');
     }
 
     public function index()
