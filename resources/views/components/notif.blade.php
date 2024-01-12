@@ -1,38 +1,71 @@
-<div class="bg-red-50 border border-red-400 rounded text-red-800 text-sm p-4 flex justify-between">
-    <div>
-        <div class="flex items-center">
-            <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-4 w-4 mr-2"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            >
-            <path
-                fill-rule="evenodd"
-                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                clip-rule="evenodd"
-            />
+<div class="notification-container">
+    @if (session('success'))
+    <div role="alert" data-dismissible="alert" class="relative flex w-full max-w-screen-md px-4 py-4 text-base text-white bg-gray-900 rounded-lg font-regular notification">
+        <div class="shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd"></path>
             </svg>
-            <p>
-            <span class="font-bold">Info:</span>
-            This is an Error alert
-            </p>
         </div>
+        <div class="ml-3 mr-12">
+            <h5 class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-white">
+                Success
+            </h5>
+            <p class="block mt-2 font-sans text-base antialiased font-normal leading-relaxed text-white">{{ session('success') }}</p>
+        </div>
+        <button data-dismissible-target="alert" class="absolute top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button" onclick="closeNotification()">
+            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </span>
+        </button>
     </div>
-    <div>
-        <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        >
-        <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-        />
-        </svg>
-    </div>
+    @endif
 </div>
+
+<style>
+
+    .notification-container {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 1000;
+    }
+    .notification {
+        animation: slideInRight 0.5s ease-in-out forwards;
+    }
+
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .notification.hide {
+        animation: slideOutRight 0.5s ease-in-out forwards;
+    }
+
+    @keyframes slideOutRight {
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+    
+</style>
+
+<script>
+    function closeNotification() {
+        const notification = document.querySelector('.notification');
+        notification.classList.add('hide');
+        setTimeout(() => {
+            notification.style.display = 'none';
+            notification.classList.remove('hide');
+        }, 500); 
+    }
+</script>
