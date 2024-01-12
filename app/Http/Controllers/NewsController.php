@@ -13,9 +13,15 @@ class NewsController extends Controller
         return view('news.index', compact('news'));
     }
 
+    public function indexNews()
+    {
+        $news = News::paginate(6);
+        return view('dashboad.news.index', compact('news'));
+    }
+
     public function create()
     {
-        return view('news.create');
+        return view('dashboard.news.create');
     }
 
     public function store(Request $request)
