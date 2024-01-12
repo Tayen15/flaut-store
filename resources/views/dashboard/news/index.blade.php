@@ -45,13 +45,13 @@
                 <tr>
                     <td class="p-4 border-b border-blue-gray-50">{{ $item->id }}</td>
                     <td class="p-4 border-b border-blue-gray-50">
-                        <img src="{{ $item->image_url }}" alt="{{ $item->title }}" class="inline-block relative object-center !rounded-full w-12 h-12 rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1">
+                        <img src="{{ $item->image_url }}" alt="{{ $item->title }}" class="inline-block relative object-center w-12 h-12 rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1">
                     </td>
                     <td class="p-4 border-b border-blue-gray-50">{{ $item->title }}</td>
-                    <td class="p-4 border-b border-blue-gray-50">{{ $item->content }}</td>
+                    <td class="p-4 border-b border-blue-gray-50">{!! substr($item->content, 0, 10) !!}</td>
                     <td class="p-4 border-b border-blue-gray-50">{{ $item->author }}</td>
-                    <td class="p-4 border-b border-blue-gray-50">{{ $item->created_at }}</td>
-                    <td class="p-4 border-b border-blue-gray-50">{{ $item->updated_at }}</td>
+                    <td class="p-4 border-b border-blue-gray-50">{{ \Carbon\Carbon::parse($item->created_at)->format('l, d F Y') }}</td>
+                    <td class="p-4 border-b border-blue-gray-50">{{ $item->updated_at->format('j F Y, H:i') }}</td>
                     <td class="p-4 border-b border-blue-gray-50">
                         <a href="{{ route('dashboard.news.edit', $item->id) }}">
                             <button class="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-900 hover:bg-gray-900/10 active:bg-gray-900/20" type="button">
