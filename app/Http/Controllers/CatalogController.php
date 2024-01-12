@@ -7,9 +7,23 @@ use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $catalogs = Catalog::all();
+        $query = Catalog::query();
+
+        // Pencarian
+        $searchKeyword = $request->input('search');
+        if ($searchKeyword && strlen($searchKeyword) >= 3) {
+            $query->where('name', 'like', '%' . $searchKeyword . '%');
+        }
+    
+        // Filter Kategori
+        $categories = $request->input('categories', []);
+        if (!empty($categories)) {
+            $query->whereIn('category', $categories);
+        }
+    
+        $catalogs = $query->get();
         return view('catalog.index', compact('catalogs'));
     }
 
