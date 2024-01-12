@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\News;
+use Carbon\Carbon;  
 
 class NewsController extends Controller
 {
@@ -69,24 +70,25 @@ class NewsController extends Controller
         return view('dashboard.news.edit', compact('news'));
     }
 
-    public function update(Request $request, News $news)
+    public function update(Request $request, $id)
     {
-        $news->update($request->all());
-
         $validatedData = $request->validate([
             'title' => 'required',
             'content' => 'nullable',
             'author' => 'required',
         ]);
 
-        return redirect()->route('news.index');
+        News::findOrFail($id)->update($validatedData);
+        return redirect()
+            ->route('dashboard.news.index')
+            ->with('success', 'Successfully updated news');
     }
 
     public function destroy(News $news)
     {
         $news->delete();
-        return redirect()->route('news.index');
+        return redirect()
+            ->route('news.index')
+            ->with('success', 'Successfully deleted news');
     }
-
-    
 }
