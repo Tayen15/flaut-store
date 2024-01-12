@@ -22,7 +22,7 @@ class NewsController extends Controller
 
     public function indexAdmin()
     {
-        $news = News::paginate(6);
+        $news = News::paginate(8);
         return view('dashboard.news.index', compact('news'));
     }
 
