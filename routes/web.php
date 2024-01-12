@@ -38,12 +38,12 @@ Route::resource('dashboard', DashboardController::class);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
-Route::get('/dashboard/news', [DashboardController::class, 'news'])->name('dashboard.news');
-Route::get('/dashboard/news/create', [DashboardController::class, 'createNews'])->name('dashboard.news.create');
-Route::post('/dashboard/news', [DashboardController::class, 'storeNews'])->name('dashboard.news.store');
-Route::get('/dashboard/news/{id}/edit', [DashboardController::class, 'editNews'])->name('dashboard.news.edit');
-Route::put('/dashboard/news/{id}', [DashboardController::class, 'updateNews'])->name('dashboard.news.update');
-Route::delete('/dashboard/news/{id}', [DashboardController::class, 'destroyNews'])->name('dashboard.news.destroy');
+Route::get('/dashboard/news/index', [NewsController::class, 'indexNews'])->name('dashboard.news.index');
+Route::get('/dashboard/news/create', [NewsController::class, 'create'])->name('dashboard.news.create');
+Route::post('/dashboard/news', [NewsController::class, 'store'])->name('dashboard.news.store');
+Route::get('/dashboard/news/{news}/edit', [NewsController::class, 'edit'])->name('dashboard.news.edit');
+Route::put('/dashboard/news/{news}', [NewsController::class, 'update'])->name('dashboard.news.update');
+Route::delete('/dashboard/news/{news}', [NewsController::class, 'destroy'])->name('dashboard.news.destroy');
 
 Route::get('/dashboard/carousel', [DashboardController::class, 'carouselIndex'])->name('dashboard.carousel');
 Route::get('/dashboard/carousel/create', [DashboardController::class, 'carouselCreate'])->name('dashboard.carousel.create');
