@@ -63,14 +63,16 @@ class NewsController extends Controller
         return view('dashboard.news.edit', compact('news'));
     }
 
-    public function edit(News $news)
+    public function edit($id)
     {
-        return view('dashboard.news.edit');
+        $news = News::findOrFail($id);
+        return view('dashboard.news.edit', compact('news'));
     }
 
     public function update(Request $request, News $news)
     {
         $news->update($request->all());
+
         $validatedData = $request->validate([
             'title' => 'required',
             'content' => 'nullable',

@@ -34,7 +34,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::prefix('news')->group(function () {
             Route::get('/', [NewsController::class, 'indexAdmin'])->name('dashboard.news.index');
             Route::get('/create', [NewsController::class, 'create'])->name('dashboard.news.create');
-            Route::get('/edit/{id}', [DashboardController::class, 'edit'])->name('dashboard.news.edit');
+            Route::get('/edit/{id}', [NewsController::class, 'edit'])->name('dashboard.news.edit');
             Route::post('/store', [NewsController::class, 'store'])->name('dashboard.news.store');
             Route::post('/destroy', [NewsController::class, 'destroy'])->name('dashboard.news.destroy');
         });
