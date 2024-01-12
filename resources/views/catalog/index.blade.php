@@ -21,6 +21,7 @@
     <div class="grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 lg:grid-cols-2 xl:grid-cols-4">
         @forelse($catalogs as $catalog)
             <div class="group relative">
+                <a href="{{ route('catalog.show', $catalog->id) }}">
                 <div class="mx-4 sm:mx-0 w-full sm:w-56 transform overflow-hidden rounded-lg bg-white shadow-md duration-300 hover:scale-105 hover:shadow-lg">
                     <img class="h-56 sm:h-72 w-full object-cover object-center" src="{{ $catalog->image_url }}" alt="{{ $catalog->name }}" />
                     <div class="p-4">
@@ -34,9 +35,10 @@
                         </div>
                     </div>
                 </div>
+                </a>
             </div>
         @empty
-            <p class="text-center">No catalog found.</p>
+            <p class="text-center uppercase border border-solid border-orange-600">Can't find the catalog you are looking for</p>
         @endforelse
     </div>
 </div>
