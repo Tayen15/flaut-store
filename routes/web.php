@@ -23,7 +23,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/auth', [AuthController::class, 'index'])->name('login');
     Route::post('/auth', [AuthController::class, 'postLogin'])->name('auth');
 
-
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -63,23 +62,6 @@ Route::get('/', function () {
 Route::get('/about-us', function () {
     return view(('about-us'));
 })->name('about-us');
-// routes/web.php
-
-// Route::resource('dashboard', DashboardController::class);
-
-// Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-
-// Route::get('/dashboard/news', [NewsController::class, 'index'])->name('dashboard.news');
-// Route::get('/dashboard/news/create', [NewsController::class, 'create'])->name('dashboard.news.create');
-// Route::post('/dashboard/news/store', [NewsController::class, 'store'])->name('dashboard.news.store');
-
-// Route::get('/dashboard/carousel', [DashboardController::class, 'carouselIndex'])->name('dashboard.carousel');
-// Route::get('/dashboard/carousel/create', [DashboardController::class, 'carouselCreate'])->name('dashboard.carousel.create');
-// Route::post('/dashboard/carousel/store', [DashboardController::class, 'carouselStore'])->name('dashboard.carousel.store');
-
-// Route::get('/dashboard/catalog', [DashboardController::class, 'catalogIndex'])->name('dashboard.catalog');
-// Route::get('/dashboard/catalog/create', [DashboardController::class, 'catalogCreate'])->name('dashboard.catalog.create');
-// Route::post('/dashboard/catalog/store', [DashboardController::class, 'catalogStore'])->name('dashboard.catalog.store');
 
 Route::resource('catalog', CatalogController::class);
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
@@ -89,6 +71,7 @@ Route::post('/catalog', [CatalogController::class, 'store'])->name('catalog.stor
 
 Route::resource('news', NewsController::class);
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
 
 Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
 Route::post('/news/store', [NewsController::class, 'store'])->name('news.store');
