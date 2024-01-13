@@ -32,9 +32,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($news as $item)
+                @forelse($news as $item)
                 <tr>
-                    <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ $item->id }}</td>
+                    <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ $loop->iteration }}</td>
                     <td class="p-2 md:p-4 border-b border-blue-gray-50">
                         <a href="#" onclick="openLightbox('{{ $item->image_url }}')">
                             <img src="{{ $item->image_url }}" alt="{{ $item->title }}" class="inline-block w-12 h-12 md:w-16 md:h-16 object-cover rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 p-1 cursor-pointer">
@@ -71,7 +71,11 @@
                         </div>
                     </td>
                 </tr>
-                @endforeach
+                @empty
+                <tr>
+                    <td colspan="8" class="p-2 md:p-4 text-center">No data Available</td>
+                </tr>
+                @endforelse
             </tbody>
         </table>
         {{ $news->links() }}
