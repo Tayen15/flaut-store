@@ -36,8 +36,8 @@
                 <tr>
                     <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ $item->id }}</td>
                     <td class="p-2 md:p-4 border-b border-blue-gray-50">
-                        <a href="{{ route('news.show', $item->id) }}">
-                            <img src="{{ $item->image_url }}" alt="{{ $item->title }}" class="inline-block w-12 h-12 md:w-16 md:h-16 object-cover rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 p-1">
+                        <a href="#" onclick="openLightbox('{{ $item->image_url }}')">
+                            <img src="{{ $item->image_url }}" alt="{{ $item->title }}" class="inline-block w-12 h-12 md:w-16 md:h-16 object-cover rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 p-1 cursor-pointer">
                         </a>
                     </td>
                     <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ $item->title }}</td>
@@ -89,6 +89,11 @@
         </div>
     </div>
 
+    <div id="lightbox" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-55 flex items-center justify-center z-30" onclick="closeLightbox()">
+        <img id="lightbox-image" src="" alt="Lightbox Image" class="max-w-full max-h-full cursor-pointer">
+    </div>
+    
+
     <script>
         function confirmDelete(itemId) {
             document.getElementById('confirmDeleteModal').classList.remove('hidden');
@@ -102,6 +107,19 @@
         function proceedDelete() {
             var itemId = document.getElementById('confirmDeleteItemId').value;
             document.getElementById('delete-form-' + itemId).submit();
+        }
+
+        function openLightbox(imageUrl) {
+            var lightbox = document.getElementById('lightbox');
+            var lightboxImage = document.getElementById('lightbox-image');
+
+            lightboxImage.src = imageUrl;
+            lightbox.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            var lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('hidden');
         }
     </script>
 </section>
