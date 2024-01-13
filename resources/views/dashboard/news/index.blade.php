@@ -10,60 +10,57 @@
     </div>
 
     <!-- List Table News -->
-    <div class="px-10 my-2 max-h-screen w-full items-center justify-center">
-        <table class="w-full min-w-max table-auto text-left">
+    <div class="px-2 my-2 md:px-10 max-h-screen w-full overflow-x-auto">
+        <table class="w-full table-auto text-left">
             <thead>
                 <tr>
-                    <th class="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
-                        <p class="block antialiased font-sans text-sm text-blue-gray-900 font-normal leading-none opacity-70">ID</p>
-                    </th>
-                    <th class="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
-                        <p class="block antialiased font-sans text-sm text-blue-gray-900 font-normal leading-none opacity-70">Image</p>
-                    </th>
-                    <th class="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
-                        <p class="block antialiased font-sans text-sm text-blue-gray-900 font-normal leading-none opacity-70">Title</p>
-                    </th>
-                    <th class="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
-                        <p class="block antialiased font-sans text-sm text-blue-gray-900 font-normal leading-none opacity-70">Content</p>
-                    </th>
-                    <th class="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
-                        <p class="block antialiased font-sans text-sm text-blue-gray-900 font-normal leading-none opacity-70">Author</p>
-                    </th>
-                    <th class="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
-                        <p class="block antialiased font-sans text-sm text-blue-gray-900 font-normal leading-none opacity-70">Created</p>
-                    </th>
-                    <th class="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
-                        <p class="block antialiased font-sans text-sm text-blue-gray-900 font-normal leading-none opacity-70">Last Update</p>
-                    </th>
-                    <th class="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
-                        <p class="block antialiased font-sans text-sm text-blue-gray-900 font-normal leading-none opacity-70"></p>
-                    </th>
+                    <th class="p-2 md:p-4 border-b border-blue-gray-50">ID</th>
+                    <th class="p-2 md:p-4 border-b border-blue-gray-50">Image</th>
+                    <th class="p-2 md:p-4 border-b border-blue-gray-50">Title</th>
+                    <th class="p-2 md:p-4 border-b border-blue-gray-50">Content</th>
+                    <th class="p-2 md:p-4 border-b border-blue-gray-50">Author</th>
+                    <th class="p-2 md:p-4 border-b border-blue-gray-50">Created</th>
+                    <th class="p-2 md:p-4 border-b border-blue-gray-50">Last Update</th>
+                    <th class="p-2 md:p-6  border-b border-blue-gray-50">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($news as $item)
                 <tr>
-                    <td class="p-4 border-b border-blue-gray-50">{{ $item->id }}</td>
-                    <td class="p-4 border-b border-blue-gray-50">
+                    <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ $item->id }}</td>
+                    <td class="p-2 md:p-4 border-b border-blue-gray-50">
                         <a href="{{ route('news.show', $item->id) }}">
-                        <img src="{{ $item->image_url }}" alt="{{ $item->title }}" class="inline-block relative object-center w-12 h-12 rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1">
+                            <img src="{{ $item->image_url }}" alt="{{ $item->title }}" class="inline-block w-12 h-12 md:w-16 md:h-16 object-cover rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 p-1">
                         </a>
                     </td>
-                    <td class="p-4 border-b border-blue-gray-50">{{ $item->title }}</td>
-                    <td class="p-4 border-b border-blue-gray-50">{!! substr($item->content, 0, 10) !!}</td>
-                    <td class="p-4 border-b border-blue-gray-50">{{ $item->author }}</td>
-                    <td class="p-4 border-b border-blue-gray-50">{{ \Carbon\Carbon::parse($item->created_at)->format('l, d F Y') }}</td>
-                    <td class="p-4 border-b border-blue-gray-50">{{ $item->updated_at->format('j F Y, H:i') }}</td>
-                    <td class="p-4 border-b border-blue-gray-50">
-                        <a href="{{ route('dashboard.news.edit', $item->id) }}">
-                            <button class="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-900 hover:bg-gray-900/10 active:bg-gray-900/20" type="button">
+                    <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ $item->title }}</td>
+                    <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ \Illuminate\Support\Str::limit(strip_tags($item->content), 50) }}</td>
+                    <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ $item->author }}</td>
+                    <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ \Carbon\Carbon::parse($item->created_at)->format('l, d F Y') }}</td>
+                    <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ $item->updated_at->format('j F Y, H:i') }}</td>
+                    <td class="p-2 md:p-6 border-b border-blue-gray-50">
+                        <div class="flex space-x-2">
+                            <a href="{{ route('dashboard.news.edit', $item->id) }}">
+                                <button class="relative align-middle select-none font-medium text-center uppercase transition-all w-10 h-10 md:w-12 md:h-12 rounded-lg text-xs text-gray-900 hover:bg-gray-900/10 active:bg-gray-900/20" type="button">
+                                    <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-4 w-4 md:h-5 md:w-5">
+                                            <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z"></path>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </a>
+                            <button onclick="confirmDelete('{{ $item->id }}')" class="relative align-middle select-none font-medium text-center uppercase transition-all w-10 h-10 md:w-12 md:h-12 rounded-lg text-xs text-gray-900 hover:bg-gray-900/10 active:bg-gray-900/20" type="button">
                                 <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-4 w-4">
-                                        <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z"></path>
+                                    <svg fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Z"/>
                                     </svg>
                                 </span>
                             </button>
-                        </a>
+                            <form id="delete-form-{{ $item->id }}" action="{{ route('news.destroy', $item->id) }}" method="POST" style="display: none;">
+                                @csrf
+                                @method('DELETE')
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
@@ -71,5 +68,33 @@
         </table>
         {{ $news->links() }}
     </div>
+
+    <!-- Confirm Delete Modal -->
+    <div id="confirmDeleteModal" class="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
+        <div class="bg-white p-4 rounded-lg">
+            <p class="text-xl font-semibold mb-4">Confirm Delete</p>
+            <p class="text-gray-700">Are you sure you want to delete this news?</p>
+            <div class="mt-4 flex justify-end">
+                <button onclick="cancelDelete()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md mr-2">Cancel</button>
+                <button onclick="confirmDelete()" class="px-4 py-2 bg-red-600 text-white rounded-md">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function confirmDelete(itemId) {
+            document.getElementById('confirmDeleteModal').classList.remove('hidden');
+            document.getElementById('confirmDeleteItemId').value = itemId;
+        }
+
+        function cancelDelete() {
+            document.getElementById('confirmDeleteModal').classList.add('hidden');
+        }
+
+        function proceedDelete() {
+            var itemId = document.getElementById('confirmDeleteItemId').value;
+            document.getElementById('delete-form-' + itemId).submit();
+        }
+    </script>
 </section>
 @endsection
