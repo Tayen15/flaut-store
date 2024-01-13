@@ -49,6 +49,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         // Catalog Routes
         Route::prefix('catalog')->group(function () {
+
+            Route::get('/carousels', 'CarouselsController@index')->name('carousels.index');
+
             Route::get('/', [CatalogController::class, 'indexAdmin'])->name('dashboard.catalog.index');
             Route::get('/create', [CatalogController::class, 'create'])->name('dashboard.catalog.create');
             Route::post('/store', [CatalogController::class, 'store'])->name('dashboard.catalog.store');
