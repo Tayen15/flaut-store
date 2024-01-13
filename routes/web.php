@@ -52,6 +52,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('/store', [DashboardController::class, 'catalogStore'])->name('dashboard.catalog.store');
         });
     });
+
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 
