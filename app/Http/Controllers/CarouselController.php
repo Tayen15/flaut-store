@@ -38,7 +38,7 @@ class CarouselController extends Controller
     
         Carousel::create($validatedData);
     
-        return redirect()->route('home');
+        return redirect()->route('dashboard.carousel.index');
     }
 
     public function show($id)
