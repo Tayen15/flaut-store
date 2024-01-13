@@ -1,6 +1,6 @@
 <!-- resources/views/news/create.blade.php -->
-@extends('layouts.dashboard')
 
+@extends('layouts.dashboard')
 @section('admin')
 <section class="flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
     <!-- Page Header -->
@@ -11,7 +11,7 @@
     </div>
 
     <div class="max-w-7xl p-6 mx-auto rounded-md mt-2">
-        <form action="{{ route('dashboard.catalog.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('dashboard.news.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                 <div>
@@ -27,7 +27,7 @@
 
             <div class="my-6">
                 <label for="content" class="pb-2">Content<span class="font-light ml-2 text-xs text-red-600 ">Required</span></label>
-                <textarea id="content" name="content" required class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring default-height"></textarea>
+                <textarea id="content" name="content" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring default-height"></textarea>
             </div>
 
             <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
