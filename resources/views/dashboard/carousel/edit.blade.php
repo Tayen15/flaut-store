@@ -11,7 +11,7 @@
 
     {{-- Form Edit Carousel --}}
     <div class="max-w-7xl p-6 mx-auto rounded-md shadow-md mt-2">
-        <form action="{{ route('Carousel.update', $Carousel->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('carousel.update', $carousel->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 

@@ -49,13 +49,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         // Catalog Routes
         Route::prefix('catalog')->group(function () {
-
-            Route::get('/carousels', 'CarouselsController@index')->name('carousels.index');
-
             Route::get('/', [CatalogController::class, 'indexAdmin'])->name('dashboard.catalog.index');
             Route::get('/create', [CatalogController::class, 'create'])->name('dashboard.catalog.create');
-            Route::post('/store', [CatalogController::class, 'store'])->name('dashboard.catalog.store');
             Route::get('/edit/{id}', [CatalogController::class, 'edit'])->name('dashboard.catalog.edit');
+            Route::post('/store', [CatalogController::class, 'store'])->name('dashboard.catalog.store');
             Route::post('/destroy', [CatalogController::class, 'destroy'])->name('dashboard.catalog.destroy');
         });
     });
@@ -84,8 +81,6 @@ Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
 Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
 
 Route::get('/', [CarouselController::class, 'index'])->name('home');
-Route::get('/carousel/create', [CarouselController::class, 'create'])->name('carousel.create');
-
 
 Route::get('/test-database', function () {
     try {

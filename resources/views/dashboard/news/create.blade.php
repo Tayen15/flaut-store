@@ -11,7 +11,7 @@
     </div>
 
     <div class="max-w-7xl p-6 mx-auto rounded-md mt-2">
-        <form action="{{ route('dashboard.news.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('dashboard.carousel.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                 <div>
