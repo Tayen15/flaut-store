@@ -36,14 +36,15 @@
     <header>
         <nav aria-label="menu nav" class="bg-gray-800 pt-2 md:pt-1 pb-1 px-1 mt-0 h-auto fixed w-full z-20 top-0">
             <div class="flex flex-wrap items-center">
-                <div class="flex flex-shrink md:w-1/3 justify-center md:justify-start text-white">
-                    <a href="{{ route('dashboard.index') }}" aria-label="Home">
-                        <span class="text-xl pl-2"><i class="em em-grinning"></i>flaut.</span>
+                <div class="flex flex-shrink md:w-1/3 justify-center md:justify-start text-white mr-4">
+                    <a href="{{ route('dashboard.index') }}" aria-label="Home" class="ml-10 h-6 w-full">
+                        <img src="https://cdn.discordapp.com/attachments/976824443743645696/1192365071083503636/flaut.1_2.png?ex=65a8cf82&is=65965a82&hm=f9183fea4ca358dcf057572f73030e26994e91bf27d7617cf0487ea80d910438&" alt="Flaut Logo" class="h-full md:h-12">
                     </a>
                 </div>
-                <div class="flex flex-1 md:w-1/3 justify-center md:justify-start text-white px-2">
+                
+                <div class="flex flex-1 md:w-1/3 justify-center md:justify-start text-white px-2 mx-3">
                     <span class="relative w-full">
-                        <input aria-label="search" type="search" id="search" placeholder="Search" class="w-full bg-gray-900 text-white transition border border-transparent focus:outline-none focus:border-gray-400 rounded py-3 px-2 pl-10 appearance-none leading-normal">
+                        <input aria-label="search" type="search" id="search" placeholder="Search" class="w-full md:max-w-md lg:max-w-xl bg-gray-900 text-white transition border border-transparent focus:outline-none focus:border-gray-400 rounded py-3 px-2 pl-10 appearance-none leading-normal">
                         <div class="absolute search-icon" style="top: 1rem; left: .8rem;">
                             <svg class="fill-current pointer-events-none text-white w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                 <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path>
@@ -51,6 +52,7 @@
                         </div>
                     </span>
                 </div>
+                
                 <div class="flex w-full pt-2 content-center justify-between md:w-1/3 md:justify-end">
                     <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
                         <li class="flex-1 md:flex-none md:mr-3">
@@ -78,7 +80,7 @@
     <main>
         <div class="flex flex-col md:flex-row">
             <!-- Navigation Sidebar -->
-            <nav aria-label="alternative nav bg-gray-800 ">
+            <nav aria-label="alternative nav bg-gray-800">
                 <div class="bg-gray-800 shadow-xl h-max fixed bottom-0 mt-12 md:relative md:h-screen z-10 w-full md:w-48 content-center">
                     <div class="md:mt-12 md:w-48 md:fixed md:left-0 md:top-0 content-center md:content-start text-left justify-between">
                         <ul class="list-reset flex flex-row md:flex-col pt-3 md:py-3 px-1 md:px-2 text-center md:text-left">
