@@ -25,13 +25,11 @@ class AuthController extends Controller
         return view('dashboard.index');
     }
 
-    public function logout(Request $request)
+    
+    public function logout()
     {
         Auth::logout();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect()->route('home');
+        return redirect()->route('login'); // Ganti 'login' dengan nama rute login yang sesuai
     }
 }

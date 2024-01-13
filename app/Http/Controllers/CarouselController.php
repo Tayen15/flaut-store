@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\carousels;
+use App\Models\Carousel;
 use Illuminate\Http\Request;
-namespace App\Http\Controllers\Admin;
 
-
-class CarouselsController extends Controller
+class CarouselController extends Controller
 {
     public function index(Request $request)
     {
-        $query = carousels::query();
+        $query = Carousel::query();
 
         // Pencarian
         $searchKeyword = $request->input('search');
@@ -25,20 +23,20 @@ class CarouselsController extends Controller
             $query->whereIn('category', $categories);
         }
     
-        $carousels = $query->get();
-        return view('carousels.index', compact('carousels'));
+        $Carousels = $query->get();
+        return view('Carousel.index', compact('Carousels'));
     }
     public function indexAdmin()
     {
-        $carousels = carousels::paginate(10); // Adjust the pagination as needed
+        $Carousels = Carousel::paginate(10); // Adjust the pagination as needed
 
-        return view('dashboard.carousels.index', compact('carousels'));
+        return view('dashboard.Carousel.index', compact('Carousels'));
     }
 
 
     public function create()
     {
-        return view('dashboard.carousels.create');
+        return view('dashboard.Carousel.create');
     }
 
     public function store(Request $request)
@@ -46,52 +44,55 @@ class CarouselsController extends Controller
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'name' => 'required',
+            
         ]);
 
-        $imagePath = $request->file('image')->store('image/carousels');
+        $imagePath = $request->file('image')->store('image/Carousel');
         $imageName = basename($imagePath);
 
         $validatedData = $request->except('image');
         $validatedData['image'] = $imageName;
 
-        carousels::create($validatedData);
+        Carousel::create($validatedData);
 
-        return redirect()->route('dashboard.carousels.index')->with('success', 'carousels item created successfully');
+        return redirect()->route('dashboard.Carousel.index')->with('success', 'Carousel item created successfully');
     }
 
     public function show($id)
     {
-        $carousels = carousels::findOrFail($id);
-        return view('carousels.show', compact('carousels'));
+        $Carousel = Carousel::findOrFail($id);
+        return view('Carousel.show', compact('Carousel'));
     }
 
     public function edit($id)
     {
-        $carousels = carousels::findOrFail($id);
-        return view('dashboard.carousels.edit', compact('carousels'));
+        $Carousel = Carousel::findOrFail($id);
+        return view('dashboard.Carousel.edit', compact('Carousel'));
     }
 
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('image/carousels');
+            $imagePath = $request->file('image')->store('image/Carousel');
             $validatedData['image'] = $imagePath;
         }
 
-        carousels::findOrFail($id)->update($validatedData);
+        Carousel::findOrFail($id)->update($validatedData);
 
-        return redirect()->route('dashboard.carousels.index')->with('success', 'carousels item updated successfully');
+        return redirect()->route('dashboard.Carousel.index')->with('success', 'Carousel item updated successfully');
     }
 
     public function destroy($id)
     {
-        carousels::findOrFail($id)->delete();
+        Carousel::findOrFail($id)->delete();
 
-        return redirect()->route('dashboard.carousels.index')->with('success', 'carousels item deleted successfully');
+        return redirect()->route('dashboard.Carousel.index')->with('success', 'Carousel item deleted successfully');
     }
 }
