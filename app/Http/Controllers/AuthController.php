@@ -8,6 +8,11 @@ use App\Http\Requests\AdminLoginRequest;
 
 class AuthController extends Controller
 {
+    public function index()
+    {
+        return view('auth.index');
+    }
+
     public function postLogin(AdminLoginRequest $request)
     {
         $validated = $request->validated();
@@ -20,8 +25,13 @@ class AuthController extends Controller
         return view('dashboard.index');
     }
 
-    public function index()
+    public function logout(Request $request)
     {
-        return view('auth.index');
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('home');
     }
 }
