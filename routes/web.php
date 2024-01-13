@@ -40,10 +40,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         // Carousel Routes
         Route::prefix('carousel')->group(function () {
-            Route::get('/', [CarouselController::class, 'carouselIndex'])->name('dashboard.carousel.index');
-            Route::get('/create', [CarouselController::class, 'carouselCreate'])->name('dashboard.carousel.create');
-            Route::post('/store', [CarouselController::class, 'carouselStore'])->name('dashboard.carousel.store');
+            Route::get('/', [CarouselController::class, 'indexAdmin'])->name('dashboard.carousel.index');
+            Route::get('/create', [CarouselController::class, 'create'])->name('dashboard.carousel.create');
             Route::get('/edit/{id}', [CarouselController::class, 'edit'])->name('dashboard.carousel.edit');
+            Route::post('/store', [CarouselController::class, 'store'])->name('dashboard.carousel.store');
             Route::post('/destroy', [CarouselController::class, 'destroy'])->name('dashboard.carousel.destroy');
         });
 

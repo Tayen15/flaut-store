@@ -6,10 +6,10 @@
     <div class="bg-gray-800 pt-3">
         <div class="flex items-center justify-between rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800">
             <div class=" p-4 shadow text-2xl text-white">
-                <h1 class="font-bold pl-2">carousels</h1>
+                <h1 class="font-bold pl-2">Carousel</h1>
             </div>
             <a href="{{ route('dashboard.catalog.create') }}" class="flex items-center text-white mr-10">
-                <i class="fa-solid fa-plus mr-2"></i> Add carousels
+                <i class="fa-solid fa-plus mr-2"></i> Add Carousel
             </a>
         </div>
     </div>
@@ -28,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($carousels as $item)
+                @foreach($carousel as $item)
                 <tr>
                     <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ $item->id }}</td>
                     <td class="p-2 md:p-4 border-b border-blue-gray-50">
@@ -68,7 +68,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $catalogs->links() }}
+        {{ $carousel->links() }}
     </div>
 
     <!-- Confirm Delete Modal -->

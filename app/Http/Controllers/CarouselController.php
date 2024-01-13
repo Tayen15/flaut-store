@@ -12,6 +12,12 @@ class CarouselController extends Controller
         $carouselImages = Carousel::all();
         return view('home', compact('carouselImages'));
     }
+    
+    public function indexAdmin()
+    {
+        $carousel = Carousel::paginate(4);
+        return view('dashboard.carousel.index', compact('carousel'));
+    }
 
     public function create()
     {
@@ -33,6 +39,40 @@ class CarouselController extends Controller
         Carousel::create($validatedData);
     
         return redirect()->route('home');
+    }
+
+    public function show($id)
+    {
+        $carousel = Carousel::findOrFail($id);
+        return view('news.show', compact('carousel'));
+    }
+
+    public function edit($id)
+    {
+        $carousel = Carousel::findOrFail($id);
+        return view('dashboard.news.edit', compact('carousel'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'content' => 'nullable',
+            'author' => 'required',
+        ]);
+
+        Carousel::findOrFail($id)->update($validatedData);
+        return redirect()
+            ->route('dashboard.news.index')
+            ->with('success', 'Successfully updated carousel');
+    }
+
+    public function destroy(Carousel $carousel)
+    {
+        $carousel->delete();
+        return redirect()
+            ->route('dashboard.news.index')
+            ->with('success', 'Successfully deleted carousel');
     }
 }
 
