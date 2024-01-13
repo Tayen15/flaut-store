@@ -41,7 +41,7 @@
                     <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ $item->updated_at->format('j F Y, H:i') }}</td>
                     <td class="p-2 md:p-6 border-b border-blue-gray-50">
                         <div class="flex space-x-2">
-                            <a href="{{ route('dashboard.catalog.edit', $item->id) }}">
+                            <a href="{{ route('dashboard.carousel.edit', $item->id) }}">
                                 <button class="relative align-middle select-none font-medium text-center uppercase transition-all w-10 h-10 md:w-12 md:h-12 rounded-lg text-xs text-gray-900 hover:bg-gray-900/10 active:bg-gray-900/20" type="button">
                                     <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-4 w-4 md:h-5 md:w-5">
@@ -57,7 +57,7 @@
                                     </svg>
                                 </span>
                             </button>
-                            <form id="delete-form-{{ $item->id }}" action="{{ route('catalog.destroy', $item->id) }}" method="POST" style="display: none;">
+                            <form id="delete-form-{{ $item->id }}" action="{{ route('carousel.destroy', $item->id) }}" method="POST" style="display: none;">
                                 @csrf
                                 @method('DELETE')
                                 <input type="hidden" id="confirmDeleteItemId" value="">
