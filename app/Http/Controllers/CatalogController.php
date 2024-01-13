@@ -26,10 +26,17 @@ class CatalogController extends Controller
         $catalogs = $query->get();
         return view('catalog.index', compact('catalogs'));
     }
+    public function indexAdmin()
+    {
+        $catalogs = Catalog::paginate(10); // Adjust the pagination as needed
+
+        return view('dashboard.catalog.index', compact('catalogs'));
+    }
+
 
     public function create()
     {
-        return view('catalog.create');
+        return view('dashboard.catalog.create');
     }
 
     public function store(Request $request)
@@ -50,7 +57,7 @@ class CatalogController extends Controller
 
         Catalog::create($validatedData);
 
-        return redirect()->route('catalog.index')->with('success', 'Catalog item created successfully');
+        return redirect()->route('dashboard.catalog.index')->with('success', 'Catalog item created successfully');
     }
 
     public function show($id)
@@ -62,7 +69,7 @@ class CatalogController extends Controller
     public function edit($id)
     {
         $catalog = Catalog::findOrFail($id);
-        return view('catalog.edit', compact('catalog'));
+        return view('dashboard.catalog.edit', compact('catalog'));
     }
 
     public function update(Request $request, $id)
@@ -81,13 +88,13 @@ class CatalogController extends Controller
 
         Catalog::findOrFail($id)->update($validatedData);
 
-        return redirect()->route('catalog.index')->with('success', 'Catalog item updated successfully');
+        return redirect()->route('dashboard.catalog.index')->with('success', 'Catalog item updated successfully');
     }
 
     public function destroy($id)
     {
         Catalog::findOrFail($id)->delete();
 
-        return redirect()->route('catalog.index')->with('success', 'Catalog item deleted successfully');
+        return redirect()->route('dashboard.catalog.index')->with('success', 'Catalog item deleted successfully');
     }
 }
