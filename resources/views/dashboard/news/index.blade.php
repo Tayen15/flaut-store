@@ -66,6 +66,7 @@
                             <form id="delete-form-{{ $item->id }}" action="{{ route('news.destroy', $item->id) }}" method="POST" style="display: none;">
                                 @csrf
                                 @method('DELETE')
+                                <input type="hidden" id="confirmDeleteItemId" value="">
                             </form>
                         </div>
                     </td>
@@ -82,8 +83,8 @@
             <p class="text-xl font-semibold mb-4">Confirm Delete</p>
             <p class="text-gray-700">Are you sure you want to delete this news?</p>
             <div class="mt-4 flex justify-end">
-                <button onclick="cancelDelete()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md mr-2">Cancel</button>
-                <button onclick="confirmDelete()" class="px-4 py-2 bg-red-600 text-white rounded-md">Delete</button>
+                <button onclick="cancelDelete()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md mr-2 transition-all hover:bg-gray-400">Cancel</button>
+                <button onclick="proceedDelete()" class="px-4 py-2 bg-red-600 text-white rounded-md transition-all hover:bg-red-700">Delete</button>
             </div>
         </div>
     </div>
@@ -93,11 +94,11 @@
             document.getElementById('confirmDeleteModal').classList.remove('hidden');
             document.getElementById('confirmDeleteItemId').value = itemId;
         }
-
+    
         function cancelDelete() {
             document.getElementById('confirmDeleteModal').classList.add('hidden');
         }
-
+    
         function proceedDelete() {
             var itemId = document.getElementById('confirmDeleteItemId').value;
             document.getElementById('delete-form-' + itemId).submit();
