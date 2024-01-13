@@ -45,7 +45,9 @@
                 <tr>
                     <td class="p-4 border-b border-blue-gray-50">{{ $item->id }}</td>
                     <td class="p-4 border-b border-blue-gray-50">
+                        <a href="{{ route('news.show', $item->id) }}">
                         <img src="{{ $item->image_url }}" alt="{{ $item->title }}" class="inline-block relative object-center w-12 h-12 rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1">
+                        </a>
                     </td>
                     <td class="p-4 border-b border-blue-gray-50">{{ $item->title }}</td>
                     <td class="p-4 border-b border-blue-gray-50">{!! substr($item->content, 0, 10) !!}</td>

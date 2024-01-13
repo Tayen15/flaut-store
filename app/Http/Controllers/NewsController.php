@@ -10,20 +10,13 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $news = News::paginate(6);
-        // Tampilkan view untuk publik
-        $publicView = view('news.index', compact('news'));
-
-        // Tampilkan view untuk dashboard
-        $adminView = view('dashboard.news.index', compact('news'));
-
-        // Kembalikan kedua view sebagai response
-        return $publicView->with('adminView', $adminView);
+        $news = News::paginate(10);
+        return view('news.index', compact('news'));
     }
 
     public function indexAdmin()
     {
-        $news = News::paginate(8);
+        $news = News::paginate(6);
         return view('dashboard.news.index', compact('news'));
     }
 
@@ -49,19 +42,13 @@ class NewsController extends Controller
     
         News::create($validatedData);
     
-        return redirect()->route('news.index');
+        return redirect()->route('dashboard.news.index');
     }
 
     public function show($id)
     {
         $news = News::findOrFail($id);
-        return view(['news.index', 'dashboard.news.index'], compact('news'));
-    }
-    
-    public function showAdmin($id)
-    {
-        $news = News::findOrFail($id);
-        return view('dashboard.news.edit', compact('news'));
+        return view('news.show', compact('news'));
     }
 
     public function edit($id)
@@ -88,7 +75,7 @@ class NewsController extends Controller
     {
         $news->delete();
         return redirect()
-            ->route('news.index')
+            ->route('dashboard.news.index')
             ->with('success', 'Successfully deleted news');
     }
 }
