@@ -33,16 +33,8 @@
             </div>
 
             <div class="flex justify-end mt-6">
-                <button class="px-6 py-2 leading-5 mx-5 text-white transition-colors duration-200 transform bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:bg-gray-600" type="submit">Save</button>
+                <button class="px-6 py-2 leading-5 mx-5 text-white transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:bg-gray-600" type="submit">Save</button>
         </form>
-
-            {{-- Form Delete News --}}
-            <form action="{{ route('news.destroy', $news->id) }}" method="POST" class="ml-4">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:bg-gray-600">Delete</button>
-            </form>
-        </div>
     </div>
 
     <script>
