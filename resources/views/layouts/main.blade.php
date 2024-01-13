@@ -49,8 +49,6 @@
           @include('components.footer')
      </footer>
      <script>
-      
-
           const specificColors = ['rgb(234, 88, 12)', '#FFFFFF', '#000000'];
 
           function getRandomColor() {
@@ -134,9 +132,5 @@
           });
 
      </script>
-     <script>
-          import { Carousel, initTE } from "tw-elements";
-          initTE({ Carousel });
-      </script>
 </body>
 </html>
