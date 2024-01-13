@@ -21,7 +21,7 @@ class CarouselController extends Controller
 
     public function create()
     {
-        return view('carousel.create');
+        return view('dashboard.carousel.create');
     }
 
     public function store(Request $request)
