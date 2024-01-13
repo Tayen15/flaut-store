@@ -36,10 +36,10 @@
                     <input id="image" name="image" type="file" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" required>
                 </div>
             </div>
+            <div class="flex justify-end mt-6">
+                <button class="px-6 py-2 leading-5 mx-5 text-white transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-green-600 focus:outline-none" type="submit">Create</button>
+            </div>
         </form>
-        <div class="flex justify-end mt-6">
-            <button class="px-6 py-2 leading-5 mx-5 text-white transition-colors duration-200 transform bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:bg-orange-400" type="submit">Create</button>
-        </div>
     </div>
 
     <script>
