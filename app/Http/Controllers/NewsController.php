@@ -101,7 +101,7 @@ class NewsController extends Controller
                     }
         
                     return redirect()
-                        ->route('dashboard.News.index')
+                        ->route('dashboard.news.index')
                         ->with('success', 'Failed to update News image');
                 }
         
