@@ -12,13 +12,11 @@ class CatalogController extends Controller
     {
         $query = Catalog::query();
 
-        // Pencarian
         $searchKeyword = $request->input('search');
         if ($searchKeyword && strlen($searchKeyword) >= 3) {
             $query->where('name', 'like', '%' . $searchKeyword . '%');
         }
     
-        // Filter Kategori
         $categories = $request->input('categories', []);
         if (!empty($categories)) {
             $query->whereIn('category', $categories);
@@ -29,7 +27,7 @@ class CatalogController extends Controller
     }
     public function indexAdmin()
     {
-        $catalogs = Catalog::paginate(10); // Adjust the pagination as needed
+        $catalogs = Catalog::paginate(10);
 
         return view('dashboard.catalog.index', compact('catalogs'));
     }
