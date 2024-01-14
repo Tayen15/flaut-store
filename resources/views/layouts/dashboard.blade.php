@@ -5,15 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <script src="https://kit.fontawesome.com/86a839d15c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap">
-    <style>
-        .font-libre-baskerville {
-            font-family: 'Libre Baskerville', serif;
-            
-        }
-    </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js" integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
     <script src="https://cdn.tiny.cloud/1/z72nwuco4n4dl82wa73wr87z45kfsvdnlsiqaj14wwc004gc/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
