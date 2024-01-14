@@ -28,6 +28,13 @@
             </div>
 
             <div class="my-6">
+                <div>
+                    <label class="text-black font-medium" for="image">Image <span class="font-light ml-2 text-xs text-red-600 ">Required</span></label>
+                    <input id="image" name="image" type="file" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">
+                </div>
+            </div>
+
+            <div class="my-6">
                 <label for="content" class="pb-2"><span class="font-light ml-2 text-xs text-red-600">Required</span></label>
                 <textarea id="content" name="content" type="textarea" required class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring default-height">{{ $news->content }}</textarea>
             </div>
