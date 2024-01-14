@@ -20,10 +20,9 @@
                     <label class="text-black font-medium" for="name">Title <span class="font-light ml-2 text-xs text-red-600">Required</span></label>
                     <input id="name" name="name" value="{{ $carousel->name }}" type="text" autocomplete="organization-title" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" required>
                 </div>
-
                 <div>
                     <label class="text-black font-medium" for="image">Image <span class="font-light ml-2 text-xs text-red-600 ">Required</span></label>
-                    <input id="image" name="image" type="file" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" required>
+                    <input id="image" name="image" type="file" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">
                 </div>
             </div>
 
