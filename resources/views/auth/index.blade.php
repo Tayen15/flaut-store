@@ -28,7 +28,7 @@
                     <label for="remember">Remember Me</label>
                 </div>
                 <div>
-                    <a href="{{ route('home') }}" class="text-base">Back to home</a>
+                    <a href="{{ route('home') }}" class="text-base hover:underline underline-offset-2 hover:text-indigo-700">Back to home</a>
                 </div>
             </div>
             <div class="mt-5">
