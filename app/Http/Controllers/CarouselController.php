@@ -44,26 +44,25 @@ class CarouselController extends Controller
     public function show($id)
     {
         $carousel = Carousel::findOrFail($id);
-        return view('news.show', compact('carousel'));
+        return view('carousel.show', compact('carousel'));
     }
 
     public function edit($id)
     {
         $carousel = Carousel::findOrFail($id);
-        return view('dashboard.news.edit', compact('carousel'));
+        return view('dashboard.carousel.edit', compact('carousel'));
     }
 
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'title' => 'required',
-            'content' => 'nullable',
-            'author' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+            'name' => 'required',
         ]);
 
         Carousel::findOrFail($id)->update($validatedData);
         return redirect()
-            ->route('dashboard.news.index')
+            ->route('dashboard.carousel.index')
             ->with('success', 'Successfully updated carousel');
     }
 
@@ -71,7 +70,7 @@ class CarouselController extends Controller
     {
         $carousel->delete();
         return redirect()
-            ->route('dashboard.news.index')
+            ->route('dashboard.carousel.index')
             ->with('success', 'Successfully deleted carousel');
     }
 }
