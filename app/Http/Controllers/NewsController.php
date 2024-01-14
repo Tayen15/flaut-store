@@ -32,7 +32,7 @@ class NewsController extends Controller
             'title' => 'required',
             'content' => 'nullable',
             'author' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:6144',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:10240',
         ]);
     
         try {
@@ -75,19 +75,67 @@ class NewsController extends Controller
             'title' => 'required',
             'content' => 'nullable',
             'author' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg|max:10240',
         ]);
 
-        News::findOrFail($id)->update($validatedData);
+        $news = News::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            if (!Storage::exists("image/news/{$news->image}")) {
+                $deleted = Storage::delete("image/news/{$news->image}");
+        
+                if ($deleted) {
+                    $imagePath = $request->file('image');
+                    $imageName = date('Y-m-d') . '&&' . $imagePath->getClientOriginalName();
+                    $path = 'image/news/' . $imageName;
+    
+                    $check = Storage::disk('public')->put($path, file_get_contents($imagePath));
+        
+                    if ($check) {
+                        $validatedData['image'] = $imageName;
+                        $news->update($validatedData);
+        
+                        return redirect()
+                            ->route('dashboard.news.index')
+                            ->with('success', 'Successfully updated News with image');
+                    }
+        
+                    return redirect()
+                        ->route('dashboard.News.index')
+                        ->with('success', 'Failed to update News image');
+                }
+        
+                return redirect()
+                    ->route('dashboard.news.index')
+                    ->with('success', 'Failed to delete old News image');
+            }
+        }
+        $news->update($validatedData);
         return redirect()
             ->route('dashboard.news.index')
-            ->with('success', 'Successfully updated news from database');
+            ->with('success', 'Successfully updated News without changing image');
     }
 
     public function destroy(News $news)
     {
-        $news->delete();
+        if (Storage::exists("image/news/{$news->image}")) {
+            $deleted = Storage::delete("image/news/{$news->image}");
+    
+            if ($deleted) {
+                $news->delete();
+    
+                return redirect()
+                    ->route('dashboard.news.index')
+                    ->with('success', 'Successfully deleted News');
+            } else {
+                return redirect()
+                    ->route('dashboard.news.index')
+                    ->with('success', 'Failed to delete News image');
+            }
+        }
+    
         return redirect()
             ->route('dashboard.news.index')
-            ->with('success', 'Successfully deleted news from database');
+            ->with('success', 'Image not found for News');
     }
 }
