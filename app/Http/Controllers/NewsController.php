@@ -29,7 +29,7 @@ class NewsController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required',
-            'content' => 'required',
+            'content' => 'nullable',
             'author' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:6144',
         ]);
@@ -42,7 +42,9 @@ class NewsController extends Controller
     
         News::create($validatedData);
     
-        return redirect()->route('dashboard.news.index');
+        return redirect()
+            ->route('dashboard.news.index')
+            ->with('success', 'Succesfully created news');
     }
 
     public function show($id)
@@ -68,7 +70,7 @@ class NewsController extends Controller
         News::findOrFail($id)->update($validatedData);
         return redirect()
             ->route('dashboard.news.index')
-            ->with('success', 'Successfully updated news');
+            ->with('success', 'Successfully updated news from database');
     }
 
     public function destroy(News $news)
@@ -76,6 +78,6 @@ class NewsController extends Controller
         $news->delete();
         return redirect()
             ->route('dashboard.news.index')
-            ->with('success', 'Successfully deleted news');
+            ->with('success', 'Successfully deleted news from database');
     }
 }
