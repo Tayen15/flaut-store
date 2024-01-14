@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Carousel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CarouselController extends Controller
 {
@@ -31,14 +32,24 @@ class CarouselController extends Controller
             'name' => 'required',
         ]);
     
-        $imagePath = $request->file('image')->store('image/carousel');
-        $imageName = basename($imagePath);
-    
-        $validatedData['image'] = $imageName;
-    
-        Carousel::create($validatedData);
-    
-        return redirect()->route('dashboard.carousel.index');
+        try {
+            $imagePath = $request->file('image');
+            $imageName = date('Y-m-d&&') . $imagePath->getClientOriginalName();
+            $path = 'image/carousel/' . $imageName;
+
+            Storage::disk('public')->put($path, file_get_contents($imagePath));
+
+            $validatedData['image'] = $imageName;
+            Carousel::create($validatedData);
+            
+            return redirect()
+                ->route('dashboard.carousel.index')
+                ->with('success', 'Banner Carousel created successfully');            
+        } catch (\Throwable $th) {
+            return redirect()
+                ->route('dashboard.carousel.index')
+                ->with('success', 'failed to created Carousel, try again!');
+        }
     }
 
     public function show($id)

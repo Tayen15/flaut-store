@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\News;
-use Carbon\Carbon;  
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
@@ -34,17 +35,24 @@ class NewsController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:6144',
         ]);
     
-        // Ubah direktori penyimpanan gambar
-        $imagePath = $request->file('image')->store('image/news');
-        $imageName = basename($imagePath);
-    
-        $validatedData['image'] = $imageName;
-    
-        News::create($validatedData);
-    
-        return redirect()
+        try {
+            $imagePath = $request->file('image');
+            $imageName = date('Y-m-d&&') . $imagePath->getClientOriginalName();
+            $path = 'image/news/' . $imageName;
+            Storage::disk('public')->put($path, file_get_contents($imagePath));
+            $validatedData['image'] = $imageName;
+            News::create($validatedData);
+        
+            return redirect()
+                ->route('dashboard.news.index')
+                ->with('success', 'Succesfully created news');
+                
+        } catch (\Throwable $th) {
+            return redirect()
             ->route('dashboard.news.index')
-            ->with('success', 'Succesfully created news');
+            ->with('success', 'failed to created news, try again!');
+        }
+
     }
 
     public function show($id)

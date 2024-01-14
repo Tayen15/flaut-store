@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Catalog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CatalogController extends Controller
 {
@@ -41,7 +42,7 @@ class CatalogController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required',
             'description' => 'nullable',
             'price' => 'required|numeric',
@@ -49,15 +50,24 @@ class CatalogController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $imagePath = $request->file('image')->store('image/catalog');
-        $imageName = basename($imagePath);
+        try {
+            $imagePath = $request->file('image');
+            $imageName = date('Y-m-d&&') . $imagePath->getClientOriginalName();
+            $path = 'image/catalog/' . $imageName;
 
-        $validatedData = $request->except('image');
-        $validatedData['image'] = $imageName;
+            Storage::disk('public')->put($path, file_get_contents($imagePath));
 
-        Catalog::create($validatedData);
-
-        return redirect()->route('dashboard.catalog.index')->with('success', 'Catalog item created successfully');
+            $validatedData['image'] = $imageName;
+            Catalog::create($validatedData);
+            
+            return redirect()
+                ->route('dashboard.catalog.index')
+                ->with('success', 'Catalog item created successfully');            
+        } catch (\Throwable $th) {
+            return redirect()
+                ->route('dashboard.news.index')
+                ->with('success', 'failed to created catalog item, try again!');
+        }
     }
 
     public function show($id)
