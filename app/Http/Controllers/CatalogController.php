@@ -83,29 +83,38 @@ class CatalogController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
+            'name' => 'required',
+            'description' => 'nullable',
             'price' => 'required|numeric',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'category' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
+    
         try {
-            $imagePath = $request->file('image');
-            $imageName = date('Y-m-d&&') . $imagePath->getClientOriginalName();
-            $path = 'image/catalog/' . $imageName;
-
-            Storage::disk('public')->put($path, file_get_contents($imagePath));
-
-            $validatedData['image'] = $imageName;
-            Catalog::create($validatedData);
-            
+            $catalog = Catalog::findOrFail($id);
+    
+            if ($request->hasFile('image')) {
+                // Delete the old image if it exists
+                Storage::disk('public')->delete('image/catalog/' . $catalog->image);
+    
+                // Upload the new image
+                $imagePath = $request->file('image');
+                $imageName = date('Y-m-d&&') . $imagePath->getClientOriginalName();
+                $path = 'image/catalog/' . $imageName;
+                Storage::disk('public')->put($path, file_get_contents($imagePath));
+                $validatedData['image'] = $imageName;
+            }
+    
+            // Update the catalog item
+            $catalog->update($validatedData);
+    
             return redirect()
                 ->route('dashboard.catalog.index')
-                ->with('success', 'Catalog item created successfully');            
+                ->with('success', 'Catalog item updated successfully');
         } catch (\Throwable $th) {
             return redirect()
                 ->route('dashboard.catalog.index')
-                ->with('success', 'failed to created catalog item, try again!');
+                ->with('error', 'Failed to update catalog item, please try again.');
         }
     }
 
