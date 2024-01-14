@@ -9,14 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('catalogs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('price');
-            $table->string('category');
+            $table->enum('category', ['t-shirt', 'shirt', 'pants', 'accessories']);
             $table->string('image');
             $table->timestamps();
         });
@@ -25,7 +25,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('catalogs');
     }
