@@ -45,7 +45,7 @@ class CatalogController extends Controller
             'description' => 'nullable',
             'price' => 'required|numeric',
             'category' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg|max:10240',
         ]);
 
         try {
@@ -87,41 +87,68 @@ class CatalogController extends Controller
             'description' => 'nullable',
             'price' => 'required|numeric',
             'category' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg|max:10240',
         ]);
     
-        try {
-            $catalog = Catalog::findOrFail($id);
+        $catalog = Catalog::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            if (!Storage::exists("image/catalog/{$catalog->image}")) {
+                $deleted = Storage::delete("image/catalog/{$catalog->image}");
+        
+                if ($deleted) {
+                    $imagePath = $request->file('image');
+                    $imageName = date('Y-m-d') . '&&' . $imagePath->getClientOriginalName();
+                    $path = 'image/catalog/' . $imageName;
     
-            if ($request->hasFile('image')) {
-                // Delete the old image if it exists
-                Storage::disk('public')->delete('image/catalog/' . $catalog->image);
-    
-                // Upload the new image
-                $imagePath = $request->file('image');
-                $imageName = date('Y-m-d&&') . $imagePath->getClientOriginalName();
-                $path = 'image/catalog/' . $imageName;
-                Storage::disk('public')->put($path, file_get_contents($imagePath));
-                $validatedData['image'] = $imageName;
+                    $check = Storage::disk('public')->put($path, file_get_contents($imagePath));
+        
+                    if ($check) {
+                        $validatedData['image'] = $imageName;
+                        $catalog->update($validatedData);
+        
+                        return redirect()
+                            ->route('dashboard.catalog.index')
+                            ->with('success', 'Successfully updated Catalog with image');
+                    }
+        
+                    return redirect()
+                        ->route('dashboard.catalog.index')
+                        ->with('success', 'Failed to update Catalog image');
+                }
+        
+                return redirect()
+                    ->route('dashboard.catalog.index')
+                    ->with('success', 'Failed to delete old Catalog image');
             }
-    
-            // Update the catalog item
-            $catalog->update($validatedData);
-    
-            return redirect()
-                ->route('dashboard.catalog.index')
-                ->with('success', 'Catalog item updated successfully');
-        } catch (\Throwable $th) {
-            return redirect()
-                ->route('dashboard.catalog.index')
-                ->with('error', 'Failed to update catalog item, please try again.');
         }
+
+        $catalog->update($validatedData);
+        return redirect()
+            ->route('dashboard.catalog.index')
+            ->with('success', 'Successfully updated Catalog without changing image');
     }
 
-    public function destroy($id)
+    public function destroy(Catalog $catalog, $id)
     {
-        Catalog::findOrFail($id)->delete();
-
-        return redirect()->route('dashboard.catalog.index')->with('success', 'Catalog item deleted successfully');
+        if (Storage::exists("image/catalog/{$catalog->image}")) {
+            $deleted = Storage::delete("image/catalog/{$catalog->image}");
+    
+            if ($deleted) {
+                Catalog::findOrFail($id)->delete();
+    
+                return redirect()
+                    ->route('dashboard.catalog.index')
+                    ->with('success', 'Successfully deleted Catalog');
+            } else {
+                return redirect()
+                    ->route('dashboard.catalog.index')
+                    ->with('success', 'Failed to delete Catalog image');
+            }
+        }
+    
+        return redirect()
+            ->route('dashboard.catalog.index')
+            ->with('success', 'Image not found for Catalog');
     }
 }
