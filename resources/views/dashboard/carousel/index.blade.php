@@ -126,4 +126,3 @@
     </script>
 </section>
 @endsection
-index
