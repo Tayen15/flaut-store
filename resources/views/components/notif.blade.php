@@ -66,6 +66,13 @@
         setTimeout(() => {
             notification.style.display = 'none';
             notification.classList.remove('hide');
-        }, 500); 
+        }, 500);
     }
+
+    setTimeout(() => {
+        const notification = document.querySelector('.notification');
+        if (notification && !notification.classList.contains('hide')) {
+            closeNotification();
+        }
+    }, 30000); // Timeout setelah 30 detik (30000 milidetik)
 </script>
