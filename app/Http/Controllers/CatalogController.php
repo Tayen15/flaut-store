@@ -63,7 +63,7 @@ class CatalogController extends Controller
                 ->with('success', 'Catalog item created successfully');            
         } catch (\Throwable $th) {
             return redirect()
-                ->route('dashboard.news.index')
+                ->route('dashboard.catalog.index')
                 ->with('success', 'failed to created catalog item, try again!');
         }
     }
@@ -89,14 +89,24 @@ class CatalogController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('image/catalog');
-            $validatedData['image'] = $imagePath;
+        try {
+            $imagePath = $request->file('image');
+            $imageName = date('Y-m-d&&') . $imagePath->getClientOriginalName();
+            $path = 'image/catalog/' . $imageName;
+
+            Storage::disk('public')->put($path, file_get_contents($imagePath));
+
+            $validatedData['image'] = $imageName;
+            Catalog::create($validatedData);
+            
+            return redirect()
+                ->route('dashboard.catalog.index')
+                ->with('success', 'Catalog item created successfully');            
+        } catch (\Throwable $th) {
+            return redirect()
+                ->route('dashboard.catalog.index')
+                ->with('success', 'failed to created catalog item, try again!');
         }
-
-        Catalog::findOrFail($id)->update($validatedData);
-
-        return redirect()->route('dashboard.catalog.index')->with('success', 'Catalog item updated successfully');
     }
 
     public function destroy($id)
