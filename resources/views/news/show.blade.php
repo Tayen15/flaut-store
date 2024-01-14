@@ -36,7 +36,7 @@
                     </div>
                 
                     <div class="mx-1 md:mx-1">
-                        <p class="text-gray-600 mr-2 text-sm md:sm lg:text-sm xl:text-sm">11 Januari 2024</p>
+                        <p class="text-gray-600 mr-2 text-sm md:sm lg:text-sm xl:text-sm">{{ \Carbon\Carbon::parse($news->created_at)->format('l, d F Y') }}</p>
                     </div>
                 </div>
                 
