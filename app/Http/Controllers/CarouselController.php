@@ -28,7 +28,7 @@ class CarouselController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:10240',
             'name' => 'required',
         ]);
     
@@ -67,28 +67,14 @@ class CarouselController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
-            'name' => 'required',
+            'title' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:10240',
         ]);
 
-        try {
-            $imagePath = $request->file('image');
-            $imageName = date('Y-m-d&&') . $imagePath->getClientOriginalName();
-            $path = 'image/carousel/' . $imageName;
-
-            Storage::disk('public')->put($path, file_get_contents($imagePath));
-
-            $validatedData['image'] = $imageName;
-            Carousel::create($validatedData);
-            
-            return redirect()
-                ->route('dashboard.carousel.index')
-                ->with('success', 'carousel item created successfully');            
-        } catch (\Throwable $th) {
-            return redirect()
-                ->route('dashboard.carousel.index')
-                ->with('success', 'failed to created carousel item, try again!');
-        }
+        Carousel::findOrFail($id)->update($validatedData);
+        return redirect()
+            ->route('dashboard.news.index')
+            ->with('success', 'Successfully updated news from database');
     }
 
     public function destroy(Carousel $carousel)

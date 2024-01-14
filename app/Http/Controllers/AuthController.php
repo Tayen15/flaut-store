@@ -22,7 +22,7 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return view('dashboard.index');
+        return redirect()->route('dashboard.index')->with('success', 'Successfully entered the admin dashboard');
     }
 
     
