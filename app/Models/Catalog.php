@@ -9,7 +9,11 @@ class Catalog extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'price', 'category', 'image'];
+    protected $fillable = ['name', 'description', 'price', 'image'];
+    
+    protected $enum = [
+        'category' => ['t-shirt', 'shirt', 'pants', 'accessories']
+    ];
 
     public function getImageUrlAttribute()
     {
