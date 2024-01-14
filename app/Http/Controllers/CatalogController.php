@@ -12,14 +12,14 @@ class CatalogController extends Controller
     {
         $query = Catalog::query();
 
+        $category = $request->input('category');
+        if ($category) {
+            $query->where('category', $category);
+        }
+
         $searchKeyword = $request->input('search');
         if ($searchKeyword && strlen($searchKeyword) >= 3) {
             $query->where('name', 'like', '%' . $searchKeyword . '%');
-        }
-    
-        $categories = $request->input('categories', []);
-        if (!empty($categories)) {
-            $query->whereIn('category', $categories);
         }
     
         $catalogs = $query->get();
