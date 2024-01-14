@@ -68,49 +68,51 @@ class CarouselController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'title' => 'required',
-            // 'image' => 'image|mimes:jpeg,png,jpg|max:10240',
+            'name' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg|max:10240',
         ]);
+    
+        $carousel = Carousel::findOrFail($id);
 
-        Carousel::findOrFail($id)->update($validatedData);
+        if ($request->hasFile('image')) {
+            if (!Storage::exists("image/carousel/{$carousel->image}")) {
+                $deleted = Storage::delete("image/carousel/{$carousel->image}");
+        
+                if ($deleted) {
+                    $imagePath = $request->file('image');
+                    $imageName = date('Y-m-d') . '&&' . $imagePath->getClientOriginalName();
+                    $path = 'image/carousel/' . $imageName;
+    
+                    $check = Storage::disk('public')->put($path, file_get_contents($imagePath));
+        
+                    if ($check) {
+                        $validatedData['image'] = $imageName;
+                        $carousel->update($validatedData);
+        
+                        return redirect()
+                            ->route('dashboard.carousel.index')
+                            ->with('success', 'Successfully updated carousel with image');
+                    }
+        
+                    return redirect()
+                        ->route('dashboard.carousel.index')
+                        ->with('success', 'Failed to update carousel image');
+                }
+        
+                return redirect()
+                    ->route('dashboard.carousel.index')
+                    ->with('success', 'Failed to delete old carousel image');
+            }
+        }
+        $carousel->update($validatedData);
         return redirect()
             ->route('dashboard.carousel.index')
-            ->with('success', 'Successfully updated news from database');
-    
-        // $carousel = Carousel::findOrFail($id);
-    
-        // if (Storage::exists("image/carousel/{$carousel->image}")) {
-        //     $deleted = Storage::delete("image/carousel/{$carousel->image}");
-    
-        //     if ($deleted) {
-        //         $imagePath = $request->file('image');
-        //         $imageName = date('Y-m-d&&') . $imagePath->getClientOriginalName();
-        //         $path = 'image/carousel/' . $imageName;
-        
-        //         Storage::disk('public')->put($path, file_get_contents($imagePath));
-        
-        //         $validatedData['image'] = $imageName;
-                
-        //         $carousel->update($validatedData);
-
-        //         return redirect()
-        //             ->route('dashboard.carousel.index')
-        //             ->with('success', 'Successfully updated carousel');
-        //     }
-
-        //     return redirect()
-        //         ->route('dashboard.carousel.index')
-        //         ->with('success', 'Failed to update carousel image');
-        // }
-
-        // $carousel->update($validatedData);
-        // return redirect()
-        //     ->route('dashboard.carousel.index')
-        //     ->with('success', 'Successfully updated news from database');
+            ->with('success', 'Successfully updated carousel without changing image');
     }
     
+    
 
-    public function destroy(Carousel $carousel, Request $request)
+    public function destroy(Carousel $carousel)
     {
         if (Storage::exists("image/carousel/{$carousel->image}")) {
             $deleted = Storage::delete("image/carousel/{$carousel->image}");
