@@ -43,9 +43,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/', [CarouselController::class, 'indexAdmin'])->name('dashboard.carousel.index');
             Route::get('/create', [CarouselController::class, 'create'])->name('dashboard.carousel.create');
             Route::get('/edit/{id}', [CarouselController::class, 'edit'])->name('dashboard.carousel.edit'); 
-            Route::put('/carousel/{id}', [CarouselController::class, 'update'])->name('carousel.update');
             Route::post('/store', [CarouselController::class, 'store'])->name('dashboard.carousel.store');
-            Route::delete('/destroy/{carousel}', [CarouselController::class, 'destroy'])->name('dashboard.carousel.destroy');
+            Route::delete('/destroy/{id}', [CarouselController::class, 'destroy'])->name('dashboard.carousel.destroy');
         });
 
         // Catalog Routes
