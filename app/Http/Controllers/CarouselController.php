@@ -71,10 +71,24 @@ class CarouselController extends Controller
             'name' => 'required',
         ]);
 
-        Carousel::findOrFail($id)->update($validatedData);
-        return redirect()
-            ->route('dashboard.carousel.index')
-            ->with('success', 'Successfully updated carousel');
+        try {
+            $imagePath = $request->file('image');
+            $imageName = date('Y-m-d&&') . $imagePath->getClientOriginalName();
+            $path = 'image/carousel/' . $imageName;
+
+            Storage::disk('public')->put($path, file_get_contents($imagePath));
+
+            $validatedData['image'] = $imageName;
+            Carousel::create($validatedData);
+            
+            return redirect()
+                ->route('dashboard.carousel.index')
+                ->with('success', 'carousel item created successfully');            
+        } catch (\Throwable $th) {
+            return redirect()
+                ->route('dashboard.carousel.index')
+                ->with('success', 'failed to created carousel item, try again!');
+        }
     }
 
     public function destroy(Carousel $carousel)
