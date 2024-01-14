@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carousel;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -68,21 +69,68 @@ class CarouselController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:10240',
+            // 'image' => 'image|mimes:jpeg,png,jpg|max:10240',
         ]);
 
         Carousel::findOrFail($id)->update($validatedData);
         return redirect()
-            ->route('dashboard.news.index')
+            ->route('dashboard.carousel.index')
             ->with('success', 'Successfully updated news from database');
-    }
+    
+        // $carousel = Carousel::findOrFail($id);
+    
+        // if (Storage::exists("image/carousel/{$carousel->image}")) {
+        //     $deleted = Storage::delete("image/carousel/{$carousel->image}");
+    
+        //     if ($deleted) {
+        //         $imagePath = $request->file('image');
+        //         $imageName = date('Y-m-d&&') . $imagePath->getClientOriginalName();
+        //         $path = 'image/carousel/' . $imageName;
+        
+        //         Storage::disk('public')->put($path, file_get_contents($imagePath));
+        
+        //         $validatedData['image'] = $imageName;
+                
+        //         $carousel->update($validatedData);
 
-    public function destroy(Carousel $carousel)
+        //         return redirect()
+        //             ->route('dashboard.carousel.index')
+        //             ->with('success', 'Successfully updated carousel');
+        //     }
+
+        //     return redirect()
+        //         ->route('dashboard.carousel.index')
+        //         ->with('success', 'Failed to update carousel image');
+        // }
+
+        // $carousel->update($validatedData);
+        // return redirect()
+        //     ->route('dashboard.carousel.index')
+        //     ->with('success', 'Successfully updated news from database');
+    }
+    
+
+    public function destroy(Carousel $carousel, Request $request)
     {
-        $carousel->delete();
+        if (Storage::exists("image/carousel/{$carousel->image}")) {
+            $deleted = Storage::delete("image/carousel/{$carousel->image}");
+    
+            if ($deleted) {
+                $carousel->delete();
+    
+                return redirect()
+                    ->route('dashboard.carousel.index')
+                    ->with('success', 'Successfully deleted carousel');
+            } else {
+                return redirect()
+                    ->route('dashboard.carousel.index')
+                    ->with('success', 'Failed to delete carousel image');
+            }
+        }
+    
         return redirect()
             ->route('dashboard.carousel.index')
-            ->with('success', 'Successfully deleted carousel');
+            ->with('success', 'Image not found for carousel');
     }
 }
 
