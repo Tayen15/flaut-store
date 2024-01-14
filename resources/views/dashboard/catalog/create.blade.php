@@ -44,7 +44,8 @@
                 </div>
 
                 <div class="flex justify-end mt-6">
-                    <button class="px-6 py-2 leading-5 mx-5 text-white transition-colors duration-200 transform bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:bg-gray-600" type="submit">Save</button>
+                    <button class="px-6 py-2 leading-5 mx-5 text-white transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:bg-gray-600" type="submit">Save</button>
+                    <a href="{{ route('dashboard.catalog.index') }}" class="px-4 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-400 rounded-md hover:bg-gray-500 cursor-pointer focus:outline-none focus:bg-gray-600">Cancel</a>
                 </div>
             </form>
         </div>
