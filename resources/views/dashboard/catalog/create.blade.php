@@ -22,14 +22,28 @@
 
                     <div>
                         <label class="text-black font-medium" for="category">Category <span class="font-light ml-2 text-xs text-red-600">Required</span></label>
-                        <input id="category" name="category" type="text" autocomplete="category" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" required>
+                        <div class="relative">
+                            <select id="category" name="category" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring appearance-none" required>
+                                <option value="" autofocus></option>
+                                <option value="t-shirt">T-Shirt</option>
+                                <option value="shirt">Shirt</option>
+                                <option value="pants">Pants</option>
+                                <option value="accessories">Accessories</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
+                    
                 </div>
 
                 <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                     <div>
                         <label class="text-black font-medium" for="price">Price <span class="font-light ml-2 text-xs text-red-600">Required</span></label>
-                        <input id="price" name="price" type="text" autocomplete="price" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" required>
+                        <input id="price" name="price" type="number" autocomplete="price" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" required>
                     </div>
 
                     <div>
