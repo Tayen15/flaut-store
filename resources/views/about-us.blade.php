@@ -66,7 +66,7 @@
 </section>
 
 {{-- About Us --}}
-<section id="about-us" class="mt-10 mb-10">
+<section id="about-us" class="mt-10 mb-10 mx-16">
     <div class="sm:flex items-center max-w-screen-xl">
         <div class="sm:w-1/2 p-10">
             <span class="text-gray-500 border-b-2 border-orange-600 uppercase">About us</span>
