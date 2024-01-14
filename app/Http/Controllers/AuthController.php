@@ -30,6 +30,6 @@ class AuthController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('login'); // Ganti 'login' dengan nama rute login yang sesuai
+        return redirect()->route('login');
     }
 }
