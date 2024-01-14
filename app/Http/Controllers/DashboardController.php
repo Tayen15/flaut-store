@@ -31,8 +31,6 @@ class DashboardController extends Controller
             ->orWhere('email', 'like', '%' . $searchKeyword . '%')
             ->get();
     
-        return view('dashboard.index', compact('catalogs', 'news', 'users', 'searchKeyword'));
+        return view('dashboard.index', compact('searchKeyword', 'catalogs', 'news', 'users'));
     }    
 }
-
-
