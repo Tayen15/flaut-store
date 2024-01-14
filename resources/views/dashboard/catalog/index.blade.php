@@ -30,7 +30,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($catalogs as $item)
+                @forelse($catalogs as $item)
                 <tr>
                     <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ $item->id }}</td>
                     <td class="p-2 md:p-4 border-b border-blue-gray-50">
@@ -69,7 +69,11 @@
                         </div>
                     </td>
                 </tr>
-                @endforeach
+                @empty
+                <tr>
+                    <td colspan="8" class="p-2 md:p-4 text-center">No data Available</td>
+                </tr>
+                @endforelse
             </tbody>
         </table>
         {{ $catalogs->links() }}

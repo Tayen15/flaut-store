@@ -2,21 +2,18 @@
 
 @section('admin')
 <section id="carousel" class="flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
-<!-- Page Header -->
-<div class="bg-gray-800 pt-3">
-    <div class="flex items-center justify-between rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800">
-        <div class=" p-4 shadow text-2xl text-white">
-            <h1 class="font-bold pl-2">carousel</h1>
+    <!-- Page Header -->
+    <div class="bg-gray-800 pt-3">
+        <div class="flex items-center justify-between rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800">
+            <div class=" p-4 shadow text-2xl text-white">
+                <h1 class="font-bold pl-2">Banner</h1>
+            </div>
+            <a href="{{ route('dashboard.carousel.create') }}" class="flex items-center text-white mr-10">
+                <i class="fa-solid fa-plus mr-2"></i> Add Banner
+            </a>
         </div>
-        <a href="{{ route('dashboard.carousel.create') }}" class="flex items-center text-white mr-10">
-            <i class="fa-solid fa-plus mr-2"></i> Add carousel
-        </a>
     </div>
-</div>
-
-
-
-    <!-- List Table carousel -->
+    <!-- List Table Carousel -->
     <div class="px-2 my-2 md:px-10 max-h-screen w-full overflow-x-auto">
         <table class="w-full table-auto text-left">
             <thead>
@@ -38,9 +35,7 @@
                             <img src="{{ $item->image_url }}" alt="{{ $item->title }}" class="inline-block w-12 h-12 md:w-16 md:h-16 object-cover rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 p-1 cursor-pointer">
                         </a>
                     </td>
-                    <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ $item->title }}</td>
-                    <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ \Illuminate\Support\Str::limit(strip_tags($item->content), 50) }}</td>
-                    <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ $item->author }}</td>
+                    <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ $item->name }}</td>
                     <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ \Carbon\Carbon::parse($item->created_at)->format('l, d F Y') }}</td>
                     <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ $item->updated_at->format('j F Y, H:i') }}</td>
                     <td class="p-2 md:p-6 border-b border-blue-gray-50">
@@ -61,7 +56,7 @@
                                     </svg>
                                 </span>
                             </button>
-                            <form id="delete-form-{{ $item->id }}" action="{{ route('carousel.destroy', $item->id) }}" method="POST" style="display: none;">
+                            <form id="delete-form-{{ $item->id }}" action="{{ route('dashboard.carousel.destroy', $item->id) }}" method="POST" style="display: none;">
                                 @csrf
                                 @method('DELETE')
                                 <input type="hidden" id="confirmDeleteItemId" value="">
@@ -83,7 +78,7 @@
     <div id="confirmDeleteModal" class="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
         <div class="bg-white p-4 rounded-lg">
             <p class="text-xl font-semibold mb-4">Confirm Delete</p>
-            <p class="text-gray-700">Are you sure you want to delete this carousel?</p>
+            <p class="text-gray-700">Are you sure you want to delete this banner?</p>
             <div class="mt-4 flex justify-end">
                 <button onclick="cancelDelete()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md mr-2 transition-all hover:bg-gray-400">Cancel</button>
                 <button onclick="proceedDelete()" class="px-4 py-2 bg-red-600 text-white rounded-md transition-all hover:bg-red-700">Delete</button>

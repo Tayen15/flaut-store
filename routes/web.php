@@ -44,18 +44,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/create', [CarouselController::class, 'create'])->name('dashboard.carousel.create');
             Route::get('/edit/{id}', [CarouselController::class, 'edit'])->name('dashboard.carousel.edit');
             Route::post('/store', [CarouselController::class, 'store'])->name('dashboard.carousel.store');
-            Route::post('/destroy', [CarouselController::class, 'destroy'])->name('dashboard.carousel.destroy');
+            Route::delete('/destroy/{carousel}', [CarouselController::class, 'destroy'])->name('dashboard.carousel.destroy');
         });
 
         // Catalog Routes
         Route::prefix('catalog')->group(function () {
 
-            Route::get('/carousels', 'CarouselsController@index')->name('carousels.index');
-
             Route::get('/', [CatalogController::class, 'indexAdmin'])->name('dashboard.catalog.index');
             Route::get('/create', [CatalogController::class, 'create'])->name('dashboard.catalog.create');
-            Route::post('/store', [CatalogController::class, 'store'])->name('dashboard.catalog.store');
             Route::get('/edit/{id}', [CatalogController::class, 'edit'])->name('dashboard.catalog.edit');
+            Route::post('/store', [CatalogController::class, 'store'])->name('dashboard.catalog.store');
             Route::post('/destroy', [CatalogController::class, 'destroy'])->name('dashboard.catalog.destroy');
         });
     });
