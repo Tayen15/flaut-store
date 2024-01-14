@@ -58,7 +58,9 @@ class NewsController extends Controller
     public function show($id)
     {
         $news = News::findOrFail($id);
-        return view('news.show', compact('news'));
+        $relatedArticles = News::inRandomOrder()->take(3)->get();
+
+        return view('news.show', compact('news', 'relatedArticles'));
     }
 
     public function edit($id)
