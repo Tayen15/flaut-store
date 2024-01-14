@@ -63,7 +63,7 @@
 
                     <!-- Table for Catalog -->
                     @if ($catalogs->count() > 0)
-                        <h3 class="text-lg font-semibold mb-2">Catalogs</h3>
+                        <h3 class="text-lg font-semibold my-4">Catalogs<i class="fa-solid fa-sort-down ml-3"></i></h3>
                         <table class="w-full border">
                             <!-- Table header -->
                             <thead>
@@ -101,7 +101,7 @@
 
                     <!-- Table for News -->
                     @if ($news->count() > 0)
-                        <h3 class="text-lg font-semibold mb-2">News</h3>
+                        <h3 class="text-lg font-semibold my-4">News<i class="fa-solid fa-sort-down ml-3"></i></h3>
                         <table class="w-full border">
                             <!-- Table header -->
                             <thead>
@@ -139,7 +139,7 @@
 
                     <!-- Table for Users -->
                     @if ($users->count() > 0)
-                        <h3 class="text-lg font-semibold mb-2">Users</h3>
+                        <h3 class="text-lg font-semibold my-4">Users</h3>
                         <table class="w-full border">
                             <!-- Table header -->
                             <thead>
