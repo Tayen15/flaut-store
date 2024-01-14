@@ -1,39 +1,62 @@
-<!-- resources/views/news/edit.blade.php -->
-@extends('layouts.main')
+@extends('layouts.dashboard')
 
-@section('content')
-<section class="max-w-7xl p-6 mx-auto rounded-md shadow-md mt-20">
-    <h1 class="text-xl font-bold text-black capitalize dark:text-black mb-5">Edit News</h1>
-    <form action="{{ route('catalog.update', $catalog->id) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-
-        <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-            <div>
-                <label class="text-black font-medium" for="name">catalog name</label>
-                <input id="name" name="name" value="{{ $catalog->name }}" type="text" autocomplete="organization-title" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">
-            </div>
-
-            <div>
-                <label class="text-black font-medium" for="author">price</label>
-                <input id="price" name="price" type="number" value="{{ $catalog->price }}" autocomplete="additional-name" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">
-            </div>
-
-            <div>
-                <label class="text-black font-medium" for="passwordConfirmation">description</label>
-                <textarea id="description" name="description" type="textarea" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">{{ $catalog->description }}</textarea>
-            </div>
-
-            <div>
-                <label class="text-black font-medium" for="author">category</label>
-                <input id="category" name="category" type="text" value="{{ $catalog->category }}" autocomplete="additional-name" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">
-            </div>
-
+@section('admin')
+<section class="flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
+    <!-- Page Header -->
+    <div class="bg-gray-800 pt-3">
+        <div class="flex items-center justify-between rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
+            <h1 class="font-bold pl-2">Edit Catalog</h1>
         </div>
+    </div>
 
-        <div class="flex justify-end mt-6">
-            <button class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:bg-gray-600" type="submit">Save</button>
-        </div>
-    </form>
+    {{-- Form Edit Catalog --}}
+    <div class="max-w-7xl p-6 mx-auto rounded-md shadow-md mt-2">
+        <form action="{{ route('catalog.update', $catalog->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+
+            <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                <div>
+                    <label class="text-black font-medium" for="name">Name <span class="font-light ml-2 text-xs text-red-600">Required</span></label>
+                    <input id="name" name="name" value="{{ $catalog->name }}" type="text" autocomplete="organization-title" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" required>
+                </div>
+
+                <div>
+                    <label class="text-black font-medium" for="category">Category <span class="font-light ml-2 text-xs text-red-600">Required</span></label>
+                    <input id="category" name="category" type="text" value="{{ $catalog->category }}" autocomplete="category" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" required>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                <div>
+                    <label class="text-black font-medium" for="price">Price <span class="font-light ml-2 text-xs text-red-600">Required</span></label>
+                    <input id="price" name="price" type="text" value="{{ $catalog->price }}" autocomplete="price" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" required>
+                </div>
+
+                <div>
+                    <label class="text-black font-medium" for="image">Image</label>
+                    <input id="image" name="image" type="file" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">
+                </div>
+            </div>
+
+            <div class="my-6">
+                <label for="description" class="pb-2"><span class="font-light ml-2 text-xs text-red-600">Required</span></label>
+                <textarea id="description" name="description" required class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring default-height">{{ $catalog->description }}</textarea>
+            </div>
+
+            <div class="flex justify-end mt-6">
+                <button class="px-6 py-2 leading-5 mx-5 text-white transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:bg-gray-600" type="submit">Save</button>
+                <a href="{{ route('dashboard.catalog.index') }}" class="px-4 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-400 rounded-md hover:bg-gray-500 cursor-pointer focus:outline-none focus:bg-gray-600" type="submit">Cancel</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("input", function() {
+            const textarea = document.getElementById("description");
+            textarea.style.height = "auto";
+            textarea.style.height = (textarea.scrollHeight) + "px";
+        });
+    </script>
 </section>
 @endsection
