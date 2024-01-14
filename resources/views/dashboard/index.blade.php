@@ -11,7 +11,7 @@
         </div>
 
         <div class="flex flex-wrap">
-            @if (!$searchKeyword)
+            @if (!isset($searchKeyword) || !$searchKeyword)
                 <!-- Displayed when there's no search -->
 
                 <!-- Analytics Cards Section -->
