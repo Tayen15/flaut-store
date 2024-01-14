@@ -38,23 +38,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('/destroy', [NewsController::class, 'destroy'])->name('dashboard.news.destroy');
         });
 
-        // Carousel Routes
-        Route::prefix('carousel')->group(function () {
-            Route::get('/', [CarouselController::class, 'indexAdmin'])->name('dashboard.carousel.index');
-            Route::get('/create', [CarouselController::class, 'create'])->name('dashboard.carousel.create');
-            Route::get('/edit/{id}', [CarouselController::class, 'edit'])->name('dashboard.carousel.edit'); 
-            Route::post('/store', [CarouselController::class, 'store'])->name('dashboard.carousel.store');
-            Route::delete('/destroy/{id}', [CarouselController::class, 'destroy'])->name('dashboard.carousel.destroy');
-        });
-
         // Catalog Routes
         Route::prefix('catalog')->group(function () {
-
             Route::get('/', [CatalogController::class, 'indexAdmin'])->name('dashboard.catalog.index');
             Route::get('/create', [CatalogController::class, 'create'])->name('dashboard.catalog.create');
             Route::get('/edit/{id}', [CatalogController::class, 'edit'])->name('dashboard.catalog.edit');
             Route::post('/store', [CatalogController::class, 'store'])->name('dashboard.catalog.store');
             Route::post('/destroy', [CatalogController::class, 'destroy'])->name('dashboard.catalog.destroy');
+        });
+
+        Route::prefix('carousel')->group(function () {
+            Route::get('/', [CarouselController::class, 'indexAdmin'])->name('dashboard.carousel.index');
+            Route::get('/create', [CarouselController::class, 'create'])->name('dashboard.carousel.create');
+            Route::get('/edit/{id}', [CarouselController::class, 'edit'])->name('dashboard.carousel.edit');
+            Route::post('/store', [CarouselController::class, 'store'])->name('dashboard.carousel.store');
+            Route::post('/destroy', [CarouselController::class, 'destroy'])->name('dashboard.carousel.destroy');
         });
     });
 
@@ -72,15 +70,13 @@ Route::get('/about-us', function () {
 
 Route::resource('catalog', CatalogController::class);
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
-
 Route::get('/catalog/create', [CatalogController::class, 'create'])->name('catalog.create');
 
 Route::resource('news', NewsController::class);
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
 
-Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
-
+Route::resource('carousel', CarouselController::class);
 Route::get('/', [CarouselController::class, 'index'])->name('home');
 Route::get('/carousel/create', [CarouselController::class, 'create'])->name('carousel.create');
 
