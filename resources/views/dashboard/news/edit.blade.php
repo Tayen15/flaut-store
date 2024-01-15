@@ -20,14 +20,6 @@
                     <label class="text-black font-medium" for="title">Title <span class="font-light ml-2 text-xs text-red-600">Required</span></label>
                     <input id="title" name="title" value="{{ $news->title }}" type="text" autocomplete="organization-title" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" required>
                 </div>
-
-                <div>
-                    <label class="text-black font-medium" for="author">Author</label>
-                    <input id="author" name="author" type="text" value="{{ $news->author }}" autocomplete="given-name" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">
-                </div>
-            </div>
-
-            <div class="my-6">
                 <div>
                     <label class="text-black font-medium" for="image">Image <span class="font-light ml-2 text-xs text-red-600 ">Required</span></label>
                     <input id="image" name="image" type="file" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">
