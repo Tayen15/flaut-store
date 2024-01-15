@@ -36,96 +36,71 @@
           @include('components.footer')
      </footer>
      <script>
-          const specificColors = ['rgb(234, 88, 12)', '#FFFFFF', '#000000'];
-
-          function getRandomColor() {
-               return specificColors[Math.floor(Math.random() * specificColors.length)];
-          }
-
-          function changeColor(element, characters) {
-               const color = getRandomColor();
-               element.style.color = color;
-          }
-
           document.addEventListener("DOMContentLoaded", function () {
-               const navbar = document.getElementById("navbar");
-               const mobNavdiv = document.getElementById("mobNavdiv")
-               const ahref = document.getElementById("text-nav");
-               const ahref2 = document.getElementById("text-nav-2");
-               const ahref3 = document.getElementById("text-nav-3");
-               const mobNav = document.getElementById("mob-nav");
-               const mobNav2 = document.getElementById("mob-nav-2");
-               const mobNav3 = document.getElementById("mob-nav-3");
-               
-
-               const logoImage = document.querySelector("#navbar img");
-               const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-               const element = document.getElementById('flaut');
-               const charactersToColor = ['F', 'L', 'A', 'U', 'T', '.'];
-
-               function setNavbarColor(scrollPosition) {
-                    if (scrollPosition > 0 || window.location.pathname.includes("/catalog")) {
-                         navbar.classList.remove("bg-transparent");
-                         navbar.classList.add("bg-black");
-                         mobNavdiv.classList.remove("bg-transparent");
-                         mobNavdiv.classList.add("bg-black");
-                         ahref.classList.add("text-white");
-                         ahref2.classList.add("text-white");
-                         ahref3.classList.add("text-white");
-                         mobNav.classList.add("text-white");
-                         mobNav2.classList.add("text-white");
-                         mobNav3.classList.add("text-white");
-                         logoImage.classList.add("mt-1");
-                         navbar.classList.add("shadow-lg");
-
-                         if (window.location.pathname.includes("/catalog/") && !isNaN(window.location.pathname.split("/catalog/")[1])) {
-                              // Do something specific for /catalog/{id}
-                              // You can access the ID with window.location.pathname.split("/catalog/")[1]
-                              let catalogId = window.location.pathname.split("/catalog/")[1];
-                              console.log("Catalog ID:", catalogId);
-                         }
-                    } else {
-                         navbar.classList.remove("bg-black");
-                         navbar.classList.add("bg-transparent");
-                         navbar.classList.remove("border-b-2");
-                         navbar.classList.remove("border-gray-300");
-                         navbar.classList.remove("shadow-lg");
-
-                         mobNavdiv.classList.remove("bg-black");
-                         mobNavdiv.classList.add("bg-transparent");
-                         mobNavdiv.classList.remove("border-b-2");
-                         mobNavdiv.classList.remove("border-gray-300");
-                         mobNavdiv.classList.remove("shadow-lg");
-                    }
-
-               }
-
-               function handleScroll() {
-                    setNavbarColor(window.scrollY);
-
-                    if (window.scrollY) {
-                         scrollToTopBtn.classList.remove('hidden');
-                    } else {
-                         scrollToTopBtn.classList.add('hidden');
-                    }
-               }
-
-               function colorFlaut() {
-                    changeColor(element, charactersToColor);
-               }
-
-               setNavbarColor(window.scrollY);
-               window.addEventListener("scroll", handleScroll);
-               setInterval(colorFlaut, 350);
-
-               scrollToTopBtn.addEventListener('click', function () {
-                    window.scrollTo({
-                         top: 0,
-                         behavior: 'smooth'
-                    });
-               });
+              const specificColors = ['rgb(234, 88, 12)', '#FFFFFF', '#000000'];
+              const charactersToColor = ['F', 'L', 'A', 'U', 'T', '.'];
+      
+              const navbar = document.getElementById("navbar");
+              const mobNavdiv = document.getElementById("mobNavdiv");
+              const ahref = document.getElementById("text-nav");
+              const ahref2 = document.getElementById("text-nav-2");
+              const ahref3 = document.getElementById("text-nav-3");
+              const mobNav = document.getElementById("mob-nav");
+              const mobNav2 = document.getElementById("mob-nav-2");
+              const mobNav3 = document.getElementById("mob-nav-3");
+              const logoImage = document.querySelector("#navbar img");
+              const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+              const element = document.getElementById('flaut');
+      
+              function getRandomColor() {
+                  return specificColors[Math.floor(Math.random() * specificColors.length)];
+              }
+      
+              function changeColor(element, characters) {
+                  const color = getRandomColor();
+                  element.style.color = color;
+              }
+      
+              function setNavbarColor(scrollPosition) {
+                  const isCatalogPage = window.location.pathname.includes("/catalog");
+      
+                  if (scrollPosition > 0 || isCatalogPage) {
+                      navbar.classList.remove("bg-transparent", "border-b-2", "border-gray-300");
+                      navbar.classList.add("bg-black", "shadow-lg");
+                      mobNavdiv.classList.remove("bg-transparent", "border-b-2", "border-gray-300");
+                      mobNavdiv.classList.add("bg-black", "shadow-lg");
+                      [ahref, ahref2, ahref3, mobNav, mobNav2, mobNav3].forEach(element => element.classList.add("text-white"));
+                      logoImage.classList.add("mt-1");
+                  } else {
+                      navbar.classList.remove("bg-black", "shadow-lg");
+                      navbar.classList.add("bg-transparent");
+                      mobNavdiv.classList.remove("bg-black", "shadow-lg");
+                      mobNavdiv.classList.add("bg-transparent");
+                      [ahref, ahref2, ahref3, mobNav, mobNav2, mobNav3].forEach(element => element.classList.remove("text-white"));
+                      logoImage.classList.remove("mt-1");
+                  }
+              }
+      
+              function handleScroll() {
+                  setNavbarColor(window.scrollY);
+                  scrollToTopBtn.classList.toggle('hidden', window.scrollY === 0);
+              }
+      
+              function colorFlaut() {
+                  changeColor(element, charactersToColor);
+              }
+      
+              setNavbarColor(window.scrollY);
+              window.addEventListener("scroll", handleScroll);
+              setInterval(colorFlaut, 350);
+      
+              scrollToTopBtn.addEventListener('click', function () {
+                  window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth'
+                  });
+              });
           });
-
      </script>
 </body>
 </html>
