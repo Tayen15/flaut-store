@@ -18,10 +18,9 @@
                     <label class="text-black font-medium" for="title">Title <span class="font-light ml-2 text-xs text-red-600 ">Required</span></label>
                     <input id="title" name="title" type="text" autocomplete="organization-title" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" required>
                 </div>
-
                 <div>
-                    <label class="text-black font-medium" for="author">Author<span class="font-light ml-2 text-xs text-red-600 ">Required</span></label>
-                    <input id="author" name="author" type="text" autocomplete="given-name" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" >
+                    <label class="text-black font-medium" for="image">Image <span class="font-light ml-2 text-xs text-red-600 ">Required</span></label>
+                    <input id="image" name="image" type="file" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" required>
                 </div>
             </div>
 
@@ -29,13 +28,7 @@
                 <label for="content" class="pb-2">Content<span class="font-light ml-2 text-xs text-red-600 ">Required</span></label>
                 <textarea id="content" name="content" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring default-height"></textarea>
             </div>
-
-            <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-                <div>
-                    <label class="text-black font-medium" for="image">Image <span class="font-light ml-2 text-xs text-red-600 ">Required</span></label>
-                    <input id="image" name="image" type="file" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" required>
-                </div>
-            </div>
+            
             <div class="flex justify-end mt-6">
                 <button class="px-6 py-2 leading-5 mx-5 text-white transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:bg-gray-600" type="submit">Save</button>
                 <a href="{{ route('dashboard.news.index') }}" class="px-4 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-400 rounded-md hover:bg-gray-500 cursor-pointer focus:outline-none focus:bg-gray-600">Cancel</a>

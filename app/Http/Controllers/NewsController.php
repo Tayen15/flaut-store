@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\News;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller
 {
@@ -31,7 +32,7 @@ class NewsController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'content' => 'nullable',
-            'author' => 'required',
+            'author' => Auth::user()->name,
             'image' => 'required|image|mimes:jpeg,png,jpg|max:10240',
         ]);
     
@@ -74,7 +75,6 @@ class NewsController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'content' => 'nullable',
-            'author' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg|max:10240',
         ]);
 
