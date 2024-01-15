@@ -50,7 +50,7 @@ class NewsController extends Controller
         } catch (\Throwable $th) {
             return redirect()
             ->route('dashboard.news.index')
-            ->with('success', 'failed to created news, try again!');
+            ->with('error', 'failed to created news, try again!');
         }
 
     }
@@ -102,12 +102,12 @@ class NewsController extends Controller
         
                     return redirect()
                         ->route('dashboard.news.index')
-                        ->with('success', 'Failed to update News image');
+                        ->with('error', 'Failed to update News image');
                 }
         
                 return redirect()
                     ->route('dashboard.news.index')
-                    ->with('success', 'Failed to delete old News image');
+                    ->with('error', 'Failed to delete old News image');
             }
         }
         $news->update($validatedData);
@@ -132,12 +132,12 @@ class NewsController extends Controller
             } else {
                 return redirect()
                     ->route('dashboard.news.index')
-                    ->with('success', 'Failed to delete News image');
+                    ->with('error', 'Failed to delete News image');
             }
         }
     
         return redirect()
             ->route('dashboard.news.index')
-            ->with('success', 'Image not found for News');
+            ->with('error', 'Image not found for News');
     }
 }

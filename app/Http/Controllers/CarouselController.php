@@ -49,7 +49,7 @@ class CarouselController extends Controller
         } catch (\Throwable $th) {
             return redirect()
                 ->route('dashboard.carousel.index')
-                ->with('success', 'failed to created Carousel, try again!');
+                ->with('error', 'failed to created Carousel, try again!');
         }
     }
 
@@ -96,12 +96,12 @@ class CarouselController extends Controller
         
                     return redirect()
                         ->route('dashboard.carousel.index')
-                        ->with('success', 'Failed to update carousel image');
+                        ->with('error', 'Failed to update carousel image');
                 }
         
                 return redirect()
                     ->route('dashboard.carousel.index')
-                    ->with('success', 'Failed to delete old carousel image');
+                    ->with('error', 'Failed to delete old carousel image');
             }
         }
         $carousel->update($validatedData);
@@ -128,12 +128,12 @@ class CarouselController extends Controller
             } else {
                 return redirect()
                     ->route('dashboard.carousel.index')
-                    ->with('success', 'Failed to delete Carousel image');
+                    ->with('error', 'Failed to delete Carousel image');
             }
         }
     
         return redirect()
             ->route('dashboard.carousel.index')
-            ->with('success', 'Image not found for Carousel');
+            ->with('error', 'Image not found for Carousel');
     }   
 }
