@@ -32,7 +32,7 @@ class NewsController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'content' => 'nullable',
-            'author' => Auth::user()->name,
+            'author' => 'tiyan',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:10240',
         ]);
     
