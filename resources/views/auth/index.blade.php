@@ -1,3 +1,6 @@
+
+
+@section('title', 'Login Dashboard Panel - Flaut.')
 @extends('layouts.blank')
 @section('auth')
 
