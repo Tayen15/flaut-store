@@ -64,7 +64,7 @@
                const charactersToColor = ['F', 'L', 'A', 'U', 'T', '.'];
 
                function setNavbarColor(scrollPosition) {
-                    if (scrollPosition > 0 || window.location.pathname == "/catalog") {
+                    if (scrollPosition > 0 || window.location.pathname.includes("/catalog")) {
                          navbar.classList.remove("bg-transparent");
                          navbar.classList.add("bg-black");
                          mobNavdiv.classList.remove("bg-transparent");
@@ -77,6 +77,13 @@
                          mobNav3.classList.add("text-white");
                          logoImage.classList.add("mt-1");
                          navbar.classList.add("shadow-lg");
+
+                         if (window.location.pathname.includes("/catalog/") && !isNaN(window.location.pathname.split("/catalog/")[1])) {
+                              // Do something specific for /catalog/{id}
+                              // You can access the ID with window.location.pathname.split("/catalog/")[1]
+                              let catalogId = window.location.pathname.split("/catalog/")[1];
+                              console.log("Catalog ID:", catalogId);
+                         }
                     } else {
                          navbar.classList.remove("bg-black");
                          navbar.classList.add("bg-transparent");
@@ -90,6 +97,7 @@
                          mobNavdiv.classList.remove("border-gray-300");
                          mobNavdiv.classList.remove("shadow-lg");
                     }
+
                }
 
                function handleScroll() {
