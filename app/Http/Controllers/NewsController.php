@@ -116,14 +116,16 @@ class NewsController extends Controller
             ->with('success', 'Successfully updated News without changing image');
     }
 
-    public function destroy(News $news, $id)
+    public function destroy($id)
     {
+        $news = News::findOrFail($id);
+
         if (Storage::exists("image/news/{$news->image}")) {
             $deleted = Storage::delete("image/news/{$news->image}");
     
             if ($deleted) {
-                News::findOrFail($id)->delete();
-    
+                $news->delete();
+
                 return redirect()
                     ->route('dashboard.news.index')
                     ->with('success', 'Successfully deleted News');

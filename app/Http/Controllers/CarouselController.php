@@ -112,27 +112,28 @@ class CarouselController extends Controller
     
     
 
-    public function destroy(Carousel $carousel, $id)
+    public function destroy($id)
     {
+        $carousel = Carousel::findOrFail($id);
+    
         if (Storage::exists("image/carousel/{$carousel->image}")) {
             $deleted = Storage::delete("image/carousel/{$carousel->image}");
     
             if ($deleted) {
-                Carousel::findOrFail($id)->delete();
+                $carousel->delete();
     
                 return redirect()
                     ->route('dashboard.carousel.index')
-                    ->with('success', 'Successfully deleted carousel');
+                    ->with('success', 'Successfully deleted Carousel');
             } else {
                 return redirect()
                     ->route('dashboard.carousel.index')
-                    ->with('success', 'Failed to delete carousel image');
+                    ->with('success', 'Failed to delete Carousel image');
             }
         }
     
         return redirect()
             ->route('dashboard.carousel.index')
-            ->with('success', 'Image not found for carousel');
-    }
+            ->with('success', 'Image not found for Carousel');
+    }   
 }
-
