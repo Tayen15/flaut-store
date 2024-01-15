@@ -76,7 +76,7 @@
                       navbar.classList.add("bg-transparent");
                       mobNavdiv.classList.remove("bg-black", "shadow-lg");
                       mobNavdiv.classList.add("bg-transparent");
-                      [ahref, ahref2, ahref3, mobNav, mobNav2, mobNav3].forEach(element => element.classList.remove("text-white"));
+                      [mobNav, mobNav2, mobNav3].forEach(element => element.classList.remove("text-white"));
                       logoImage.classList.remove("mt-1");
                   }
               }
