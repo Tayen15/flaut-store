@@ -51,7 +51,7 @@ class CatalogController extends Controller
 
         try {
             $imagePath = $request->file('image');
-            $imageName = date('Y-m-d&&') . $imagePath->getClientOriginalName();
+            $imageName = date('Y-m-d_H:i:s_') . $imagePath->getClientOriginalName();
             $path = 'image/catalog/' . $imageName;
 
             Storage::disk('public')->put($path, file_get_contents($imagePath));
@@ -66,7 +66,7 @@ class CatalogController extends Controller
         } catch (\Throwable $th) {
             return redirect()
                 ->route('dashboard.catalog.index')
-                ->with('success', 'failed to created catalog item, try again!');
+                ->with('error', 'failed to created catalog item, try again!');
         }
     }
 
@@ -100,7 +100,7 @@ class CatalogController extends Controller
         
                 if ($deleted) {
                     $imagePath = $request->file('image');
-                    $imageName = date('Y-m-d') . '&&' . $imagePath->getClientOriginalName();
+                    $imageName = date('Y-m-d_H:i:s_') . '&&' . $imagePath->getClientOriginalName();
                     $path = 'image/catalog/' . $imageName;
     
                     $check = Storage::disk('public')->put($path, file_get_contents($imagePath));
@@ -116,12 +116,12 @@ class CatalogController extends Controller
         
                     return redirect()
                         ->route('dashboard.catalog.index')
-                        ->with('success', 'Failed to update Catalog image');
+                        ->with('error', 'Failed to update Catalog image');
                 }
         
                 return redirect()
                     ->route('dashboard.catalog.index')
-                    ->with('success', 'Failed to delete old Catalog image');
+                    ->with('error', 'Failed to delete old Catalog image');
             }
         }
 
@@ -148,12 +148,12 @@ class CatalogController extends Controller
             } else {
                 return redirect()
                     ->route('dashboard.catalog.index')
-                    ->with('success', 'Failed to delete catalog image');
+                    ->with('error', 'Failed to delete catalog image');
             }
         }
     
         return redirect()
             ->route('dashboard.catalog.index')
-            ->with('success', 'Image not found for catalog');
+            ->with('error', 'Image not found for catalog');
     }
 }
