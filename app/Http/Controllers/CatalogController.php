@@ -51,7 +51,7 @@ class CatalogController extends Controller
 
         try {
             $imagePath = $request->file('image');
-            $imageName = date('Y-m-d&&') . $imagePath->getClientOriginalName();
+            $imageName = date('Y-m-d_H:i:s_') . $imagePath->getClientOriginalName();
             $path = 'image/catalog/' . $imageName;
 
             Storage::disk('public')->put($path, file_get_contents($imagePath));
@@ -100,7 +100,7 @@ class CatalogController extends Controller
         
                 if ($deleted) {
                     $imagePath = $request->file('image');
-                    $imageName = date('Y-m-d') . '&&' . $imagePath->getClientOriginalName();
+                    $imageName = date('Y-m-d_H:i:s_') . '&&' . $imagePath->getClientOriginalName();
                     $path = 'image/catalog/' . $imageName;
     
                     $check = Storage::disk('public')->put($path, file_get_contents($imagePath));

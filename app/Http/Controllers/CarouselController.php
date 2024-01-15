@@ -35,7 +35,7 @@ class CarouselController extends Controller
     
         try {
             $imagePath = $request->file('image');
-            $imageName = date('Y-m-d&&') . $imagePath->getClientOriginalName();
+            $imageName = date('Y-m-d_H:i:s_') . $imagePath->getClientOriginalName();
             $path = 'image/carousel/' . $imageName;
 
             Storage::disk('public')->put($path, file_get_contents($imagePath));
@@ -80,7 +80,7 @@ class CarouselController extends Controller
         
                 if ($deleted) {
                     $imagePath = $request->file('image');
-                    $imageName = date('Y-m-d') . '&&' . $imagePath->getClientOriginalName();
+                    $imageName = date('Y-m-d_H:i:s_') . $imagePath->getClientOriginalName();
                     $path = 'image/carousel/' . $imageName;
     
                     $check = Storage::disk('public')->put($path, file_get_contents($imagePath));
