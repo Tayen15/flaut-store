@@ -32,7 +32,7 @@
             <h5 class="block font-sans text-lg antialiased font-semibold leading-snug tracking-normal text-white">
                 Information Error
             </h5>
-            <p class="block mt-2 font-sans text-base antialiased font-normal leading-relaxed text-white">{{ session('success') }}</p>
+            <p class="block mt-2 font-sans text-base antialiased font-normal leading-relaxed text-white">{{ session('error') }}</p>
         </div>
         <button data-dismissible-target="alert" class="absolute top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button" onclick="closeNotification()">
             <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
