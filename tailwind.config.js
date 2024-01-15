@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {},
+    screen: {
+      'phone': '320px',
+    }
   },
   plugins: [],
 }
