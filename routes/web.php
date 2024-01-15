@@ -35,7 +35,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/create', [NewsController::class, 'create'])->name('dashboard.news.create');
             Route::get('/edit/{id}', [NewsController::class, 'edit'])->name('dashboard.news.edit');
             Route::post('/store', [NewsController::class, 'store'])->name('dashboard.news.store');
-            Route::post('/destroy', [NewsController::class, 'destroy'])->name('dashboard.news.destroy');
+            Route::post('/destroy{id}', [NewsController::class, 'destroy'])->name('dashboard.news.destroy');
         });
 
         // Catalog Routes
@@ -44,7 +44,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/create', [CatalogController::class, 'create'])->name('dashboard.catalog.create');
             Route::get('/edit/{id}', [CatalogController::class, 'edit'])->name('dashboard.catalog.edit');
             Route::post('/store', [CatalogController::class, 'store'])->name('dashboard.catalog.store');
-            Route::post('/destroy', [CatalogController::class, 'destroy'])->name('dashboard.catalog.destroy');
+            Route::post('/destroy{id}', [CatalogController::class, 'destroy'])->name('dashboard.catalog.destroy');
         });
 
         Route::prefix('carousel')->group(function () {
@@ -52,7 +52,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/create', [CarouselController::class, 'create'])->name('dashboard.carousel.create');
             Route::get('/edit/{id}', [CarouselController::class, 'edit'])->name('dashboard.carousel.edit');
             Route::post('/store', [CarouselController::class, 'store'])->name('dashboard.carousel.store');
-            Route::post('/destroy', [CarouselController::class, 'destroy'])->name('dashboard.carousel.destroy');
+            Route::post('/destroy{id}', [CarouselController::class, 'destroy'])->name('dashboard.carousel.destroy');
         });
     });
 

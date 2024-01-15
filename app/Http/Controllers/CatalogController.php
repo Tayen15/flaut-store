@@ -35,7 +35,8 @@ class CatalogController extends Controller
 
     public function create()
     {
-        return view('dashboard.catalog.create');
+        $categories = Catalog::$categories;
+        return view('dashboard.catalog.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -44,7 +45,7 @@ class CatalogController extends Controller
             'name' => 'required',
             'description' => 'nullable',
             'price' => 'required|numeric',
-            'category' => 'required',
+            'category' => 'required|in:' . implode(',', Catalog::$categories),
             'image' => 'image|mimes:jpeg,png,jpg|max:10240',
         ]);
 
@@ -56,6 +57,7 @@ class CatalogController extends Controller
             Storage::disk('public')->put($path, file_get_contents($imagePath));
 
             $validatedData['image'] = $imageName;
+
             Catalog::create($validatedData);
             
             return redirect()
@@ -86,7 +88,7 @@ class CatalogController extends Controller
             'name' => 'required',
             'description' => 'nullable',
             'price' => 'required|numeric',
-            'category' => 'required',
+            'category' => 'required|in:' . implode(',', Catalog::$categories),
             'image' => 'image|mimes:jpeg,png,jpg|max:10240',
         ]);
     
@@ -123,32 +125,35 @@ class CatalogController extends Controller
             }
         }
 
+        // dd($request->all());
         $catalog->update($validatedData);
         return redirect()
             ->route('dashboard.catalog.index')
             ->with('success', 'Successfully updated Catalog without changing image');
     }
 
-    public function destroy(Catalog $catalog, $id)
+    public function destroy($id)
     {
+        $catalog = Catalog::findOrFail($id);
+
         if (Storage::exists("image/catalog/{$catalog->image}")) {
             $deleted = Storage::delete("image/catalog/{$catalog->image}");
     
             if ($deleted) {
-                Catalog::findOrFail($id)->delete();
-    
+                $catalog->delete();
+
                 return redirect()
                     ->route('dashboard.catalog.index')
-                    ->with('success', 'Successfully deleted Catalog');
+                    ->with('success', 'Successfully deleted catalog');
             } else {
                 return redirect()
                     ->route('dashboard.catalog.index')
-                    ->with('success', 'Failed to delete Catalog image');
+                    ->with('success', 'Failed to delete catalog image');
             }
         }
     
         return redirect()
             ->route('dashboard.catalog.index')
-            ->with('success', 'Image not found for Catalog');
+            ->with('success', 'Image not found for catalog');
     }
 }

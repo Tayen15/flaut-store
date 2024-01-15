@@ -9,14 +9,17 @@ class Catalog extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'price', 'image'];
+    protected $fillable = ['name', 'description', 'price', 'image', 'category'];
     
-    protected $enum = [
-        'category' => ['t-shirt', 'shirt', 'pants', 'accessories']
-    ];
+    public static $categories = ['t-shirt', 'shirt', 'pants', 'accessories'];
 
     public function getImageUrlAttribute()
     {
         return asset('storage/image/catalog/' . $this->image);
+    }
+
+    public function getCategoryOptionsAttribute()
+    {
+        return $this->categories;
     }
 }
