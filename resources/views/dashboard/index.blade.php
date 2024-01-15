@@ -10,14 +10,14 @@
             </div>
         </div>
 
-        <div class="flex flex-wrap">
+        <div class="">
             @if (!isset($searchKeyword) || !$searchKeyword)
                 <!-- Displayed when there's no search -->
 
                 <!-- Analytics Cards Section -->
                 <div class="flex flex-wrap">
                     <!-- Total Catalog Card -->
-                    <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+                    <div class="w-full md:w-1/2 xl:w-1/4 p-6">
                         <div class="bg-gradient-to-b from-green-200 to-green-100 border-b-4 border-green-600 rounded-lg shadow-xl p-5">
                             <h2 class="font-bold text-xl mb-2 text-gray-800">Total Catalog</h2>
                             <p class="text-gray-600 text-lg">
@@ -27,7 +27,7 @@
                     </div>
     
                     <!-- Total News Card -->
-                    <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+                    <div class="w-full md:w-1/2 xl:w-1/4 p-6">
                         <div class="bg-gradient-to-b from-pink-200 to-pink-100 border-b-4 border-pink-500 rounded-lg shadow-xl p-5">
                             <h2 class="font-bold text-xl mb-2 text-gray-800">Total News</h2>
                             <p class="text-gray-600 text-lg">
@@ -37,7 +37,7 @@
                     </div>
     
                     <!-- Total Users Card -->
-                    <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+                    <div class="w-full md:w-1/2 xl:w-1/4 p-6">
                         <div class="bg-gradient-to-b from-yellow-200 to-yellow-100 border-b-4 border-yellow-600 rounded-lg shadow-xl p-5">
                             <h2 class="font-bold text-xl mb-2 text-gray-800">Total Users</h2>
                             <p class="text-gray-600 text-lg">
@@ -47,7 +47,7 @@
                     </div>
     
                     <!-- Total Banner Card -->
-                    <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+                    <div class="w-full md:w-1/2 xl:w-1/4 p-6">
                         <div class="bg-gradient-to-b from-blue-200 to-blue-100 border-b-4 border-blue-600 rounded-lg shadow-xl p-5">
                             <h2 class="font-bold text-xl mb-2 text-gray-800">Total Banner</h2>
                             <p class="text-gray-600 text-lg">
