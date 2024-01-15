@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Catalog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class CatalogController extends Controller
 {
@@ -50,13 +51,11 @@ class CatalogController extends Controller
         ]);
 
         try {
-            $imagePath = $request->file('image');
-            $imageName = date('Y-m-d_H:i:s_') . $imagePath->getClientOriginalName();
-            $path = 'image/catalog/' . $imageName;
-
-            Storage::disk('public')->put($path, file_get_contents($imagePath));
-
-            $validatedData['image'] = $imageName;
+            $currentTime = Carbon::now();
+            $formattedTime = $currentTime->format('Y-m-d_His');
+        
+            $imagePath = $request->file('image')->storeAs('image/catalog', $formattedTime . '_' . $request->file('image')->getClientOriginalName());
+            $validatedData['image'] = basename($imagePath);
 
             Catalog::create($validatedData);
             
@@ -95,41 +94,27 @@ class CatalogController extends Controller
         $catalog = Catalog::findOrFail($id);
 
         if ($request->hasFile('image')) {
-            if (!Storage::exists("image/catalog/{$catalog->image}")) {
-                $deleted = Storage::delete("image/catalog/{$catalog->image}");
-        
-                if ($deleted) {
-                    $imagePath = $request->file('image');
-                    $imageName = date('Y-m-d_H:i:s_') . '&&' . $imagePath->getClientOriginalName();
-                    $path = 'image/catalog/' . $imageName;
-    
-                    $check = Storage::disk('public')->put($path, file_get_contents($imagePath));
-        
-                    if ($check) {
-                        $validatedData['image'] = $imageName;
-                        $catalog->update($validatedData);
-        
-                        return redirect()
-                            ->route('dashboard.catalog.index')
-                            ->with('success', 'Successfully updated Catalog with image');
-                    }
-        
-                    return redirect()
-                        ->route('dashboard.catalog.index')
-                        ->with('error', 'Failed to update Catalog image');
-                }
-        
-                return redirect()
-                    ->route('dashboard.catalog.index')
-                    ->with('error', 'Failed to delete old Catalog image');
+            if (Storage::exists("image/catalog/{$catalog->image}")) {
+                Storage::delete("image/catalog/{$catalog->image}");
             }
+        
+            $currentTime = Carbon::now();
+            $formattedTime = $currentTime->format('Y-m-d_His');
+        
+            $imagePath = $request->file('image')->storeAs('image/catalog', $formattedTime . '_' . $request->file('image')->getClientOriginalName());
+            $validatedData['image'] = basename($imagePath);
+        
+            $catalog->update($validatedData);
+        
+            return redirect()
+                ->route('dashboard.catalog.index')
+                ->with('success', 'Successfully updated catalog with changing image');
         }
 
-        // dd($request->all());
         $catalog->update($validatedData);
         return redirect()
             ->route('dashboard.catalog.index')
-            ->with('success', 'Successfully updated Catalog without changing image');
+            ->with('success', 'Successfully updated catalog without changing image');
     }
 
     public function destroy($id)
@@ -137,23 +122,13 @@ class CatalogController extends Controller
         $catalog = Catalog::findOrFail($id);
 
         if (Storage::exists("image/catalog/{$catalog->image}")) {
-            $deleted = Storage::delete("image/catalog/{$catalog->image}");
-    
-            if ($deleted) {
-                $catalog->delete();
-
-                return redirect()
-                    ->route('dashboard.catalog.index')
-                    ->with('success', 'Successfully deleted catalog');
-            } else {
-                return redirect()
-                    ->route('dashboard.catalog.index')
-                    ->with('error', 'Failed to delete catalog image');
-            }
+            Storage::delete("image/catalog/{$catalog->image}");
         }
     
+        $catalog->delete();
+
         return redirect()
             ->route('dashboard.catalog.index')
-            ->with('error', 'Image not found for catalog');
+            ->with('success', 'Successfully deleted catalog');
     }
 }
