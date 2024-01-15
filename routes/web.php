@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('/store', [CarouselController::class, 'store'])->name('dashboard.carousel.store');
             Route::post('/destroy{id}', [CarouselController::class, 'destroy'])->name('dashboard.carousel.destroy');
         });
+
+        Route::prefix('profile')->group(function () {
+            Route::get('/', [ProfileController::class, 'index'])->name('dashboard.profile.index');
+            Route::put('/update', [ProfileController::class, 'update'])->name('dashboard.profile.update');
+        });
     });
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -80,6 +86,7 @@ Route::resource('carousel', CarouselController::class);
 Route::get('/', [CarouselController::class, 'index'])->name('home');
 Route::get('/carousel/create', [CarouselController::class, 'create'])->name('carousel.create');
 
+Route::resource('profile', ProfileController::class);
 
 Route::get('/test-database', function () {
     try {
