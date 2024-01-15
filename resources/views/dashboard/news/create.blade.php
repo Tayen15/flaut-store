@@ -1,6 +1,7 @@
 <!-- resources/views/news/create.blade.php -->
-@extends('layouts.dashboard')
 
+@section('title', 'Create News')
+@extends('layouts.dashboard')
 @section('admin')
 <section class="flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
     <!-- Page Header -->

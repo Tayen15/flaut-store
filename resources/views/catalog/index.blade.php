@@ -1,5 +1,6 @@
 <!-- resources/views/layouts/main.blade.php -->
 
+@section('title', 'Catalog')
 @extends('layouts.main')
 
 @section('content')

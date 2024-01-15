@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
+    <title>@yield('title') - Admin Flaut.</title>
     <script src="https://kit.fontawesome.com/86a839d15c.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="https://cdn.discordapp.com/attachments/976824443743645696/1196355689422004234/f.png?ex=65b7540f&is=65a4df0f&hm=cf8b903098671bb47aa7c0e50528f804072389686434186a1f67555bf3d7ae23&}" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js" integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
