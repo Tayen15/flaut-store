@@ -28,7 +28,7 @@
                 <label for="content" class="pb-2">Content<span class="font-light ml-2 text-xs text-red-600 ">Required</span></label>
                 <textarea id="content" name="content" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring default-height"></textarea>
             </div>
-            
+
             <div class="flex justify-end mt-6">
                 <button class="px-6 py-2 leading-5 mx-5 text-white transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:bg-gray-600" type="submit">Save</button>
                 <a href="{{ route('dashboard.news.index') }}" class="px-4 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-400 rounded-md hover:bg-gray-500 cursor-pointer focus:outline-none focus:bg-gray-600">Cancel</a>
