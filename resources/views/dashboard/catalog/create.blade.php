@@ -47,7 +47,7 @@
 
                     <div>
                         <label class="text-black font-medium" for="image">Image</label>
-                        <input id="image" name="image" type="file" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">
+                        <input id="image" name="image" type="file" accept="image/jpg, image/png, image/jpeg" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">
                     </div>
                 </div>
 
