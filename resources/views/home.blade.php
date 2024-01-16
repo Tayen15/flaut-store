@@ -9,8 +9,8 @@
     <div class="carousel-container flex flex-col h-screen items-center justify-center bg-no-repeat bg-cover" style="background-image: url('https://cdn.discordapp.com/attachments/976824443743645696/1192125787650932856/Flaut.jpg?ex=65a7f0a8&is=65957ba8&hm=c90f5a7586c6bffda6c1734f203e22aa8ffd82118b49aff1f0212d8113aae0fd&'); background-size: cover;">
         <div class="order-2 text-center text-white font-libre-baskerville">
             <h1 id="flaut" class="text-5xl font-bold mb-4 text-orange-600">F L A U T.</h1>
-            <h2 id="" class="text-5xl font-bold mb-4">Welcome to flaut. fashion store </h2>
-            <p class="text-xl mb-8">Discover many amazing fashions and more</p>
+            <h2 id="heading" class="text-5xl font-bold mb-4">Welcome to flaut. fashion store </h2>
+            <p id="subheading" class="text-xl mb-8">Discover many amazing fashions and more</p>
         </div>
     </div>
 </section>
@@ -49,15 +49,43 @@
 
 <section id="banner" class="text-center mt-10">
     <h2 class="text-2xl font-bold mb-4 uppercase">Our Style</h2>
-    <div class="flex px-3 py-3 justify-center items-center">
+    <div class="flex lg:px-1 py-3 justify-center items-center md:py-2 md:px-2">
         @foreach ($carouselImages as $image)
             <div class="max-w-xl rounded overflow-hidden mx-5">
-                <img src="{{ $image->image_url }}" alt="{{ $image->name }}" class="w-full">
+                <img src="{{ $image->image_url }}" alt="{{ $image->name }}" class="w-full md:w-72 xl:w-full">
             </div>
         @endforeach
     </div>
 </section>
 
+{{-- Style Responsive --}}
+<style>
+    @media (max-width: 426px) {
+        #flaut {
+            font-size: 28px;
+        }
 
+        #heading {
+            font-size: 24px;
+        }
+
+        #subheading {
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 766px) {
+
+        #banner .max-w-xl {
+            width: 100%;
+            margin-top: 7px;
+        }
+        #banner .flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+</style>
 
 @endsection
