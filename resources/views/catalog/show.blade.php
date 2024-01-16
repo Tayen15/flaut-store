@@ -26,22 +26,32 @@
                     </div>
             
                     <div class="my-4">
-                        <label class="block text-sm font-medium text-gray-600 mb-2">Size</label>
+                        <label class="block text-sm font-medium text-gray-600 mb-2" id="check-size">Size: </label>
                         <div class="flex">
-                            <input type="radio" name="size" id="sizeS" value="S" class="mr-2 hidden" />
-                            <label for="sizeS" class="size-label w-10 h-10 text-sm border border-gray-900 rounded-md flex items-center justify-center cursor-pointer focus:border-orange-400">S</label>
-                    
-                            <input type="radio" name="size" id="sizeM" value="M" class="mr-2 hidden" />
-                            <label for="sizeM" class="size-label w-10 h-10 text-sm border border-gray-300 rounded-md flex items-center justify-center cursor-pointer focus:outline-none focus:border-gray-800">M</label>
-                    
-                            <input type="radio" name="size" id="sizeL" value="L" class="mr-2 hidden" />
-                            <label for="sizeL" class="size-label w-10 h-10 text-sm border border-gray-300 rounded-md flex items-center justify-center cursor-pointer focus:outline-none focus:border-gray-800">L</label>
-                    
-                            <input type="radio" name="size" id="sizeXL" value="XL" class="mr-2 hidden" />
-                            <label for="sizeXL" class="size-label w-10 h-10 text-sm border border-gray-300 rounded-md flex items-center justify-center cursor-pointer focus:outline-none focus:border-gray-800">XL</label>
-                    
-                            <input type="radio" name="size" id="sizeXXL" value="XXL" class="mr-2 hidden" />
-                            <label for="sizeXXL" class="size-label w-11 h-10 text-sm border border-gray-300 rounded-md flex items-center justify-center cursor-pointer focus:outline-none focus:border-gray-800">XXL</label>
+                            <div class="mr-1">
+                                <input type="radio" name="size" id="sizeS" value="S" class="mr-2 hidden" />
+                                <label for="sizeS" class="size-label w-10 h-10 text-sm border border-gray-900 rounded-md flex items-center justify-center cursor-pointer focus:border-orange-400">S</label>
+                            </div>
+                            
+                            <div class="mx-1">
+                                <input type="radio" name="size" id="sizeM" value="M" class="mr-2 hidden" />
+                                <label for="sizeM" class="size-label w-10 h-10 text-sm border border-gray-300 rounded-md flex items-center justify-center cursor-pointer focus:outline-none focus:border-gray-800">M</label>
+                            </div>
+                            
+                            <div class="mx-1">
+                                <input type="radio" name="size" id="sizeL" value="L" class="mr-2 hidden" />
+                                <label for="sizeL" class="size-label w-10 h-10 text-sm border border-gray-300 rounded-md flex items-center justify-center cursor-pointer focus:outline-none focus:border-gray-800">L</label>
+                            </div>
+                                
+                            <div class="mx-1">
+                                <input type="radio" name="size" id="sizeXL" value="XL" class="mr-2 hidden" />
+                                <label for="sizeXL" class="size-label w-10 h-10 text-sm border border-gray-300 rounded-md flex items-center justify-center cursor-pointer focus:outline-none focus:border-gray-800">XL</label>
+                            </div>
+                                
+                            <div class="mx-1">
+                                <input type="radio" name="size" id="sizeXXL" value="XXL" class="mr-2 hidden" />
+                                <label for="sizeXXL" class="size-label w-11 h-10 text-sm border border-gray-300 rounded-md flex items-center justify-center cursor-pointer focus:outline-none focus:border-gray-800">XXL</label>
+                            </div>
                         </div>
                     </div>
                     
@@ -103,6 +113,7 @@
         label.addEventListener('click', () => {
             selectedSize = label.innerText;
             updateSubtotal();
+            document.getElementById('check-size').innerText = `Size: ${selectedSize}`;
         });
     });
 
