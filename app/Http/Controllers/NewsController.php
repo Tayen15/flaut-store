@@ -14,12 +14,6 @@ class NewsController extends Controller
     {
         $query = News::query();
     
-        // Filter berdasarkan kategori jika ada
-        $category = $request->input('category');
-        if ($category) {
-            $query->where('category', $category);
-        }
-    
         // Pencarian berdasarkan kata kunci jika ada
         $searchKeyword = $request->input('search');
         if ($searchKeyword && strlen($searchKeyword) >= 3) {
