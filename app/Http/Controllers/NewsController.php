@@ -10,12 +10,29 @@ use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $news = News::paginate(10);
+        $query = News::query();
+    
+        // Filter berdasarkan kategori jika ada
+        $category = $request->input('category');
+        if ($category) {
+            $query->where('category', $category);
+        }
+    
+        // Pencarian berdasarkan kata kunci jika ada
+        $searchKeyword = $request->input('search');
+        if ($searchKeyword && strlen($searchKeyword) >= 3) {
+            $query->where(function ($subquery) use ($searchKeyword) {
+                $subquery->where('title', 'like', '%' . $searchKeyword . '%')
+                         ->orWhere('content', 'like', '%' . $searchKeyword . '%');
+            });
+        }
+    
+        $news = $query->get();
         return view('news.index', compact('news'));
     }
-
+    
     public function indexAdmin()
     {
         $news = News::paginate(6);
