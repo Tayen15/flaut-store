@@ -11,11 +11,11 @@ class CarouselController extends Controller
 {
     public function index()
     {
-        $carouselImages = Carousel::all();
+        $carouselImages = Carousel::inRandomOrder()->take(3)->get();;
         return view('home', compact('carouselImages'));
     }
     
-    public function indexAdmin()
+    public function indexAdmin()    
     {
         $carousel = Carousel::paginate(4);
         return view('dashboard.carousel.index', compact('carousel'));
