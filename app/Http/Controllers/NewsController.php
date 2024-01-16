@@ -32,26 +32,27 @@ class NewsController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'content' => 'nullable',
-            'author' => 'tiyan',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:10240',
         ]);
     
         try {
-            $imagePath = $request->file('image');
-            $imageName = date('Y-m-d_H:i:s_') . $imagePath->getClientOriginalName();
-            $path = 'image/news/' . $imageName;
-            Storage::disk('public')->put($path, file_get_contents($imagePath));
-            $validatedData['image'] = $imageName;
-            News::create($validatedData);
+            $currentTime = Carbon::now();
+            $formattedTime = $currentTime->format('Y-m-d_His');
         
+            $imagePath = $request->file('image')->storeAs('image/news', $formattedTime . '_' . $request->file('image')->getClientOriginalName());
+            $validatedData['image'] = basename($imagePath);
+            $validatedData['author'] = Auth::user()->name;
+
+    
+            News::create($validatedData);
+    
             return redirect()
                 ->route('dashboard.news.index')
-                ->with('success', 'Succesfully created news');
-                
+                ->with('success', 'Successfully created news');
         } catch (\Throwable $th) {
             return redirect()
-            ->route('dashboard.news.index')
-            ->with('error', 'failed to created news, try again!');
+                ->route('dashboard.news.index')
+                ->with('error', 'Failed to create news, try again!');
         }
 
     }
@@ -81,39 +82,26 @@ class NewsController extends Controller
         $news = News::findOrFail($id);
 
         if ($request->hasFile('image')) {
-            if (!Storage::exists("image/news/{$news->image}")) {
-                $deleted = Storage::delete("image/news/{$news->image}");
-        
-                if ($deleted) {
-                    $imagePath = $request->file('image');
-                    $imageName = date('Y-m-d_H:i:s_') . '&&' . $imagePath->getClientOriginalName();
-                    $path = 'image/news/' . $imageName;
-    
-                    $check = Storage::disk('public')->put($path, file_get_contents($imagePath));
-        
-                    if ($check) {
-                        $validatedData['image'] = $imageName;
-                        $news->update($validatedData);
-        
-                        return redirect()
-                            ->route('dashboard.news.index')
-                            ->with('success', 'Successfully updated News with image');
-                    }
-        
-                    return redirect()
-                        ->route('dashboard.news.index')
-                        ->with('error', 'Failed to update News image');
-                }
-        
-                return redirect()
-                    ->route('dashboard.news.index')
-                    ->with('error', 'Failed to delete old News image');
+            if (Storage::exists("image/news/{$news->image}")) {
+                Storage::delete("image/news/{$news->image}");
             }
+        
+            $currentTime = Carbon::now();
+            $formattedTime = $currentTime->format('Y-m-d_His');
+        
+            $imagePath = $request->file('image')->storeAs('image/news', $formattedTime . '_' . $request->file('image')->getClientOriginalName());
+            $validatedData['image'] = basename($imagePath);
+        
+            $news->update($validatedData);
+        
+            return redirect()
+                ->route('dashboard.news.index')
+                ->with('success', 'Successfully updated news with changing image');
         }
         $news->update($validatedData);
         return redirect()
             ->route('dashboard.news.index')
-            ->with('success', 'Successfully updated News without changing image');
+            ->with('success', 'Successfully updated news without changing image');
     }
 
     public function destroy($id)
@@ -121,23 +109,13 @@ class NewsController extends Controller
         $news = News::findOrFail($id);
 
         if (Storage::exists("image/news/{$news->image}")) {
-            $deleted = Storage::delete("image/news/{$news->image}");
-    
-            if ($deleted) {
-                $news->delete();
-
-                return redirect()
-                    ->route('dashboard.news.index')
-                    ->with('success', 'Successfully deleted News');
-            } else {
-                return redirect()
-                    ->route('dashboard.news.index')
-                    ->with('error', 'Failed to delete News image');
-            }
+            Storage::delete("image/news/{$news->image}");
         }
     
+        $news->delete();
+
         return redirect()
             ->route('dashboard.news.index')
-            ->with('error', 'Image not found for News');
+            ->with('success', 'Successfully deleted News');
     }
 }

@@ -1,3 +1,5 @@
+
+@section('title', 'About Us')
 @extends('layouts.main')
 @section('content')
 

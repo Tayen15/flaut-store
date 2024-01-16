@@ -1,5 +1,6 @@
-@extends('layouts.main')
 
+@section('title', $catalog->name)
+@extends('layouts.main')
 @section('content')
 <section id="detail-catalog" class="pt-16 mt-5">
      <div class="bg-white py-8">

@@ -1,6 +1,7 @@
 <!-- resources/views/news/create.blade.php -->
-@extends('layouts.dashboard')
 
+@section('title', 'Create News')
+@extends('layouts.dashboard')
 @section('admin')
 <section class="flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
     <!-- Page Header -->
@@ -20,7 +21,7 @@
                 </div>
                 <div>
                     <label class="text-black font-medium" for="image">Image <span class="font-light ml-2 text-xs text-red-600 ">Required</span></label>
-                    <input id="image" name="image" type="file" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" required>
+                    <input id="image" name="image" type="file" accept="image/jpg, image/png, image/jpeg" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" required>
                 </div>
             </div>
 
@@ -28,7 +29,7 @@
                 <label for="content" class="pb-2">Content<span class="font-light ml-2 text-xs text-red-600 ">Required</span></label>
                 <textarea id="content" name="content" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring default-height"></textarea>
             </div>
-            
+
             <div class="flex justify-end mt-6">
                 <button class="px-6 py-2 leading-5 mx-5 text-white transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:bg-gray-600" type="submit">Save</button>
                 <a href="{{ route('dashboard.news.index') }}" class="px-4 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-400 rounded-md hover:bg-gray-500 cursor-pointer focus:outline-none focus:bg-gray-600">Cancel</a>

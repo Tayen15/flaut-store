@@ -1,5 +1,6 @@
 <!-- resources/views/news/index.blade.php -->
 
+@section('title', 'News')
 @extends('layouts.main')
 
 @section('content')

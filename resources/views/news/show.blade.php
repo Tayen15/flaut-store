@@ -1,3 +1,5 @@
+
+@section('title', $news->title)
 @extends('layouts.main')
 @section('content')
 

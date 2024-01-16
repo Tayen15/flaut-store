@@ -1,5 +1,7 @@
-@extends('layouts.dashboard')
 
+
+@section('title', 'Edit ' . $catalog->name)
+@extends('layouts.dashboard')
 @section('admin')
 <section class="flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
     <!-- Page Header -->
@@ -47,8 +49,8 @@
                 </div>
 
                 <div>
-                    <label class="text-black font-medium" for="image">Image</label>
-                    <input id="image" name="image" type="file" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">
+                    <label class="text-black font-medium" for="image">Image <span class="font-light ml-2 text-xs text-red-600">Optional</span></label>
+                    <input id="image" name="image" type="file" accept="image/jpg, image/png, image/jpeg" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">
                 </div>
             </div>
 

@@ -1,5 +1,6 @@
 <!-- resources/views/layouts/main.blade.php -->
 
+@section('title', 'Catalog')
 @extends('layouts.main')
 
 @section('content')
@@ -18,11 +19,11 @@
     <div class="w-full bg-gray-300 h-px my-8 sm:my-10"></div>
 
     <!-- Card-Card -->
-    <div class="grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 lg:grid-cols-2 xl:grid-cols-4">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         @forelse($catalogs as $catalog)
             <div class="group relative">
                 <a href="{{ route('catalog.show', $catalog->id) }}">
-                <div class="mx-4 sm:mx-0 w-full sm:w-56 transform overflow-hidden rounded-lg bg-white shadow-md duration-300 hover:scale-105 hover:shadow-lg">
+                <div class="md:w-full lg:w-full transform overflow-hidden rounded-lg bg-white shadow-md duration-300 hover:scale-105 hover:shadow-lg">
                     <img class="h-56 sm:h-72 w-full object-cover object-center" src="{{ $catalog->image_url }}" alt="{{ $catalog->name }}" />
                     <div class="p-4">
                         <h2 class="mb-2 text-base sm:text   -lg font-medium text-gray-900">{{ $catalog->name }}</h2>
@@ -42,4 +43,17 @@
         @endforelse
     </div>
 </div>
+<style>
+    @media (max-width: 640px) {
+        .grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 425px) {
+        .grid {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+    }
+</style>
 @endsection

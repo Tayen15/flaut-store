@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carousel;
-use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class CarouselController extends Controller
 {
     public function index()
     {
-        $carouselImages = Carousel::all();
+        $carouselImages = Carousel::inRandomOrder()->take(3)->get();;
         return view('home', compact('carouselImages'));
     }
     
-    public function indexAdmin()
+    public function indexAdmin()    
     {
         $carousel = Carousel::paginate(4);
         return view('dashboard.carousel.index', compact('carousel'));
@@ -34,13 +34,12 @@ class CarouselController extends Controller
         ]);
     
         try {
-            $imagePath = $request->file('image');
-            $imageName = date('Y-m-d_H:i:s_') . $imagePath->getClientOriginalName();
-            $path = 'image/carousel/' . $imageName;
+            $currentTime = Carbon::now();
+            $formattedTime = $currentTime->format('Y-m-d_His');
+        
+            $imagePath = $request->file('image')->storeAs('image/carousel', $formattedTime . '_' . $request->file('image')->getClientOriginalName());
+            $validatedData['image'] = basename($imagePath);
 
-            Storage::disk('public')->put($path, file_get_contents($imagePath));
-
-            $validatedData['image'] = $imageName;
             Carousel::create($validatedData);
             
             return redirect()
@@ -75,35 +74,23 @@ class CarouselController extends Controller
         $carousel = Carousel::findOrFail($id);
 
         if ($request->hasFile('image')) {
-            if (!Storage::exists("image/carousel/{$carousel->image}")) {
-                $deleted = Storage::delete("image/carousel/{$carousel->image}");
-        
-                if ($deleted) {
-                    $imagePath = $request->file('image');
-                    $imageName = date('Y-m-d_H:i:s_') . $imagePath->getClientOriginalName();
-                    $path = 'image/carousel/' . $imageName;
-    
-                    $check = Storage::disk('public')->put($path, file_get_contents($imagePath));
-        
-                    if ($check) {
-                        $validatedData['image'] = $imageName;
-                        $carousel->update($validatedData);
-        
-                        return redirect()
-                            ->route('dashboard.carousel.index')
-                            ->with('success', 'Successfully updated carousel with image');
-                    }
-        
-                    return redirect()
-                        ->route('dashboard.carousel.index')
-                        ->with('error', 'Failed to update carousel image');
-                }
-        
-                return redirect()
-                    ->route('dashboard.carousel.index')
-                    ->with('error', 'Failed to delete old carousel image');
+            if (Storage::exists("image/carousel/{$carousel->image}")) {
+                Storage::delete("image/carousel/{$carousel->image}");
             }
+        
+            $currentTime = Carbon::now();
+            $formattedTime = $currentTime->format('Y-m-d_His');
+        
+            $imagePath = $request->file('image')->storeAs('image/carousel', $formattedTime . '_' . $request->file('image')->getClientOriginalName());
+            $validatedData['image'] = basename($imagePath);
+        
+            $carousel->update($validatedData);
+        
+            return redirect()
+                ->route('dashboard.carousel.index')
+                ->with('success', 'Successfully updated carousel with changing image');
         }
+
         $carousel->update($validatedData);
         return redirect()
             ->route('dashboard.carousel.index')
@@ -117,23 +104,14 @@ class CarouselController extends Controller
         $carousel = Carousel::findOrFail($id);
     
         if (Storage::exists("image/carousel/{$carousel->image}")) {
-            $deleted = Storage::delete("image/carousel/{$carousel->image}");
-    
-            if ($deleted) {
-                $carousel->delete();
-    
-                return redirect()
-                    ->route('dashboard.carousel.index')
-                    ->with('success', 'Successfully deleted Carousel');
-            } else {
-                return redirect()
-                    ->route('dashboard.carousel.index')
-                    ->with('error', 'Failed to delete Carousel image');
-            }
+            Storage::delete("image/carousel/{$carousel->image}");
         }
     
+        $carousel->delete();
+
         return redirect()
             ->route('dashboard.carousel.index')
-            ->with('error', 'Image not found for Carousel');
-    }   
+            ->with('success', 'Successfully deleted Carousel');
+    
+    }
 }
