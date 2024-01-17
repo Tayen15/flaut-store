@@ -129,6 +129,7 @@
     const quantityInput = document.getElementById("quantity");
     let selectedSize = '';
     let quantity = 1;
+    let price, subtotal;
 
     sizeLabels.forEach(label => {
         label.addEventListener('click', () => {
@@ -162,17 +163,16 @@
     });
 
     function updateSubtotal() {
-        const price = {{ $catalog->price }};
-        const subtotal = price * quantity;
+        price = {{ $catalog->price }};
+        subtotal = price * quantity;
         document.getElementById('subtotal').innerText = `Subtotal: Rp ${subtotal.toLocaleString()}`;
     }
 
     orderButton.addEventListener('click', () => {
         const catalogName = decodeURIComponent('{{ $catalog->name }}');
-        const total = subtotal.toLocaleString();
-        const message = `Order ${catalogName}\nSize: ${selectedSize}\nQuantity: ${quantity}\nTotal: Rp ${total}`;
+        const message = `Order ${catalogName}\nSize: ${selectedSize}\nQuantity: ${quantity}\nTotal: Rp ${subtotal.toLocaleString()} `;
         const whatsappLink = `https://wa.me/6282299950149?text=${encodeURIComponent(message)}`;
-        window.location.href = whatsappLink;
+        window.open(whatsappLink,  '_blank');
     });
 
     const toggleDescription = document.getElementById('toggleDescription');
