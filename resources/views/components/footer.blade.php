@@ -38,7 +38,7 @@
 <div class="mx-6 py-10 text-center md:text-left px-20">
      <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div class=" mt-16">
-               <p>Kunjungi toko offline kami sekarang dan temukan penawaran yang menggiurkan!</p>
+               <p>Kunjungi toko offline kami sekarang </p>
                <div class="flex justify-center mt-4">
                     <a href="#!" class="mr-6 text-white-600 dark:text-white-200">
                     <svg
