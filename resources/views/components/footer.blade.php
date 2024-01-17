@@ -140,7 +140,7 @@
                     class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
                     Contact
                </h6>
-               <a href="https://maps.app.goo.gl/FsSfRbWJQuitLEMv7?g_st=ic">
+               <a href="https://maps.app.goo.gl/FsSfRbWJQuitLEMv7?g_st=ic" target="_blank">
                     <p class="mb-4 flex items-center justify-center md:justify-start">
                          <svg
                          xmlns="http://www.w3.org/2000/svg"
