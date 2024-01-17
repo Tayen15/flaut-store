@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "laravel": "concurrently \"php artisan serve --host=192.168.50.83 --port=5174\" \"npm run dev -- --host=192.168.50.83\""
+        "laravel": "concurrently \"php artisan serve --host=192.168.50.7 --port=5174\" \"npm run dev -- --host=192.168.50.7\""
     },
     "devDependencies": {
         "autoprefixer": "^10.4.16",
