@@ -5,7 +5,7 @@
 @section('content')
 
 {{-- Carousel --}}
-<section id="carousel" class="relative">
+<section id="main-banner" class="relative">
     <div class="carousel-container flex flex-col h-screen items-center justify-center bg-no-repeat bg-cover" style="background-image: url('https://cdn.discordapp.com/attachments/976824443743645696/1192125787650932856/Flaut.jpg?ex=65a7f0a8&is=65957ba8&hm=c90f5a7586c6bffda6c1734f203e22aa8ffd82118b49aff1f0212d8113aae0fd&'); background-size: cover;">
         <div class="order-2 text-center text-white font-libre-baskerville">
             <h1 id="flaut" class="text-5xl font-bold mb-4 text-orange-600">F L A U T.</h1>
@@ -15,41 +15,49 @@
     </div>
 </section>
 
-{{-- <section id="catalog" class="text-center mt-10">
-    <h2 class="text-2xl font-semibold mb-4 uppercase">Recommendation Style</h2>
-    <div class="bg-white">
-        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-            <div class="flex justify-between items-center mb-2">
-                <h2 class="text-2xl font-bold tracking-tight text-gray-900">Recommendation Catalog</h2>
-                <a href="{{ route('catalog.create') }}" class="text-white bg-orange-600 duration-300 hover:bg-orange-700 px-4 py-2 rounded-md text-sm font-medium">Add Catalog</a>
-            </div>
-            <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                @foreach($catalogs as $catalog)
-                    <div class="group relative">
-                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:overflow-hidden group-hover:shadow-xl lg:h-80">
-                            
-                        </div>
-                        <div class="mt-4 flex justify-between">
-                            <div>
-                                <h3 class="text-sm text-gray-700">
-                                    <a href="{{ route('catalog.show', $catalog->id) }}">
-                                        {{ $catalog->name }}
-                                    </a>
-                                </h3>
+<section id="catalog" class="text-center my-12">
+    <h2 class="text-2xl font-bold mb-4 uppercase">Collection</h2>
+
+    <div class="relative max-w-screen-xl mx-auto">
+        <div id="carousel" class="overflow-x-auto w-full">
+            <div class="flex transition-transform ease-in-out duration-300 transform">
+                @foreach ($catalogs as $catalog)
+                    <div id="#{{ $catalog->id }}" class="w-full h-full md:w-1/2 lg:w-1/3 xl:w-full px-2 transform left-5 right-5">
+                        <a href="{{ route('catalog.show', $catalog->id) }}">
+                            <div class="mx-1 w-96 lg:w-[250px] transform overflow-hidden rounded-lg bg-white duration-300 hover:scale-105 hover:shadow-lg">
+                                <img class="object-cover object-center w-full h-full lg:w-[250px] lg:h-[300px] md:h-[300px] xl:h-[350px]" src="{{ $catalog->image_url }}" alt="{{ $catalog->name }}">
+                                <div class="p-4 pr-2">
+                                    <h2 class="mb-2 text-lg sm:text-lg lg:text-base xl:text-lg font-medium text-gray-900">{{ $catalog->name }}</h2>
+                                    <div class="flex items-center">
+                                        <p class="mr-3 text-lg sm:text-lg lg:text-base xl:text-lg font-semibold text-orange-600">Rp {{ number_format($catalog->price, 0, ',', '.') }}</p>
+                                        @php
+                                            $discountTotal = $catalog->price * 1.20;
+                                        @endphp
+                                        <p class="text-lg sm:text-lg lg:text-base xl:text-lg font-medium text-gray-500 line-through">Rp {{ number_format($discountTotal, 0, ',', '.') }}</p>
+                                    </div>
+                                </div>
                             </div>
-                            <p class="text-sm font-medium text-gray-900">Rp{{ number_format($catalog->price, 0, ',', '.') }}</p>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
             </div>
         </div>
+
+        {{-- Carousel Navigation --}}
+        <button id="prevBtn" href="" class="hidden xl:inline absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-600 focus:outline-none">
+            &#10094;
+        </button>
+        <button id="nextBtn" class="hidden xl:inline absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-600 focus:outline-none">
+            &#10095;
+        </button>
     </div>
-</section> --}}
+</section>
 
 
-<section id="banner" class="text-center mt-10">
-    <h2 class="text-2xl font-bold mb-4 uppercase">Our Style</h2>
-    <div class="flex lg:px-1 py-3 justify-center items-center md:py-2 md:px-2">
+
+<section id="banner" class="text-center mt-15">
+    <h2 class="text-2xl font-bold my-7 uppercase">Our Style</h2>
+    <div class="flex lg:px-1 py-3 justify-center items-center md:py-2 md:px-2 my-3">
         @foreach ($carouselImages as $image)
             <div class="max-w-xl rounded overflow-hidden mx-5">
                 <img src="{{ $image->image_url }}" alt="{{ $image->name }}" class="w-full md:w-72 xl:w-full">
@@ -88,4 +96,52 @@
     }
 </style>
 
+<script>
+    let currentIndex = 0;
+    const items = document.querySelectorAll('#carousel > div');
+    const totalItems = items.length;
+
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        if (currentIndex < totalItems - 1) {
+            currentIndex++;
+        } else {
+            currentIndex = 0;
+        }
+        updateCarousel();
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = totalItems - 1;
+        }
+        updateCarousel();
+    });
+
+    function updateCarousel() {
+        const newTransformValue = -100 * currentIndex + '%';
+        document.querySelector('#carousel > div').style.transform = `translateX(${newTransformValue})`;
+    }
+
+    // Toggle visibility of prev/next buttons based on screen size
+    function updateBtnVisibility() {
+        if (window.innerWidth >= 1024) {
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+        } else {
+            prevBtn.style.display = 'block';
+            nextBtn.style.display = 'block';
+        }
+    }
+
+    // Initial setup
+    updateBtnVisibility();
+
+    // Update visibility on window resize
+    window.addEventListener('resize', updateBtnVisibility);
+</script>
 @endsection
