@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carousel;
+use App\Models\Catalog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
@@ -12,7 +13,8 @@ class CarouselController extends Controller
     public function index()
     {
         $carouselImages = Carousel::inRandomOrder()->take(3)->get();;
-        return view('home', compact('carouselImages'));
+        $catalogs = Catalog::inRandomOrder()->take(4)->get();
+        return view('home', compact('carouselImages', 'catalogs'));
     }
     
     public function indexAdmin()    
