@@ -5,10 +5,10 @@
              <div class="w-full md:w-10/12 lg:w-11/12 xl:w-10/12">
                  <div class="grid items-center gap-x-6 lg:grid-cols-2">
                      <div class="mb-10 lg:mb-0">
-                         <h2 class="text-3xl font-bold dark:text-white">
+                         <h2 class="text-3xl font-bold text-white">
                              Do not miss any updates.
                              <br />
-                             <span class="text-primary dark:text-primary-400">Subscribe to the newsletter</span>
+                             <span class="text-primary text-primary-400"><span class=" text-orange-600">Subscribe</span> to the newsletter</span>
                          </h2>
                      </div>
                      <div class="mb-6 md:mb-0 md:flex md:flex-col">
