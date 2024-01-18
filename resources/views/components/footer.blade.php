@@ -1,5 +1,5 @@
 
-<div class="mt-14 mx-auto md:px-6 p-8 bg-fixed w-full mb-5 bg-cover" style="background-image: url('https://cdn.discordapp.com/attachments/976824443743645696/1194923197624238131/download_1.jpeg?ex=65b21df2&is=659fa8f2&hm=483da8ae0553a06bb2c0d7a035a361f3d33c050798a62eae1e62855bbc826758&')">
+<div class="mt-14 mx-auto h-96 md:h-60 md:px-6 p-8 bg-fixed w-full md:mb-5 bg-cover" style="background-image: url('https://cdn.discordapp.com/attachments/976824443743645696/1194923197624238131/download_1.jpeg?ex=65b21df2&is=659fa8f2&hm=483da8ae0553a06bb2c0d7a035a361f3d33c050798a62eae1e62855bbc826758&')">
      <section class="mb-32 text-center lg:text-left" id="newsletter">
          <div class="flex flex-wrap justify-center mt-3">
              <div class="w-full md:w-10/12 lg:w-11/12 xl:w-10/12">
@@ -12,7 +12,7 @@
                          </h2>
                      </div>
                      <div class="mb-6 md:mb-0 md:flex md:flex-col">
-                         <div class="relative mb-3 w-full md:mr-3 xl:w-96" data-te-input-wrapper-init>
+                         <div class="relative mb-3 w-full md:mr-3 xl:w-[490px]" data-te-input-wrapper-init>
                              <input type="text"
                                  class="peer block min-h-[auto] w-full rounded border-0 bg-white py-[0.32rem] px-3 leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-black dark:placeholder:text-black dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                                  id="exampleFormControlInput2" placeholder="Enter your email" />
@@ -22,7 +22,7 @@
                              </label>
                          </div>
                          <button type="submit"
-                             class="inline-block rounded bg-orange-500 px-5 pt-3 pb-2.5 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-orange-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-orange-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-orange-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                             class="inline-block rounded bg-orange-500 px-24 pt-3 pb-2.5 xl:w-[490px] text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-orange-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-orange-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-orange-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
                              data-te-ripple-init data-te-ripple-color="light">
                              Subscribe
                          </button>
@@ -35,10 +35,12 @@
  
 
 
-<div class="mx-6 py-10 text-center md:text-left px-20">
-     <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          <div class=" mt-16">
-               <p>Kunjungi toko offline kami sekarang </p>
+<div class="mx-6 md:py-10 text-center md:text-left px-20">
+     <div class="grid justify-center gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div class="mt-5 md:mt-16">
+               <p class="hidden sm:block">Kunjungi toko offline kami sekarang yang dapat anda dapatkan berada didpatkan</p>
+
+               {{-- Icon Sosial Media --}}
                <div class="flex justify-center mt-4">
                     <a href="#!" class="mr-6 text-white-600 dark:text-white-200">
                     <svg
@@ -86,8 +88,9 @@
           </div>
 
           <!-- Products section -->
-          <div class="">
-               <h6 class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+          <button class="w-full flex justify-center font-semibold uppercase sm:hidden" id="toggleProducts"><span>products <i class="fa-solid fa-angle-up ml-3" id="toggleIcon"></i></span></button>
+          <div class="hidden md:block" id="sectionProducts">
+               <h6 class="hidden md:block mb-4 flex justify-center font-semibold uppercase  md:justify-start">
                     Products
                </h6>
                <p class="mb-4">
@@ -111,11 +114,11 @@
                     </a>
                </p>
           </div>
- 
           <!-- Useful links section -->
-          <div class="">
+          <button class="w-full flex justify-center font-semibold uppercase sm:hidden" id="toggleLinks"><span>useful links <i class="fa-solid fa-angle-up ml-3" id="toggleIcon"></i></span></button>
+          <div class="hidden md:block" id="sectionLinks">
                <h6
-                    class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+                    class="hidden sm:block mb-4 flex justify-center font-semibold uppercase md:justify-start">
                     Useful links
                </h6>
                <p class="mb-4">
@@ -135,7 +138,7 @@
                </p>
           </div>
           <!-- Contact section -->
-          <div>
+          <div class="hidden sm:block">
                <h6
                     class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
                     Contact
@@ -195,3 +198,34 @@
 <div class="bg-black-200 p-6 text-center dark:bg-black-700">
      <span class=" "> &copy; 2024 <span class="font-semibold">Flaut.</span></span>
 </div>
+
+<style>
+    #toggleIcon {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    #toggleProducts.active #toggleIcon {
+        transform: rotate(180deg);
+    }
+    #toggleLinks.active #toggleIcon {
+        transform: rotate(180deg);
+    }
+</style>
+
+<script>
+     const toggleProducts = document.getElementById('toggleProducts');
+     const sectionProducts = document.getElementById('sectionProducts');
+
+     toggleProducts.addEventListener('click', () => {
+        sectionProducts.classList.toggle('hidden');
+        toggleProducts.classList.toggle('active');
+    });
+    
+    const toggleLinks = document.getElementById('toggleLinks');
+    const sectionLinks = document.getElementById('sectionLinks');
+
+     toggleLinks.addEventListener('click', () => {
+          sectionLinks.classList.toggle('hidden');
+          toggleLinks.classList.toggle('active');
+     });
+</script>
