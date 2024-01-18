@@ -38,7 +38,7 @@
 <div class="mx-6 md:py-10 text-center md:text-left px-20">
      <div class="grid justify-center gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div class="mt-5 md:mt-16">
-               <p class="hidden sm:block">Kunjungi toko offline kami sekarang yang dapat anda dapatkan berada didpatkan</p>
+               <p class="hidden sm:block">Kunjungi toko offline kami sekarang mendapatkan diskon yang menggiurkan !</p>
 
                {{-- Icon Sosial Media --}}
                <div class="flex justify-center mt-4">
