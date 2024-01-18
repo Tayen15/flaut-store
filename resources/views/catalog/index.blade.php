@@ -1,10 +1,10 @@
-<!-- resources/views/layouts/main.blade.php -->
+{{-- resources/views/catalog/index.blade.php --}}
 
 @section('title', 'Catalog')
 @extends('layouts.main')
 
 @section('content')
-<div class="max-w-7xl mx-auto p-4 sm:p-6 md:p-8 mt-16">
+<div class="w-max-7xl mx-auto p-4 sm:p-6 md:p-8 mt-16">
     <!-- Pencarian -->
     <div class="mb-4 relative">
         <form action="{{ route('catalog.index') }}" method="GET">
@@ -16,23 +16,23 @@
     </div>
 
     <!-- Pemisah -->
-    <div class="w-full bg-gray-300 h-px my-8 sm:my-10"></div>
+    <div class="w-full bg-gray-300 h-px my-2 md:my-8 sm:my-10"></div>
 
     <!-- Card-Card -->
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         @forelse($catalogs as $catalog)
             <div class="group relative">
                 <a href="{{ route('catalog.show', $catalog->id) }}">
-                <div class="md:w-full lg:w-full transform overflow-hidden rounded-lg bg-white shadow-md duration-300 hover:scale-105 hover:shadow-lg">
-                    <img class="h-56 sm:h-72 w-full object-cover object-center" src="{{ $catalog->image_url }}" alt="{{ $catalog->name }}" />
-                    <div class="p-4">
+                <div class="mx-3 md:w-full lg:w-full transform overflow-hidden rounded-lg bg-white shadow-md duration-300 hover:scale-105 hover:shadow-lg">
+                    <img class="w-full h-96 sm:h-72 xl:h-80 2xl:h-[450px] object-cover object-center" src="{{ $catalog->image_url }}" alt="{{ $catalog->name }}" />
+                    <div class="p-4 pr-2">
                         <h2 class="mb-2 text-lg sm:text-lg font-medium text-gray-900">{{ $catalog->name }}</h2>
                         <div class="flex items-center">
-                            <p class="mr-2 text-base sm:text-lg font-semibold text-orange-600">Rp {{ number_format($catalog->price, 0, ',', '.') }}</p>
+                            <p class="mr-2 text-lg sm:text-xl md:text-sm xl:text-xl font-semibold text-orange-600">Rp {{ number_format($catalog->price, 0, ',', '.') }}</p>
                             @php
                                 $discountTotal = $catalog->price * 1.20;
                             @endphp
-                            <p class="text-sm sm:text-base font-medium text-gray-500 line-through">Rp {{ number_format($discountTotal, 0, ',', '.') }}</p>
+                            <p class="text-lg sm:text-xl md:text-sm font-medium xl:text-xl text-gray-500 line-through">Rp {{ number_format($discountTotal, 0, ',', '.') }}</p>
                         </div>
                     </div>
                 </div>
@@ -43,22 +43,4 @@
         @endforelse
     </div>
 </div>
-<style>
-    @media (max-width: 640px) {
-        .grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-    }
-
-    @media (max-width: 425px) {
-        .grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-        
-        .flex {
-            display: grid;
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-        }
-    }
-</style>
 @endsection
