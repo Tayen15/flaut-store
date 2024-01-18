@@ -3,23 +3,23 @@
 @extends('layouts.dashboard')
 @section('admin')
 <section id="news" class="flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
-<!-- Page Header -->
-<div class="bg-gray-800 pt-3">
-    <div class="flex items-center justify-between rounded-tl-3xl bg-gradient-to-r from-blue-900 to-orange-800">
-        <div class=" p-4 shadow text-2xl text-white">
-            <h1 class="font-bold pl-2">News</h1>
+    <!-- Page Header -->
+    <div class="bg-gray-800 pt-3">
+        <div class="flex items-center justify-between rounded-tl-3xl bg-gradient-to-r from-blue-900 to-orange-800">
+            <div class=" p-4 shadow text-2xl text-white">
+                <h1 class="font-bold pl-2">News</h1>
+            </div>
+            <a href="{{ route('dashboard.news.create') }}" class="flex items-center text-white mr-10">
+                <i class="fa-solid fa-plus mr-2"></i> Add News
+            </a>
         </div>
-        <a href="{{ route('dashboard.news.create') }}" class="flex items-center text-white mr-10">
-            <i class="fa-solid fa-plus mr-2"></i> Add News
-        </a>
     </div>
-</div>
 
 
 
     <!-- List Table News -->
     <div class="px-2 my-2 md:px-10 max-h-screen w-full overflow-x-auto">
-        <table class="w-full table-auto text-left">
+        <table id="newsTable" class="w-full table-auto text-left">
             <thead>
                 <tr>
                     <th class="p-2 md:p-4 border-b border-blue-gray-50">ID</th>
@@ -126,6 +126,10 @@
             var lightbox = document.getElementById('lightbox');
             lightbox.classList.add('hidden');
         }
+
+        $(document).ready(function () {
+            $('#newsTable').DataTable();
+        });
     </script>
 </section>
 @endsection

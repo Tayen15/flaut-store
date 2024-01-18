@@ -18,7 +18,7 @@
 
     <!-- List Table Catalog -->
     <div class="px-2 my-2 md:px-10 max-h-screen w-full overflow-x-auto">
-        <table class="w-full table-auto text-left">
+        <table id="catalogTable" class="w-full table-auto text-left">
             <thead>
                 <tr>
                     <th class="p-2 md:p-4 border-b border-blue-gray-50">ID</th>
@@ -124,6 +124,10 @@
             var lightbox = document.getElementById('lightbox');
             lightbox.classList.add('hidden');
         }
+
+        $(document).ready(function () {
+            $('#catalogTable').DataTable();
+        });
     </script>
 </section>
 @endsection
