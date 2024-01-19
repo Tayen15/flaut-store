@@ -27,13 +27,14 @@
                             <div class="mx-1 w-96 lg:w-[250px] transform overflow-hidden rounded-lg bg-white duration-300 hover:scale-105 hover:shadow-lg">
                                 <img class="object-cover object-center w-full h-full lg:w-[250px] lg:h-[300px] md:h-[300px] xl:h-[300px]" src="{{ $catalog->image_url }}" alt="{{ $catalog->name }}">
                                 <div class="p-4 pr-2">
-                                    <h2 class="mb-2 text-lg sm:text-lg lg:text-base xl:text-lg font-medium text-gray-900">{{ $catalog->name }}</h2>
+                                    <h2 class="mb-2 text-lg sm:text-lg lg:text-base xl:text-lg font-medium text-gray-900 2xl:text-sm">{{ \Illuminate\Support\Str::limit(strip_tags($catalog->name), 30) }}</h2>
+                                    
                                     <div class="flex items-center">
-                                        <p class="mr-3 text-lg sm:text-lg lg:text-base xl:text-lg font-semibold text-orange-600">Rp {{ number_format($catalog->price, 0, ',', '.') }}</p>
+                                        <p class="mr-3 text-lg sm:text-lg lg:text-base xl:text-lg font-semibold text-orange-600 2xl:text-base">Rp {{ number_format($catalog->price, 0, ',', '.') }}</p>
                                         @php
                                             $discountTotal = $catalog->price * 1.20;
                                         @endphp
-                                        <p class="text-lg sm:text-lg lg:text-base xl:text-lg font-medium text-gray-500 line-through">Rp {{ number_format($discountTotal, 0, ',', '.') }}</p>
+                                        <p class="text-lg sm:text-lg lg:text-base xl:text-lg font-medium text-gray-500 line-through 2xl:text-base">Rp {{ number_format($discountTotal, 0, ',', '.') }}</p>
                                     </div>
                                 </div>
                             </div>
