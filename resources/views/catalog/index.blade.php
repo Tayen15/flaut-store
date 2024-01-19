@@ -24,9 +24,9 @@
             <div class="group relative">
                 <a href="{{ route('catalog.show', $catalog->id) }}">
                 <div class="mx-3 md:w-full lg:w-full transform overflow-hidden rounded-lg bg-white shadow-md duration-300 hover:scale-105 hover:shadow-lg">
-                    <img class="w-full h-96 sm:h-72 xl:h-80 2xl:h-[450px] object-cover object-center" src="{{ $catalog->image_url }}" alt="{{ $catalog->name }}" />
+                    <img class="w-full h-96 sm:h-72 xl:h-80 2xl:h-[250px] object-cover object-center" src="{{ $catalog->image_url }}" alt="{{ $catalog->name }}" />
                     <div class="p-4 pr-2">
-                        <h2 class="mb-2 text-lg sm:text-lg font-medium text-gray-900">{{ $catalog->name }}</h2>
+                        <h2 class="mb-2 text-lg sm:text-lg font-medium text-gray-900">{{ \Illuminate\Support\Str::limit(strip_tags($catalog->name), 25) }}</h2>
                         <div class="flex items-center">
                             <p class="mr-2 text-lg sm:text-xl md:text-sm xl:text-xl font-semibold text-orange-600">Rp {{ number_format($catalog->price, 0, ',', '.') }}</p>
                             @php
