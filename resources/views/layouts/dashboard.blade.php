@@ -56,7 +56,7 @@
                         <li class="flex-1 md:flex-none md:mr-3">
                             <a class="inline-block py-2 px-4 text-white no-underline" href="#">Admin</a>
                         </li>
-                        <li class="flex-1 md:flex-none md:mr-3">
+                        <li class="flex-2 md:flex-none md:mr-3">
                             <div class="relative inline-block">
                                 <button onclick="toggleDD('myDropdown')" class="drop-button text-white py-2 px-2"> <span class="pr-2"><i class="em em-robot_face"></i></span> Hi, {{ Auth::user()->name }} <svg class="h-3 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg></button>
