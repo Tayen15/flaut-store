@@ -20,31 +20,10 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::middleware('guest')->group(function () {
+Route::group(['middleware' => 'web'], function () {
     Route::get('/auth', [AuthController::class, 'index'])->name('login');
     Route::post('/auth', [AuthController::class, 'postLogin'])->name('auth');
 
-    Route::get('/', function () {
-        return view('home');
-    })->name('home');
-    
-    Route::get('/about-us', function () {
-        return view(('about-us'));
-    })->name('about-us');
-    
-    Route::resource('catalog', CatalogController::class);
-    Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
-    Route::get('/catalog/create', [CatalogController::class, 'create'])->name('catalog.create');
-    
-    Route::resource('news', NewsController::class);
-    Route::get('/news', [NewsController::class, 'index'])->name('news.index');
-    Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
-    
-    Route::resource('carousel', CarouselController::class);
-    Route::get('/', [CarouselController::class, 'index'])->name('home');
-    Route::get('/carousel/create', [CarouselController::class, 'create'])->name('carousel.create');
-    
-    Route::resource('profile', ProfileController::class);
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -87,7 +66,27 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 
+Route::get('/', function () {
+    return view('home');
+})->name('home');
 
+Route::get('/about-us', function () {
+    return view(('about-us'));
+})->name('about-us');
+
+Route::resource('catalog', CatalogController::class);
+Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
+Route::get('/catalog/create', [CatalogController::class, 'create'])->name('catalog.create');
+
+Route::resource('news', NewsController::class);
+Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
+
+Route::resource('carousel', CarouselController::class);
+Route::get('/', [CarouselController::class, 'index'])->name('home');
+Route::get('/carousel/create', [CarouselController::class, 'create'])->name('carousel.create');
+
+Route::resource('profile', ProfileController::class);
 
 Route::get('/test-database', function () {
     try {

@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div class="px-6 py-2">
+            <div class="lg:px-6 py-2">
                 <div class="font-normal text-xl mb-2 text-center">{{ $item->title }}</div>
                 <div class="font-normal text-medium mb-2 text-center">{{ \Illuminate\Support\Str::limit(strip_tags($item->content), 50) }}</div>
             </div>
