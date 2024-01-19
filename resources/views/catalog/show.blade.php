@@ -73,18 +73,22 @@
                         <a href="javascript:void(0);" id="orderButton" target="_blank" class="bg-green-500 text-white py-4 px-14 md:py-2 md:px-8 md:mt-8 rounded-md inline-block lg:py-2 lg:px-12">Order via WhatsApp <i class="fa-brands fa-whatsapp ml-2"></i></a>
                     </div>
                 </div>
+
+                <div class="flex items-center sm:hidden justify-center border-b-2 border-white-200 p-6 dark:border-white-500 lg:justify-between"></div>
                 
                 <!-- Button Toggle Description -->
-                <div class="container flex mt-10">
+                <div class="container flex">
                     <button class="justify-center text-black py-2 mt-4 mx-auto md:mb-0 md:mt-0 inline-block md:hidden" id="toggleDescription"><span class="text-lg font-semibold">Description <i class="fa-solid fa-angle-up ml-3" id="toggleIcon"></i></span></button>
                 </div>
-                    
+                
+                
                 <!-- Deskripsi Katalog -->
-                <div class="mx-5 hidden md:block" id="descriptionContainer">
-                    <h2 class="text-xl text-center font-semibold mb-4">Description</h2>
-                    <hr class="my-5">
+                <div class="lg:mx-5 md:my-5 hidden md:block" id="descriptionContainer">
+                    <h2 class="text-xl text-center font-semibold mb-4 lg:mb-8">Description</h2>
                     <p class="text-gray-700">{!! $catalog->description !!}</p>
                 </div>
+                
+                <div class="flex items-center sm:hidden justify-center border-b-2 border-white-200 p-6 dark:border-white-500 lg:justify-between"></div>
             </div>
       </div>
       
@@ -108,7 +112,7 @@
         border-color: #1f2937; /* Warna sesuai keinginan Anda saat terpilih */
     }
 
-    @media (max-width: 426px) {
+    @media (max-width: 768px) {
         .text-xl {
             display: none;
         }
