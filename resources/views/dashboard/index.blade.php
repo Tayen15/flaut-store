@@ -36,6 +36,16 @@
                             </p>
                         </div>
                     </div>
+
+                    <!-- Total Banner Card -->
+                    <div class="w-full md:w-1/2 xl:w-1/4 p-6">
+                        <div class="bg-gradient-to-b from-blue-200 to-blue-100 border-b-4 border-blue-600 rounded-lg shadow-xl p-5">
+                            <h2 class="font-bold text-xl mb-2 text-gray-800">Total Banner</h2>
+                            <p class="text-gray-600 text-lg">
+                                {{ \App\Models\Carousel::count() }} <!-- Assuming your Carousel model is in the "App\Models" namespace -->
+                            </p>
+                        </div>
+                    </div>
     
                     <!-- Total Users Card -->
                     <div class="w-full md:w-1/2 xl:w-1/4 p-6">
@@ -43,16 +53,6 @@
                             <h2 class="font-bold text-xl mb-2 text-gray-800">Total Users</h2>
                             <p class="text-gray-600 text-lg">
                                 {{ \App\Models\User::count() }} <!-- Assuming your User model is in the "App\Models" namespace -->
-                            </p>
-                        </div>
-                    </div>
-    
-                    <!-- Total Banner Card -->
-                    <div class="w-full md:w-1/2 xl:w-1/4 p-6">
-                        <div class="bg-gradient-to-b from-blue-200 to-blue-100 border-b-4 border-blue-600 rounded-lg shadow-xl p-5">
-                            <h2 class="font-bold text-xl mb-2 text-gray-800">Total Banner</h2>
-                            <p class="text-gray-600 text-lg">
-                                {{ \App\Models\Carousel::count() }} <!-- Assuming your Carousel model is in the "App\Models" namespace -->
                             </p>
                         </div>
                     </div>

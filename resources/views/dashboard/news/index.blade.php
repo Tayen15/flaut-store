@@ -17,7 +17,7 @@
 
 
 
-    <!-- List Table News -->
+<!-- List Table News -->
     <div class="px-2 my-2 md:px-10 max-h-screen w-full overflow-x-auto">
         <table id="newsTable" class="w-full table-auto text-left">
             <thead>
