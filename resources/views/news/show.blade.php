@@ -47,7 +47,7 @@
                     <ul class="list-none pl-1">
                         @foreach ($relatedArticles as $article)
                             <li class="mb-2">
-                                <a href="#" class="text-blue-500 hover:underline">{{ $article->title }}</a>
+                                <a href="{{ route('news.show', $article->id) }}" class="text-blue-500 hover:underline">{{ $article->title }}</a>
                             </li>
                         @endforeach
                     </ul>
