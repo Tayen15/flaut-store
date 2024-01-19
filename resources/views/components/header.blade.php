@@ -20,11 +20,11 @@
                 <span class="absolute -inset-0.5"></span>
                 <span class="sr-only">Toggle menu</span>
                 <!-- Icon when menu is closed -->
-                <svg class="block h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg id="menu-closed" class="block h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
                 </svg>
                 <!-- Icon when menu is open -->
-                <svg class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg id="menu-open" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
@@ -46,10 +46,17 @@
     document.addEventListener("DOMContentLoaded", function () {
         const mobileMenuBtn = document.getElementById("mobile-menu-btn");
         const mobileMenu = document.getElementById("mobile-menu");
+        const menuOpenIcon = document.getElementById("menu-open");
+        const menuClosedIcon = document.getElementById("menu-closed");
+
         mobileMenu.classList.toggle("hidden");
 
         mobileMenuBtn.addEventListener("click", function () {
             mobileMenu.classList.toggle("hidden");
+            menuOpenIcon.classList.toggle("hidden");
+            menuClosedIcon.classList.toggle("hidden");
+
+            mobileMenuBtn.style.transform = mobileMenu.classList.contains("hidden") ? "rotate(0deg)" : "rotate(-90deg)";
         });
     });
 </script>
