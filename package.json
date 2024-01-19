@@ -4,7 +4,11 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
+<<<<<<< HEAD
         "laravel": "concurrently \"php artisan serve\" \"npm run dev\""
+=======
+        "laravel": "concurrently \"php artisan serve \" \"npm run dev \""
+>>>>>>> 7f884e276d97d9a0d8ed0b1c7b6efca5990fe7af
     },
     "devDependencies": {
         "autoprefixer": "^10.4.16",
