@@ -22,8 +22,8 @@
                             @php
                                 $discountTotal = $catalog->price * 1.20;
                             @endphp
-                            <p class="text-xl font-medium text-gray-800 mb-2 line-through">Rp {{ number_format($discountTotal, 0, ',', '.') }}</p>
-                            <p class="text-xl font-medium text-orange-600  mb-2 mx-4">Rp {{ number_format($catalog->price, 0, ',', '.') }}</p>
+                            <p class="md:text-xl font-medium text-gray-800 mb-2 line-through">Rp {{ number_format($discountTotal, 0, ',', '.') }}</p>
+                            <p class="md:text-xl font-medium text-orange-600  mb-2 mx-4">Rp {{ number_format($catalog->price, 0, ',', '.') }}</p>
                         </div>
                 
                         <div class="my-4">
