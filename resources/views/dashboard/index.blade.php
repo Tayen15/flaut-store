@@ -22,6 +22,7 @@
                 <!-- Total Catalog Card -->
                 <div class="w-full md:w-1/2 xl:w-1/4 p-6">
                     <div class="bg-gradient-to-b from-green-200 to-green-100 border-b-4 border-green-600 rounded-lg shadow-xl p-5">
+                    <a href="{{ route('dashboard.catalog.index') }}" >
                         <h2 class="font-bold text-xl mb-2 text-gray-800">Total Catalog</h2>
                         <p class="text-gray-600 text-lg">
                             {{ \App\Models\Catalog::count() }} <!-- Assuming your Catalog model is in the "App\Models" namespace -->
@@ -32,6 +33,7 @@
                 <!-- Total News Card -->
                 <div class="w-full md:w-1/2 xl:w-1/4 p-6">
                     <div class="bg-gradient-to-b from-pink-200 to-pink-100 border-b-4 border-pink-500 rounded-lg shadow-xl p-5">
+                    <a href="{{ route('dashboard.news.index') }}" >
                         <h2 class="font-bold text-xl mb-2 text-gray-800">Total News</h2>
                         <p class="text-gray-600 text-lg">
                             {{ \App\Models\News::count() }} <!-- Assuming your News model is in the "App\Models" namespace -->
@@ -42,6 +44,8 @@
                 <!-- Total Banner Card -->
                 <div class="w-full md:w-1/2 xl:w-1/4 p-6">
                     <div class="bg-gradient-to-b from-blue-200 to-blue-100 border-b-4 border-blue-600 rounded-lg shadow-xl p-5">
+                    <a href="{{ route('dashboard.carousel.index') }}" >
+
                         <h2 class="font-bold text-xl mb-2 text-gray-800">Total Banner</h2>
                         <p class="text-gray-600 text-lg">
                             {{ \App\Models\Carousel::count() }} <!-- Assuming your Carousel model is in the "App\Models" namespace -->
