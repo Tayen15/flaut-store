@@ -57,6 +57,7 @@
     <!-- Total Users Card -->
     <div class="w-full md:w-1/2 lg:w-1/4 p-6">
         <div class="bg-gradient-to-b from-yellow-200 to-yellow-100 border-b-4 border-yellow-600 rounded-lg shadow-xl p-5">
+            <a href="{{ route('dashboard.profile.index') }}">
             <h2 class="font-bold text-xl mb-2 text-gray-800">Total Users</h2>
             <p class="text-gray-600 text-lg">
                 {{ \App\Models\User::count() }}
