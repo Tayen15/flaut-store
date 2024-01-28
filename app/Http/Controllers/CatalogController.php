@@ -29,7 +29,7 @@ class CatalogController extends Controller
     }
     public function indexAdmin()
     {
-        $catalogs = Catalog::paginate(10);
+        $catalogs = Catalog::all();
 
         return view('dashboard.catalog.index', compact('catalogs'));
     }

@@ -76,7 +76,6 @@
                 @endforelse
             </tbody>
         </table>
-        {{ $carousel->links() }}
     </div>
 
     <!-- Confirm Delete Modal -->

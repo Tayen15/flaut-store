@@ -19,7 +19,7 @@ class CarouselController extends Controller
     
     public function indexAdmin()    
     {
-        $carousel = Carousel::paginate(4);
+        $carousel = Carousel::all();
         return view('dashboard.carousel.index', compact('carousel'));
     }
 

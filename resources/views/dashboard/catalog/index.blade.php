@@ -80,7 +80,6 @@
                 @endforelse
             </tbody>
         </table>
-        {{ $catalogs->links() }}
     </div>
 
     <!-- Confirm Delete Modal -->

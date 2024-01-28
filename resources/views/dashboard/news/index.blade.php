@@ -81,7 +81,6 @@
                 @endforelse
             </tbody>
         </table>
-        {{ $news->links() }}
     </div>
 
     <!-- Confirm Delete Modal -->
