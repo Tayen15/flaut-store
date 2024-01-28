@@ -43,8 +43,8 @@
                 
 
                 <div class="prosa leading-7">
-                    <p>{!! $news->content !!}</p>
-                </div>
+                    {!! $news->content !!}
+                </div>                          
 
                 <div class="mt-4 md:mt-8">
                     <h2 class="text-lg md:text-xl lg:text-2xl xl:text-lg font-semibold mb-2 uppercase"><span class="mr-2"><i class="fa-solid fa-chevron-right" style="color: #ea580c;"></i></span> You might also like</h2>
@@ -62,14 +62,16 @@
 </div>
 
 <style>
-    ol {
-        list-style-type: decimal; 
+    .prosa ol {
+        list-style-type: decimal; /* Set ordered lists to display numbers */
     }
 
-    li {
-        display: list-item; 
-    } 
+    .prosa ul {
+        list-style-type: disc; /* Force disc style for li elements */
+        color: black; /* Optional: Set the color to black */
+    }
 </style>
+
 
 
 
