@@ -27,8 +27,12 @@
             </div>
             <div class="mt-3 flex justify-between items-center">
                 <div>
+                    <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                    <label for="remember">Remember Me</label>
                 </div>
-
+                <div>
+                    {{-- <a href="{{ route('home') }}" class="text-base hover:underline underline-offset-2 hover:text-indigo-700">Back to home</a> --}}
+                </div>
             </div>
             <div class="mt-5">
                 <button type="submit" class="border-2 border-indigo-700 bg-indigo-700 text-white py-1 w-full rounded-md hover:bg-transparent hover:text-indigo-700 font-semibold"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;Login</button>

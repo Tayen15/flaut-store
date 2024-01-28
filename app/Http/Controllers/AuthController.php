@@ -16,15 +16,16 @@ class AuthController extends Controller
     public function postLogin(AdminLoginRequest $request)
     {
         $validated = $request->validated();
-
-        if (!Auth::attempt($validated))
+    
+        $remember = $request->has('remember');
+    
+        if (!Auth::attempt($validated, $remember))
             return back()->with('error', 'Login Failed')->withInput();
-
+    
         $request->session()->regenerate();
-
+    
         return redirect()->route('dashboard.index')->with('success', 'Successfully entered the admin dashboard');
     }
-
     
     public function logout(Request $request)
     {
