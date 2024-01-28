@@ -15,57 +15,78 @@
 
     <div class="">
         @if (!isset($searchKeyword) || !$searchKeyword)
-            <!-- Displayed when there's no search -->
+        <!-- Displayed when there's no search -->
 
-           <!-- Analytics Cards Section -->
-<div class="flex flex-wrap">
-    <!-- Total Catalog Card -->
-    <div class="w-full md:w-1/2 lg:w-1/4 p-6">
-        <div class="bg-gradient-to-b from-green-200 to-green-100 border-b-4 border-green-600 rounded-lg shadow-xl p-5">
-            <a href="{{ route('dashboard.catalog.index') }}">
-                <h2 class="font-bold text-xl mb-2 text-gray-800">Total Catalog</h2>
-                <p class="text-gray-600 text-lg">
-                    {{ \App\Models\Catalog::count() }}
-                </p>
-            </a>
-        </div>
-    </div>
+            <!-- Analytics Cards Section -->
+            <div class="flex flex-wrap">
+                <!-- Total Catalog Card -->
+                <div class="w-full md:w-1/2 lg:w-1/2 p-6 transition duration-300 ease-in-out transform hover:scale-105">
+                    <div class="bg-gradient-to-b from-green-200 to-green-100 border-b-4 border-green-600 rounded-lg shadow-xl p-5">
+                        <a href="{{ route('dashboard.catalog.index') }}" class="flex flex-row items-center">
+                            <div class="flex-shrink pr-4">
+                                <div class="rounded-full p-5 bg-green-600">
+                                    <i class="fa fa-shopping-bag text-2xl text-white"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1 text-right md:text-center">
+                                <h2 class="font-bold uppercase text-gray-600">Total Catalog</h2>
+                                <p id="totalCatalog" class="text-gray-600 text-lg">{{ \App\Models\Catalog::count() }}<span class="text-green-500 ml-2"><i id="catalogChangeIcon" class="fas fa-caret-up text-green-500"></i></span></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
 
-    <!-- Total News Card -->
-    <div class="w-full md:w-1/2 lg:w-1/4 p-6">
-        <div class="bg-gradient-to-b from-pink-200 to-pink-100 border-b-4 border-pink-500 rounded-lg shadow-xl p-5">
-            <a href="{{ route('dashboard.news.index') }}" >
-                <h2 class="font-bold text-xl mb-2 text-gray-800">Total News</h2>
-                <p class="text-gray-600 text-lg">
-                    {{ \App\Models\News::count() }}
-                </p>
+                <!-- Total News Card -->
+                <div class="w-full md:w-1/2 lg:w-1/2 p-6 transition duration-300 ease-in-out transform hover:scale-105">
+                    <div class="bg-gradient-to-b from-pink-200 to-pink-100 border-b-4 border-pink-500 rounded-lg shadow-xl p-5 hover:bg-pink-100 hover:border-pink-500">
+                        <a href="{{ route('dashboard.news.index') }}" class="flex flex-row items-center">
+                            <div class="flex-shrink pr-4">
+                                <div class="rounded-full p-5 bg-pink-600">
+                                    <i class="fa fa-newspaper text-2xl text-white"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1 text-right md:text-center">
+                                <h2 class="font-bold uppercase text-gray-800">Total News</h2>
+                                <p id="totalNews" class="text-gray-600 text-lg">{{ \App\Models\News::count() }}<span class="text-green-500 ml-2"><i id="newsChangeIcon" class="fas fa-caret-up text-green-500"></i></span></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Total Banner Card -->
+                <div class="w-full md:w-1/2 lg:w-1/2 p-6 transition duration-300 ease-in-out transform hover:scale-105">
+                    <div class="bg-gradient-to-b from-blue-200 to-blue-100 border-b-4 border-blue-600 rounded-lg shadow-xl p-5 hover:bg-blue-100 hover:border-blue-500">
+                        <a href="{{ route('dashboard.carousel.index') }}" class="flex flex-row items-center">
+                            <div class="flex-shrink pr-4">
+                                <div class="rounded-full p-5 bg-blue-600">
+                                    <i class="fa fa-image text-2xl text-white"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1 text-right md:text-center">
+                                <h2 class="font-bold uppercase text-gray-800">Total Banner</h2>
+                                <p id="totalBanner" class="text-gray-600 text-lg">{{ \App\Models\Carousel::count() }}<span class="text-green-500 ml-2"><i id="bannerChangeIcon" class="fas fa-caret-up text-green-500"></i></span></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Total Users Card -->
+                <div class="w-full md:w-1/2 lg:w-1/2 p-6 transition duration-300 ease-in-out transform hover:scale-105">
+                    <div class="bg-gradient-to-b from-yellow-200 to-yellow-100 border-b-4 border-yellow-600 rounded-lg shadow-xl p-5 hover:bg-yellow-100 hover:border-yellow-500">
+                        <a href="{{ route('dashboard.profile.index') }}" class="flex flex-row items-center">
+                            <div class="flex-shrink pr-4">
+                                <div class="rounded-full p-5 bg-yellow-600">
+                                    <i class="fa fa-user text-2xl text-white"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1 text-right md:text-center">
+                                <h2 class="font-bold uppercase text-gray-800">Total Users</h2>
+                                <p id="totalUsers" class="text-gray-600 text-lg">{{ \App\Models\User::count() }}<span class="text-green-500 ml-2"><i id="userChangeIcon" class="fas fa-caret-up text-green-500"></i></span></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
-
-    <!-- Total Banner Card -->
-    <div class="w-full md:w-1/2 lg:w-1/4 p-6">
-        <div class="bg-gradient-to-b from-blue-200 to-blue-100 border-b-4 border-blue-600 rounded-lg shadow-xl p-5">
-            <a href="{{ route('dashboard.carousel.index') }}">
-                <h2 class="font-bold text-xl mb-2 text-gray-800">Total Banner</h2>
-                <p class="text-gray-600 text-lg">
-                    {{ \App\Models\Carousel::count() }}
-                </p>
-            </a>
-        </div>
-    </div>
-
-    <!-- Total Users Card -->
-    <div class="w-full md:w-1/2 lg:w-1/4 p-6">
-        <div class="bg-gradient-to-b from-yellow-200 to-yellow-100 border-b-4 border-yellow-600 rounded-lg shadow-xl p-5">
-            <a href="{{ route('dashboard.profile.index') }}">
-            <h2 class="font-bold text-xl mb-2 text-gray-800">Total Users</h2>
-            <p class="text-gray-600 text-lg">
-                {{ \App\Models\User::count() }}
-            </p>
-        </div>
-    </div>
-</div>
-
         @else
             <!-- Displayed when there's a search -->
             <div class="w-full p-6">
@@ -174,4 +195,43 @@
         @endif
     </div>
 </section>
+
+<script>
+    function getRealTimeChanges() {
+        $.ajax({
+            url: '{{ route("dashboard.getRealTimeChanges") }}',
+            method: 'GET',
+            success: function(response) {
+                // Update nilai pada halaman HTML dengan nilai dari response
+                updateRealTimeChanges(response);
+            },
+            error: function(error) {
+                console.error('Error fetching real-time changes:', error);
+            }
+        });
+    }
+
+    function updateRealTimeChanges(data) {
+        // Update nilai pada setiap kartu dengan nilai dari response
+        $('#totalCatalog').text(data.catalogCount);
+        $('#totalNews').text(data.newsCount);
+        $('#totalBanner').text(data.bannerCount);
+        $('#totalUsers').text(data.userCount);
+
+        // Update icon berdasarkan perubahan
+        updateIcon('catalogChangeIcon', data.catalogChange);
+        updateIcon('newsChangeIcon', data.newsChange);
+        updateIcon('bannerChangeIcon', data.bannerChange);
+        updateIcon('userChangeIcon', data.userChange);
+    }
+
+    function updateIcon(iconId, changeValue) {
+        // Update ikon berdasarkan nilai perubahan
+        var iconClass = (changeValue >= 0) ? 'fas fa-caret-up text-green-500' : 'fas fa-caret-down text-red-500';
+        $('#' + iconId).attr('class', iconClass);
+    }
+
+    setInterval(getRealTimeChanges, 5000);
+</script>
+
 @endsection

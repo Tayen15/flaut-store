@@ -28,6 +28,7 @@ Route::group(['middleware' => 'web'], function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/real-time-changes', [DashboardController::class, 'getRealTimeChanges'])->name('dashboard.getRealTimeChanges');
 
     Route::prefix('dashboard')->group(function () {
         // News Routes
