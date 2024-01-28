@@ -59,6 +59,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::prefix('profile')->group(function () {
             Route::get('/', [ProfileController::class, 'index'])->name('dashboard.profile.index');
             Route::put('/update', [ProfileController::class, 'update'])->name('dashboard.profile.update');
+            Route::post('/change-password', [ProfileController::class, 'changePassword'])->name('dashboard.profile.change-password');
         });
     });
 

@@ -16,33 +16,27 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
-        $user = auth()->user();
-    
-        $rules = [
+        $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
-        ];
-    
-        if ($request->filled('password')) {
-            $rules['password'] = 'nullable|string|min:8|confirmed';
-        }
-    
-        $validatedData = $request->validate($rules);
-        dd($validatedData);
-        if ($request->filled('password')) {
-            $user->update([
-                'name' => $validatedData['name'],
-                'email' => $validatedData['email'],
-                'password' => Hash::make($validatedData['password']),
-            ]);
-        } else {
-            $user->update([
-                'name' => $validatedData['name'],
-                'email' => $validatedData['email'],
-            ]);
-        }
-    
-        return redirect()->route('dashboard.index')->with('success', 'Profile updated successfully');
+        ]);
+
+        auth()->user()->update([
+            'name' => $request->name,
+        ]);
+
+        return redirect()->route('dashboard.profile.index')->with('success', 'Profile updated successfully!');
+    }
+
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'password' => 'required|string|min:4|confirmed',
+        ]); 
+        auth()->user()->update([
+            'password' => bcrypt($request->password),
+        ]);
+
+        return redirect()->route('dashboard.profile.index')->with('success', 'Password changed successfully!');
     }
     
 }
