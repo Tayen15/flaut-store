@@ -70,6 +70,9 @@
         list-style-type: disc; /* Force disc style for li elements */
         color: black; /* Optional: Set the color to black */
     }
+    .prosa li {
+        display: list-item;
+        }
 </style>
 
 
