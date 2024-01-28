@@ -91,23 +91,23 @@
                     <div class="md:mt-12 md:w-48 md:fixed md:left-0 md:top-0 content-center md:content-start text-left justify-between">
                         <ul class="list-reset flex flex-row md:flex-col pt-3 md:py-3 px-1 md:px-2 text-center md:text-left">
                             <li class="mr-3 flex-1">
-                                <a href="{{ route('dashboard.index') }}" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
-                                    <i class="fas fa-tasks pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Dashboard</span>
+                                <a href="{{ route('dashboard.index') }}" id="dashboard-link" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500 transition duration-300 ease-in-out">
+                                    <i class="fas fa-tasks pr-0 md:pr-3" id="dashboard-icon"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Dashboard</span>
                                 </a>
                             </li>
                             <li class="mr-3 flex-1">
-                                <a href="{{ route('dashboard.news.index') }}" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
-                                    <i class="fa-regular fa-newspaper pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs ml-1 md:text-base text-gray-400 md:text-gray-200 block md:inline-block">News</span>
+                                <a href="{{ route('dashboard.news.index') }}" id="news-link" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500 transition duration-300 ease-in-out">
+                                    <i class="fa-regular fa-newspaper pr-0 md:pr-3" id="news-icon"></i><span class="pb-1 md:pb-0 text-xs ml-1 md:text-base text-gray-400 md:text-gray-200 block md:inline-block">News</span>
                                 </a>
                             </li>
                             <li class="mr-3 flex-1">
-                                <a href="{{ route('dashboard.catalog.index') }}" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
-                                    <i class="fa-solid fa-shirt pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Catalog</span>
+                                <a href="{{ route('dashboard.catalog.index') }}" id="catalog-link" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-yellow-500 transition duration-300 ease-in-out">
+                                    <i class="fa-solid fa-shirt pr-0 md:pr-3" id="catalog-icon"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Catalog</span>
                                 </a>
                             </li>
                             <li class="mr-3 flex-1">
-                                <a href="{{ route('dashboard.carousel.index') }}" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
-                                    <i class="fa-regular fa-image pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs ml-1 md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Banner</span>
+                                <a href="{{ route('dashboard.carousel.index') }}" id="banner-link" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-green-500 transition duration-300 ease-in-out">
+                                    <i class="fa-regular fa-image pr-0 md:pr-3" id="banner-icon"></i><span class="pb-1 md:pb-0 text-xs ml-1 md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Banner</span>
                                 </a>
                             </li>
                         </ul>
@@ -116,7 +116,6 @@
             </nav>
             
             {{-- Content --}}
-
             @yield('admin')
         </div>
     </main>
@@ -149,6 +148,22 @@
                 }
             }
         }
+
+        var routeMap = {
+            'dashboard.index': { link: 'dashboard-link', icon: 'dashboard-icon', borderClass: 'border-pink-500', textClass: 'text-pink-500' },
+            'dashboard.news.index': { link: 'news-link', icon: 'news-icon', borderClass: 'border-purple-500', textClass: 'text-purple-500' },
+            'dashboard.catalog.index': { link: 'catalog-link', icon: 'catalog-icon', borderClass: 'border-yellow-500', textClass: 'text-yellow-500' },
+            'dashboard.carousel.index': { link: 'banner-link', icon: 'banner-icon', borderClass: 'border-green-500', textClass: 'text-green-500' }
+        };
+
+        var currentRoute = "{{ Route::currentRouteName() }}";
+
+        if (routeMap[currentRoute]) {
+            var routeInfo = routeMap[currentRoute];
+            document.getElementById(routeInfo.link).classList.add(routeInfo.borderClass);
+            document.getElementById(routeInfo.icon).classList.add(routeInfo.textClass);
+        }
+
     </script>
 </body>
 @include('components.notif')
