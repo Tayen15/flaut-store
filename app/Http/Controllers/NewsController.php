@@ -35,13 +35,15 @@ class NewsController extends Controller
 
     public function create()
     {
-        return view('dashboard.news.create');
+        $categories = News::$categories;
+        return view('dashboard.news.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'title' => 'required',
+            'category' => 'required|in:' . implode(',', News::$categories),
             'content' => 'nullable',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:10240',
         ]);
@@ -86,6 +88,7 @@ class NewsController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required',
+            'category' => 'required|in:' . implode(',', News::$categories),
             'content' => 'nullable',
             'image' => 'image|mimes:jpeg,png,jpg|max:10240',
         ]);

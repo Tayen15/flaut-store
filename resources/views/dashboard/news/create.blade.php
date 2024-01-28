@@ -26,6 +26,25 @@
             </div>
 
             <div class="my-6">
+                <div>
+                    <label class="text-black font-medium" for="category">Category <span class="font-light ml-2 text-xs text-red-600">Required</span></label>
+                    <div class="relative">
+                        <select id="category" name="category" class="block w-full px-4 py-2 mt-2 capitalize text-gray-700 bg-white border rounded-md focus:outline-none focus:ring appearance-none" required>
+                            <option value="" autofocus></option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category }}" {{ old('category') == $category ? 'selected' : '' }}>{{ ucfirst($category) }}</option>
+                            @endforeach
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="my-6">
                 <label for="content" class="pb-2">Content<span class="font-light ml-2 text-xs text-red-600 ">Required</span></label>
                 <textarea id="content" name="content" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring default-height"></textarea>
             </div>

@@ -15,17 +15,17 @@
     </div>
 </section>
 
-<section id="catalog" class="text-center my-12">
-    <h2 class="text-2xl font-bold mb-4 uppercase">Collection</h2>
+<section id="catalog" class="text-center my-14">
+    <h2 class="text-2xl font-bold mb-10 uppercase ">==================================<span class="line-through text-gray-800">Collection</span>==================================</h2>
 
     <div class="relative max-w-screen-xl mx-auto">
         <div id="carousel" class="overflow-x-auto xl:overflow-hidden w-full">
             <div class="flex transition-transform ease-in-out duration-300 transform">
                 @foreach ($catalogs as $catalog)
-                    <div id="#{{ $catalog->id }}" class="w-full h-full md:w-1/2 lg:w-1/3 xl:w-full px-2 transform left-5 right-5">
+                    <div id="#{{ $catalog->id }}" class="w-full h-full xl:h-[370px]  md:w-1/2 lg:w-1/3 xl:w-full px-2 transform left-5 right-5">
                         <a href="{{ route('catalog.show', $catalog->id) }}">
                             <div class="mx-1 w-96 lg:w-[250px] transform overflow-hidden rounded-lg bg-white duration-300 hover:scale-105 hover:shadow-lg">
-                                <img class="object-cover object-center w-full h-full lg:w-[250px] lg:h-[300px] md:h-[300px] xl:h-[300px]" src="{{ $catalog->image_url }}" alt="{{ $catalog->name }}">
+                                <img class="object-cover object-center w-full h-full lg:w-[250px] lg:h-[300px] md:h-[300px] xl:h-[250px]" src="{{ $catalog->image_url }}" alt="{{ $catalog->name }}">
                                 <div class="p-4 pr-2">
                                     <h2 class="mb-2 text-lg sm:text-lg lg:text-base xl:text-lg font-medium text-gray-900 2xl:text-sm">{{ \Illuminate\Support\Str::limit(strip_tags($catalog->name), 30) }}</h2>
 

@@ -6,6 +6,7 @@ use App\Models\Catalog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class CatalogController extends Controller
 {
@@ -56,6 +57,7 @@ class CatalogController extends Controller
         
             $imagePath = $request->file('image')->storeAs('image/catalog', $formattedTime . '_' . $request->file('image')->getClientOriginalName());
             $validatedData['image'] = basename($imagePath);
+            $validatedData['author'] = Auth::user()->name;
 
             Catalog::create($validatedData);
             
