@@ -9,6 +9,6 @@ export default defineConfig({
         }),
     ],
     server: {
-        host:false
+        host:true
     }
 });
