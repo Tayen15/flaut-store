@@ -9,6 +9,19 @@
         <div class="flex items-center justify-between rounded-tl-3xl bg-gradient-to-r from-blue-900 to-orange-800">
             <div class=" p-4 shadow text-2xl text-white">
                 <h1 class="font-bold pl-2">Catalog</h1>
+                @auth
+                @if (!$isMyCatalog)
+                    <a href="{{ route('dashboard.catalog.index', ['author' => auth()->user()->name]) }}"
+                        class="text-base pl-2 underline underline-offset-4 hover:text-gray-200 transition duration-300 ease-in-out">
+                        Show My Catalog
+                    </a>
+                @else
+                    <a href="{{ route('dashboard.catalog.index') }}"
+                        class="text-base pl-2 underline underline-offset-4 hover:text-gray-200 transition duration-300 ease-in-out">
+                        Show All Catalog
+                    </a>
+                @endif
+            @endauth
             </div>
             <a href="{{ route('dashboard.catalog.create') }}" class="flex items-center text-white mr-10 underline underline-offset-4">
                 <i class="fa-solid fa-plus mr-2"></i> Add Catalog

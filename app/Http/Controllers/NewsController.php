@@ -14,7 +14,6 @@ class NewsController extends Controller
     {
         $query = News::query();
     
-        // Pencarian berdasarkan kata kunci jika ada
         $searchKeyword = $request->input('search');
         if ($searchKeyword && strlen($searchKeyword) >= 3) {
             $query->where(function ($subquery) use ($searchKeyword) {
@@ -27,11 +26,27 @@ class NewsController extends Controller
         return view('news.index', compact('news'));
     }
     
-    public function indexAdmin()
+    public function indexAdmin(Request $request)
     {
-        $news = News::all();
-        return view('dashboard.news.index', compact('news'));
+        $query = News::query();
+    
+        $author = $request->input('author');
+    
+        $isMyNews = $author === auth()->user()->name;
+    
+        if ($author) {
+            $query->where('author', $author);
+        }
+    
+        $news = $query->get();
+
+        if ($news->isEmpty()) {
+            $message = $isMyNews ? 'You have not created any news yet.' : 'No news found.';
+            return view('dashboard.news.index', compact('news', 'isMyNews', 'message'));
+        }
+        return view('dashboard.news.index', compact('news', 'isMyNews'));
     }
+    
 
     public function create()
     {

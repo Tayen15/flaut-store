@@ -27,11 +27,25 @@ class CatalogController extends Controller
         $catalogs = $query->get();
         return view('catalog.index', compact('catalogs'));
     }
-    public function indexAdmin()
+    public function indexAdmin(Request $request)
     {
-        $catalogs = Catalog::all();
+        $query = Catalog::query();
+    
+        $author = $request->input('author');
+    
+        $isMyCatalog = $author === auth()->user()->name;
+    
+        if ($author) {
+            $query->where('author', $author);
+        }
+    
+        $catalogs = $query->get();
+        if ($catalogs->isEmpty()) {
+            $message = $isMyCatalog ? 'You have not created any catalog yet.' : 'No catalog found.';
+            return view('dashboard.catalog.index', compact('catalogs', 'isMyCatalog', 'message'));
+        }
 
-        return view('dashboard.catalog.index', compact('catalogs'));
+        return view('dashboard.catalog.index', compact('catalogs', 'isMyCatalog'));
     }
 
 

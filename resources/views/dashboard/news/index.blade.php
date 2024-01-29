@@ -8,6 +8,20 @@
         <div class="flex items-center justify-between rounded-tl-3xl bg-gradient-to-r from-blue-900 to-orange-800">
             <div class=" p-4 shadow text-2xl text-white">
                 <h1 class="font-bold pl-2">News</h1>
+                @auth
+                    @if (!$isMyNews)
+                        <a href="{{ route('dashboard.news.index', ['author' => auth()->user()->name]) }}"
+                            class="text-base pl-2 underline underline-offset-4 hover:text-gray-200 transition duration-300 ease-in-out">
+                            Show My News
+                        </a>
+                    @else
+                        <a href="{{ route('dashboard.news.index') }}"
+                            class="text-base pl-2 underline underline-offset-4 hover:text-gray-200 transition duration-300 ease-in-out">
+                            Show All News
+                        </a>
+                    @endif
+                @endauth
+            
             </div>
             <a href="{{ route('dashboard.news.create') }}" class="flex items-center text-white mr-10 underline underline-offset-4">
                 <i class="fa-solid fa-plus mr-2"></i> Add News
