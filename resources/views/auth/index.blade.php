@@ -25,15 +25,15 @@
                 <label for="password" class="block text-base mb-2">Password</label>
                 <input type="password" name="password" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" placeholder="Enter Password" required/>
             </div>
-            <div class="mt-3 flex justify-between items-center">
+            {{-- <div class="mt-3 flex justify-between items-center">
                 <div>
                     <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                     <label for="remember">Remember Me</label>
                 </div>
                 <div>
-                    {{-- <a href="{{ route('home') }}" class="text-base hover:underline underline-offset-2 hover:text-indigo-700">Back to home</a> --}}
+                    <a href="{{ route('home') }}" class="text-base hover:underline underline-offset-2 hover:text-indigo-700">Back to home</a>
                 </div>
-            </div>
+            </div> --}}
             <div class="mt-5">
                 <button type="submit" class="border-2 border-indigo-700 bg-indigo-700 text-white py-1 w-full rounded-md hover:bg-transparent hover:text-indigo-700 font-semibold"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;Login</button>
             </div>
