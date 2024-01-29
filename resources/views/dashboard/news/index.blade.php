@@ -50,7 +50,7 @@
                     <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ $item->updated_at->format('j F Y, H:i') }}</td>
                     <td class="p-2 md:p-6 border-b border-blue-gray-50">
                         <div class="flex space-x-2">
-                            @if (auth()->user()->level === 3 || auth()->user()->name === $item->author || auth()->user()->level === 2)
+                            @if (auth()->user()->level > 1 || auth()->user()->name === $item->author)
                                 <a href="{{ route('dashboard.news.edit', $item->id) }}">
                                     <button class="relative align-middle select-none font-medium text-center uppercase transition-all w-10 h-10 md:w-12 md:h-12 rounded-lg text-xs text-gray-900 hover:bg-gray-900/10 active:bg-gray-900/20" type="button">
                                         <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
