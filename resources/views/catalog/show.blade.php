@@ -125,6 +125,17 @@
     #toggleDescription.active #toggleIcon {
         transform: rotate(180deg);
     }
+
+    .text-gray-700 ol{
+        list-style-type: decimal;
+    }
+    .text-gray-700 li{
+        display: list-item;
+    }
+    .text-gray-700 ul{
+        list-style-type: disc;
+        color: black;
+    }
 </style>
 
 <script>
