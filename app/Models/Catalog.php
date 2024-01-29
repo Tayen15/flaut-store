@@ -9,7 +9,7 @@ class Catalog extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'price', 'image', 'category'];
+    protected $fillable = ['name', 'description', 'price', 'image', 'category', 'author'];
     
     public static $categories = ['t-shirt', 'shirt', 'pants', 'accessories'];
 
