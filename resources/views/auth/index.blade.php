@@ -21,11 +21,40 @@
                 <label for="username" class="block text-base mb-2">Email</label>
                 <input type="text" name="email" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" value="{{ old('email') }}" placeholder="Enter Email" required/>
             </div>
+<<<<<<< HEAD
             <div class="mt-3">
                 <label for="password" class="block text-base mb-2">Password</label>
                 <input type="password" name="password" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" placeholder="Enter Password" required/>
             </div>
             {{-- <div class="mt-3 flex justify-between items-center">
+=======
+            <div class="my-6 relative">
+            <label class="text-black font-medium" for="password">Password </label>
+            <div class="relative">
+        <input id="password" name="password" type="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" required>
+
+        <!-- Tanda mata (eye icon) untuk menampilkan/sembunyikan kata sandi -->
+        <div class="absolute inset-y-0 right-0 flex items-center h-full pr-2">
+            <button type="button" onclick="togglePasswordVisibility()" class="text-gray-500 focus:outline-none">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 12s3 5.5 10 5.5 10-5.5 10-5.5-3-5.5-10-5.5S2 12 2 12z"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById('password');
+        var type = passwordInput.type === 'password' ? 'text' : 'password';
+        passwordInput.type = type;
+    }
+</script>
+
+            <div class="mt-3 flex justify-between items-center">
+>>>>>>> c70dad01e711b4c476f8094dd72209f64a0bd654
                 <div>
                     <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                     <label for="remember">Remember Me</label>
