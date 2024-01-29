@@ -8,7 +8,7 @@
             <div class=" p-4 shadow text-2xl text-white">
                 <h1 class="font-bold pl-2">Administrator</h1>
             </div>
-            <a href="{{ route('dashboard.admin.create') }}" class="flex items-center text-white mr-10">
+            <a href="{{ route('dashboard.admin.create') }}" class="flex items-center text-white mr-10 underline underline-offset-4">
                 <i class="fa-solid fa-plus mr-2"></i> Add Admin
             </a>
         </div>
