@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CarouselController;
 use Illuminate\Support\Facades\DB;
@@ -39,6 +40,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('/store', [NewsController::class, 'store'])->name('dashboard.news.store');
             Route::post('/destroy{id}', [NewsController::class, 'destroy'])->name('dashboard.news.destroy');
         });
+
+        // Administrator Routes
+        Route::prefix('admin')->group(function () {
+            Route::get('/', [AdminController::class, 'index'])->name('dashboard.admin.index');
+            Route::get('/create', [AdminController::class, 'create'])->name('dashboard.admin.create');
+            Route::get('/edit/{id}', [AdminController::class, 'edit'])->name('dashboard.admin.edit');
+            Route::post('/store', [AdminController::class, 'store'])->name('dashboard.admin.store');
+            Route::delete('/destroy/{id}', [AdminController::class, 'destroy'])->name('dashboard.admin.destroy'); 
+        });
+
 
         // Catalog Routes
         Route::prefix('catalog')->group(function () {
@@ -89,6 +100,7 @@ Route::get('/', [CarouselController::class, 'index'])->name('home');
 Route::get('/carousel/create', [CarouselController::class, 'create'])->name('carousel.create');
 
 Route::resource('profile', ProfileController::class);
+Route::resource('admin', AdminController::class);
 
 Route::get('/test-database', function () {
     try {
