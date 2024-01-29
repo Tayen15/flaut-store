@@ -35,11 +35,30 @@
             <!-- Change Password Form -->
             <form action="{{ route('dashboard.profile.change-password') }}" method="POST">
                 @csrf
-                <div class="my-6">
-                    <div>
-                        <label class="text-black font-medium" for="password">New Password</label>
-                        <input id="password" name="password" type="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">
-                    </div>
+               <div class="my-6 relative">
+            <label class="text-black font-medium" for="password">Password <span class="font-light ml-2 text-xs text-red-600">Required</span></label>
+            <div class="relative">
+        <input id="password" name="password" type="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" required>
+
+        <!-- Tanda mata (eye icon) untuk menampilkan/sembunyikan kata sandi -->
+        <div class="absolute inset-y-0 right-0 flex items-center h-full pr-2">
+            <button type="button" onclick="togglePasswordVisibility()" class="text-gray-500 focus:outline-none">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 12s3 5.5 10 5.5 10-5.5 10-5.5-3-5.5-10-5.5S2 12 2 12z"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById('password');
+        var type = passwordInput.type === 'password' ? 'text' : 'password';
+        passwordInput.type = type;
+    }
+</script>
 
                     <div>
                         <label class="text-black font-medium" for="password_confirmation">Confirm Password</label>
