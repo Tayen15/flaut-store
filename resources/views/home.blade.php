@@ -16,7 +16,7 @@
 </section>
 
 <section id="catalog" class="text-center my-14">
-    <h2 class="text-2xl font-bold mb-10 uppercase ">==================================<span class="line-through text-gray-800">Collection</span>==================================</h2>
+    <h2 class="text-base lg:text-2xl font-bold mb-10 uppercase "><span class="line-through text-gray-800">Collection</span></h2>
 
     <div class="relative max-w-screen-xl mx-auto">
         <div id="carousel" class="overflow-x-auto xl:overflow-hidden w-full">
