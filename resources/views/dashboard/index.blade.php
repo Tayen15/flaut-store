@@ -73,7 +73,7 @@
                 <!-- Total Users Card -->
                 <div class="w-full md:w-1/2 lg:w-1/2 p-6 transition duration-300 ease-in-out transform hover:scale-105">
                     <div class="bg-gradient-to-b from-yellow-200 to-yellow-100 border-b-4 border-yellow-600 rounded-lg shadow-xl p-5 hover:bg-yellow-100 hover:border-yellow-500">
-                        <a href="{{ route('dashboard.profile.index') }}" class="flex flex-row items-center">
+                        <a href="{{ auth()->user()->level > 1 ? route('dashboard.admin.index') : route('dashboard.index') }}" class="flex flex-row items-center">
                             <div class="flex-shrink pr-4">
                                 <div class="rounded-full p-5 bg-yellow-600">
                                     <i class="fa fa-user text-2xl text-white"></i>

@@ -5,7 +5,7 @@
 
 <section id="contact">
     <div class="relative flex items-top justify-center min-h-screen bg-slate-200 sm:items-center sm:pt-0 shadow-md">
-        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 mt-14">
             <div class="mt-8 overflow-hidden">
                 <div class="grid grid-cols-1 md:grid-cols-2">
                     <div class="p-6 mr-2 bg-orange-600 sm:rounded-lg">
@@ -69,10 +69,12 @@
 
 {{-- About Us --}}
 <section id="about-us" class="mt-10 mb-10 mx-16">
+    <div class="text-center">
+        <span class="text-gray-500 border-b-2 border-orange-600 uppercase">About us</span>
+        <h2 class="my-4 font-bold text-3xl sm:text-4xl">About <span class="text-orange-600">Our Company</span></h2>
+    </div>
     <div class="sm:flex items-center max-w-screen-xl">
         <div class="sm:w-1/2 p-10">
-            <span class="text-gray-500 border-b-2 border-orange-600 uppercase">About us</span>
-            <h2 class="my-4 font-bold text-3xl sm:text-4xl">About <span class="text-orange-600">Our Company</span></h2>
             <div class="image object-center text-center">
                 <img src="https://cdn.discordapp.com/attachments/976824443743645696/1192365071083503636/flaut.1_2.png?ex=65a8cf82&is=65965a82&hm=f9183fea4ca358dcf057572f73030e26994e91bf27d7617cf0487ea80d910438&" alt="Flaut Image">
             </div>
@@ -80,10 +82,10 @@
         <div class="about sm:w-1/2 p-5">
             <div class="text">
                 <div class="sm:flex">
-                    <p class="text-gray-700 sm:w-1/2 pr-1">
+                    <p class="text-gray-700 sm:w-1/2 lg:pr-1">
                         Selamat datang di Flaut, destinasi fashion online yang memahami bahwa gaya adalah ungkapan dari keunikan diri. Flaut didirikan dengan visi untuk memberikan inspirasi fashion yang tak terlupakan, di mana setiap orang dapat menemukan gaya yang mencerminkan kepribadian pembeli.
                     </p>
-                    <p class="text-gray-700 sm:w-1/2 pl-2">
+                    <p class="text-gray-700 sm:w-1/2 lg:pl-2">
                         Flaut memberikan pengalaman berbelanja yang tak tertandingi dengan koleksi terbaru kami. Jelajahi ragam pilihan baju terkini yang dirancang untuk memenuhi segala kebutuhan gaya Anda. Berkualitas tinggi dan penuh perhatian, setiap produk kami dirancang dengan detail yang cermat untuk memberikan kenyamanan dan gaya tanpa kompromi.
                     </p>
                 </div>

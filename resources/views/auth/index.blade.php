@@ -4,7 +4,7 @@
 @extends('layouts.blank')
 @section('auth')
 
-<div class="flex justify-center items-center h-screen bg-indigo-600">
+<div class="flex justify-center items-center h-screen bg-blue-900">
     <div class="w-96 p-6 shadow-lg bg-white rounded-md">
         <h1 class="text-3xl block text-center font-semibold"><i class="fa-solid fa-user"></i> Login Admin</h1>
         <hr class="mt-3">
@@ -29,7 +29,7 @@
                         <!-- Tanda mata (eye icon) untuk menampilkan/sembunyikan kata sandi -->
                         <div class="absolute inset-y-0 right-0 flex items-center h-full pr-2">
                             <button type="button" onclick="togglePasswordVisibility()" class="text-gray-500 focus:outline-none">
-                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <svg class="h-6 w-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 12s3 5.5 10 5.5 10-5.5 10-5.5-3-5.5-10-5.5S2 12 2 12z"></path>
                                 </svg>
@@ -43,7 +43,7 @@
                 </div>
             </div> --}}
             <div class="mt-5">
-                <button type="submit" class="border-2 border-indigo-700 bg-indigo-700 text-white py-1 w-full rounded-md hover:bg-transparent hover:text-indigo-700 font-semibold"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;Login</button>
+                <button type="submit" class="border-2 border-blue-900 bg-blue-900 text-white py-1 w-full rounded-md hover:bg-transparent hover:text-blue-900 transition duration-500 ease-in-out font-semibold"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;Login</button>
             </div>
         </form>
     </div>

@@ -24,14 +24,13 @@
                 </div>
 
                 <div>
-                    <label class="text-black font-medium" for="category">Category <span class="font-light ml-2 text-xs text-red-600">Required</span></label>
+                    <label class="text-black font-medium" for="category_id">Category <span class="font-light ml-2 text-xs text-red-600">Required</span></label>
                     <div class="relative">
-                        <select id="category" name="category" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring appearance-none" required>
+                        <select id="category_id" name="category_id" class="block w-full px-4 py-2 mt-2 text-gray-700 capitalize bg-white border rounded-md focus:outline-none focus:ring appearance-none" required>
                             <option value="" autofocus></option>
-                            <option value="t-shirt" {{ $catalog->category == 't-shirt' ? 'selected' : '' }}>T-Shirt</option>
-                            <option value="shirt" {{ $catalog->category == 'shirt' ? 'selected' : '' }}>Shirt</option>
-                            <option value="pants" {{ $catalog->category == 'pants' ? 'selected' : '' }}>Pants</option>
-                            <option value="accessories" {{ $catalog->category == 'accessories' ? 'selected' : '' }}>Accessories</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" @if($category->id == (old('category_id') ? old('category_id') : $catalog->category_id)) selected @endif>{{ $category->name }}</option>
+                            @endforeach
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

@@ -4,7 +4,7 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
             <!-- Logo -->
-            <a href="{{ route('home') }}" class="flex-shrink-0 flex w-10">
+            <a href="{{ route('home') }}" class="flex-shrink-0 flex w-12">
                 <img src="https://cdn.discordapp.com/attachments/976824443743645696/1192365071083503636/flaut.1_2.png?ex=65a8cf82&is=65965a82&hm=f9183fea4ca358dcf057572f73030e26994e91bf27d7617cf0487ea80d910438&" alt="Logo" class="h-14 w-14 lg:h-auto lg:w-auto">
             </a>
 
@@ -16,7 +16,7 @@
             </div>
 
             <!-- Mobile menu button -->
-            <button id="mobile-menu-btn" class="absolute inset-y-0 right-0 flex items-center sm:hidden text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+            <button id="mobile-menu-btn" class="absolute inset-y-0 right-0 flex items-center sm:hidden text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition duration-500 ease-in-out">
                 <span class="absolute -inset-0.5"></span>
                 <span class="sr-only">Toggle menu</span>
                 <!-- Icon when menu is closed -->
@@ -32,7 +32,7 @@
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="sm:hidden fixed w-full top-16" id="mobile-menu">
+    <div class="sm:hidden fixed w-full top-14" id="mobile-menu">
         <div class="bg-black" id="mobNavdiv">
             <a id="mob-nav" href="{{ route('home') }}" class="block text-white rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</a>
             <a id="mob-nav-2"  href="{{ route('catalog.index') }}" class="block text-gray-300 hover:bg-orange-600 hover:text-white rounded-md px-3 py-2 text-base font-medium">Catalog</a>
@@ -55,8 +55,6 @@
             mobileMenu.classList.toggle("hidden");
             menuOpenIcon.classList.toggle("hidden");
             menuClosedIcon.classList.toggle("hidden");
-
-            mobileMenuBtn.style.transform = mobileMenu.classList.contains("hidden") ? "rotate(0deg)" : "rotate(-90deg)";
         });
     });
 </script>

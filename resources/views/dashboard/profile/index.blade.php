@@ -52,27 +52,28 @@
                     </div>
                 </div>
 
-                    <div class="my-6 relative">
-                        <label class="text-black font-medium" for="password_confirmation">Confirm Password</label>
-                        <div class="relative">
-                            <input id="password_confirmation" name="password_confirmation" type="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">
-        
-                            <!-- Tanda mata (eye icon) untuk menampilkan/sembunyikan kata sandi -->
-                            <div class="absolute inset-y-0 right-0 flex items-center h-full pr-2">
-                                <button type="button" onclick="togglePasswordConfirmVisibility()" class="text-gray-500 focus:outline-none">
-                                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 12s3 5.5 10 5.5 10-5.5 10-5.5-3-5.5-10-5.5S2 12 2 12z"></path>
-                                    </svg>
-                                </button>
-                            </div>
+                <div class="my-6 relative">
+                    <label class="text-black font-medium" for="password_confirmation">Confirm Password</label>
+                    <div class="relative">
+                        <input id="password_confirmation" name="password_confirmation" type="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring">
+    
+                        <!-- Tanda mata (eye icon) untuk menampilkan/sembunyikan kata sandi -->
+                        <div class="absolute inset-y-0 right-0 flex items-center h-full pr-2">
+                            <button type="button" onclick="togglePasswordConfirmVisibility()" class="text-gray-500 focus:outline-none">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 12s3 5.5 10 5.5 10-5.5 10-5.5-3-5.5-10-5.5S2 12 2 12z"></path>
+                                </svg>
+                            </button>
                         </div>
                     </div>
+                </div>
                 <div class="flex justify-end mt-6">
                     <button class="px-3 py-2 leading-5 mx-5 text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-gray-600" type="submit">Change Password</button>
                 </div>
             </form>
         </div>
+
     </section>
 
     <script>

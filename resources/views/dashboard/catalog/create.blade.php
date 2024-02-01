@@ -22,12 +22,12 @@
                     </div>
 
                     <div>
-                        <label class="text-black font-medium" for="category">Category <span class="font-light ml-2 text-xs text-red-600">Required</span></label>
+                        <label class="text-black font-medium" for="category_id">Category <span class="font-light ml-2 text-xs text-red-600">Required</span></label>
                         <div class="relative">
-                            <select id="category" name="category" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring appearance-none" required>
-                                <option value="" autofocus></option>
+                            <select id="category_id" name="category_id" class="block w-full px-4 py-2 mt-2 text-gray-700 capitalize bg-white border rounded-md focus:outline-none focus:ring appearance-none" required>
+                                <option value=""></option>
                                 @foreach($categories as $category)
-                                    <option value="{{ $category }}" {{ old('category') == $category ? 'selected' : '' }}>{{ ucfirst($category) }}</option>
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

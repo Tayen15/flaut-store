@@ -57,7 +57,7 @@
                         </a>
                     </td>
                     <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ $item->title }}</td>
-                    <td class="p-2 md:p-4 border-b border-blue-gray-50 uppercase">{{ $item->category }}</td>
+                    <td class="p-2 md:p-4 border-b border-blue-gray-50 uppercase">{{ $item->category->name }}</td>
                     <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ \Illuminate\Support\Str::limit(strip_tags($item->content), 25) }}</td>
                     <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ $item->author }}</td>
                     <td class="p-2 md:p-4 border-b border-blue-gray-50">{{ \Carbon\Carbon::parse($item->created_at)->format('l, d F Y') }}</td>

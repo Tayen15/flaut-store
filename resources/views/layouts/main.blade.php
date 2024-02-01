@@ -11,10 +11,9 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-..."crossorigin="anonymous" />
      <link rel="icon" type="image/x-icon" href="https://cdn.discordapp.com/attachments/976824443743645696/1196355689422004234/f.png?ex=65b7540f&is=65a4df0f&hm=cf8b903098671bb47aa7c0e50528f804072389686434186a1f67555bf3d7ae23&}" />
      <style>
-          .font-libre-baskerville {
-              font-family: 'Libre Baskerville', serif;
-              
-          }
+        .font-libre-baskerville {
+            font-family: 'Libre Baskerville', serif;
+        }
      </style>
      <script src="https://kit.fontawesome.com/86a839d15c.js" crossorigin="anonymous"></script>
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -27,7 +26,7 @@
           @yield('content')
 
           <!-- Scroll to Top Button -->
-          <button id="scrollToTopBtn" class="fixed bottom-4 right-4 bg-black p-2 rounded-full hidden hover:bg-orange-600 transition-all duration-400 ease-in-out">
+          <button id="scrollToTopBtn" class="fixed bottom-4 right-4 bg-black p-2 rounded-full hidden hover:bg-orange-600 transition-all duration-500 ease-in-out">
                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" class="h-6 w-6">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
                </svg>
@@ -65,8 +64,9 @@
       
               function setNavbarColor(scrollPosition) {
                   const isCatalogPage = window.location.pathname.includes("/catalog");
+                  const isAboutusgPage = window.location.pathname.includes("/about-us");
       
-                  if (scrollPosition > 0 || isCatalogPage) {
+                  if (scrollPosition > 0 || isCatalogPage || isAboutusgPage) {
                       navbar.classList.remove("bg-transparent", "border-b-2", "border-gray-300");
                       navbar.classList.add("bg-black", "shadow-lg");
                       mobNavdiv.classList.remove("bg-transparent", "border-b-2", "border-gray-300");

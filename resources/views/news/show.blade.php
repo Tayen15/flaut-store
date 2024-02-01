@@ -4,7 +4,7 @@
 @section('content')
 
 <section id="top">
-    <div class="relative overflow-hidden bg-cover bg-no-repeat" style="background-position: 50%; background-image: url('https://cdn.discordapp.com/attachments/976824443743645696/1192121409753849896/Flaut2.jpg?ex=65b12714&is=659eb214&hm=ee01196069ce783f7d807a7d3127eb63e9fbd897b1251d253b03e6edbb0451a1&'); height: 380px;">
+    <div class="relative overflow-hidden bg-cover bg-no-repeat h-52 lg:h-96" style="background-position: 50%; background-image: url('https://cdn.discordapp.com/attachments/976824443743645696/1192121409753849896/Flaut2.jpg?ex=65b12714&is=659eb214&hm=ee01196069ce783f7d807a7d3127eb63e9fbd897b1251d253b03e6edbb0451a1&');">
         <div class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed" style="background-color: rgba(0, 0, 0, 0.44)">
         </div>
     </div>
@@ -63,19 +63,17 @@
 
 <style>
     .prosa ol {
-        list-style-type: decimal; /* Set ordered lists to display numbers */
+        list-style-type: decimal;
+        margin-left: 30px;
     }
 
     .prosa ul {
-        list-style-type: disc; /* Force disc style for li elements */
-        color: black; /* Optional: Set the color to black */
+        list-style-type: disc; 
+        color: black; 
+        margin-left: 30px;
     }
     .prosa li {
         display: list-item;
-        }
+    }
 </style>
-
-
-
-
 @endsection
