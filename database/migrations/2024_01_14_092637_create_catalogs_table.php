@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('price');
-            $table->enum('category', ['t-shirt', 'shirt', 'pants', 'accessories']);
+            $table->foreignId('category_id');
             $table->string('image');
             $table->timestamps();
         });

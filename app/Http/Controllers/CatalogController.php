@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Catalog;
 use Illuminate\Http\Request;
+use App\Models\CategoriesCatalog;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -51,7 +52,8 @@ class CatalogController extends Controller
 
     public function create()
     {
-        $categories = Catalog::$categories;
+        $categories = CategoriesCatalog::all();
+
         return view('dashboard.catalog.create', compact('categories'));
     }
 
@@ -61,7 +63,7 @@ class CatalogController extends Controller
             'name' => 'required',
             'description' => 'nullable',
             'price' => 'required|numeric',
-            'category' => 'required|in:' . implode(',', Catalog::$categories),
+            'category_id' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg|max:10240',
         ]);
 
@@ -72,6 +74,7 @@ class CatalogController extends Controller
             $imagePath = $request->file('image')->storeAs('image/catalog', $formattedTime . '_' . $request->file('image')->getClientOriginalName());
             $validatedData['image'] = basename($imagePath);
             $validatedData['author'] = Auth::user()->name;
+            // dd($validatedData);
 
             Catalog::create($validatedData);
             
@@ -81,7 +84,7 @@ class CatalogController extends Controller
         } catch (\Throwable $th) {
             return redirect()
                 ->route('dashboard.catalog.index')
-                ->with('error', 'failed to created catalog item, try again!');
+                ->with('error', 'failed to created catalog item, try again! ' . $th);
         }
     }
 
@@ -94,7 +97,9 @@ class CatalogController extends Controller
     public function edit($id)
     {
         $catalog = Catalog::findOrFail($id);
-        return view('dashboard.catalog.edit', compact('catalog'));
+        $categories = CategoriesCatalog::all();
+
+        return view('dashboard.catalog.edit', compact('catalog', 'categories'));
     }
 
     public function update(Request $request, $id)
@@ -103,7 +108,7 @@ class CatalogController extends Controller
             'name' => 'required',
             'description' => 'nullable',
             'price' => 'required|numeric',
-            'category' => 'required|in:' . implode(',', Catalog::$categories),
+            'category_id' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg|max:10240',
         ]);
     

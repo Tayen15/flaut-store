@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Response;
 use App\Models\Catalog;
 use App\Models\News;
 use App\Models\User;
+use App\Models\Carousel;
+use App\Models\CategoriesCatalog;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
@@ -14,12 +16,16 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         $searchKeyword = $request->input('search');
+
     
         // Pencarian pada tabel Catalog
         $catalogs = Catalog::query()
-            ->where('name', 'like', '%' . $searchKeyword . '%')
-            ->orWhere('category', 'like', '%' . $searchKeyword . '%')
-            ->get();
+        ->where('name', 'like', '%' . $searchKeyword . '%')
+        ->orWhereHas('category', function ($query) use ($searchKeyword) {
+            $query->where('name', 'like', '%' . $searchKeyword . '%');
+        })
+        ->get();
+    
     
         // Pencarian pada tabel News
         $news = News::query()

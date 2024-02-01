@@ -9,17 +9,16 @@ class Catalog extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'price', 'image', 'category', 'author'];
+    protected $fillable = ['name', 'description', 'category_id', 'price', 'image', 'category', 'author'];
     
-    public static $categories = ['t-shirt', 'shirt', 'pants', 'accessories'];
 
     public function getImageUrlAttribute()
     {
         return asset('storage/image/catalog/' . $this->image);
     }
 
-    public function getCategoryOptionsAttribute()
+    public function category()
     {
-        return $this->categories;
+        return $this->belongsTo(CategoriesCatalog::class, 'id');
     }
 }

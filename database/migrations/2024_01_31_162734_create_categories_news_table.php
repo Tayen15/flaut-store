@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('news', function (Blueprint $table) {
-            $table->enum('category', ['fashion trends', 'fashion events', 'celebrity fashion', 'beauty and style tips']);
+        Schema::create('categories_news', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
         });
     }
 
@@ -21,8 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('news', function (Blueprint $table) {
-            $table->dropColumn('category');
-        });
+        Schema::dropIfExists('categories_news');
     }
 };

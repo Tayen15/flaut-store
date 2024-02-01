@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('categories_catalogs', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->foreignId('category_id');
-            $table->text('content')->nullable();
-            $table->string('author');
-            $table->string('image'); 
-            $table->timestamps();
+            $table->string('name');
         });
     }
 
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('news');
+        Schema::dropIfExists('categories_catalogs');
     }
 };

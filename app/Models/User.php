@@ -43,4 +43,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function News()
+    {
+        return $this->hasMany(News::class, 'author');
+    }
+
+    public function Catalogs()
+    {
+        return $this->hasMany(Catalog::class, 'author');
+    }
 }

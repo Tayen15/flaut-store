@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Models\CategoriesNews;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,7 @@ class NewsController extends Controller
 {
     public function index(Request $request)
     {
-        $query = News::query();
+        $query = News::query()->with('category');
     
         $searchKeyword = $request->input('search');
         if ($searchKeyword && strlen($searchKeyword) >= 3) {
@@ -28,7 +29,7 @@ class NewsController extends Controller
     
     public function indexAdmin(Request $request)
     {
-        $query = News::query();
+        $query = News::query()->with('category');
     
         $author = $request->input('author');
     
@@ -40,17 +41,15 @@ class NewsController extends Controller
     
         $news = $query->get();
 
-        if ($news->isEmpty()) {
-            $message = $isMyNews ? 'You have not created any news yet.' : 'No news found.';
-            return view('dashboard.news.index', compact('news', 'isMyNews', 'message'));
-        }
         return view('dashboard.news.index', compact('news', 'isMyNews'));
     }
     
 
     public function create()
     {
-        $categories = News::$categories;
+
+        $categories = CategoriesNews::all();
+
         return view('dashboard.news.create', compact('categories'));
     }
 
@@ -58,15 +57,16 @@ class NewsController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required',
-            'category' => 'required|in:' . implode(',', News::$categories),
+            'category_id' => 'required',
             'content' => 'nullable',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:10240',
         ]);
-    
+
+        
         try {
             $currentTime = Carbon::now();
             $formattedTime = $currentTime->format('Y-m-d_His');
-        
+            
             $imagePath = $request->file('image')->storeAs('image/news', $formattedTime . '_' . $request->file('image')->getClientOriginalName());
             $validatedData['image'] = basename($imagePath);
             $validatedData['author'] = Auth::user()->name;
@@ -96,14 +96,16 @@ class NewsController extends Controller
     public function edit($id)
     {
         $news = News::findOrFail($id);
-        return view('dashboard.news.edit', compact('news'));
+        $categories = CategoriesNews::all();
+
+        return view('dashboard.news.edit', compact('news', 'categories'));
     }
 
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
             'title' => 'required',
-            'category' => 'required|in:' . implode(',', News::$categories),
+            'category_id' => 'required',
             'content' => 'nullable',
             'image' => 'image|mimes:jpeg,png,jpg|max:10240',
         ]);
