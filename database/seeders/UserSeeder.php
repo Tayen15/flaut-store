@@ -21,7 +21,6 @@ class UserSeeder extends Seeder
             'level' => '3',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('1234'),
-            'remember_token' => Str::random(60),
         ]);
     }
 }

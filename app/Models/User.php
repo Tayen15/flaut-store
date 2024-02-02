@@ -31,7 +31,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
@@ -52,5 +51,10 @@ class User extends Authenticatable
     public function Catalogs()
     {
         return $this->hasMany(Catalog::class, 'author');
+    }
+
+    public function levels()
+    {   
+        return $this->belongsTo(Roles::class, 'id');
     }
 }
