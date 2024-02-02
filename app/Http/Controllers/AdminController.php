@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Roles;
 
 class AdminController extends Controller
 {
@@ -31,7 +32,9 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.create');
+        $roles = Roles::all();
+
+        return view('dashboard.admin.create', compact('roles'));
     }
 
     /**
@@ -68,7 +71,9 @@ class AdminController extends Controller
     public function edit(string $id)
     {
         $user = User::findOrFail($id);
-        return view('dashboard.admin.edit', compact('user'));
+        $roles = Roles::all();
+
+        return view('dashboard.admin.edit', compact('user', 'roles'));
     }
 
     /**

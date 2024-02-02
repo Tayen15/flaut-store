@@ -34,10 +34,10 @@
                 <div>
                     <label class="text-black font-medium" for="level">Level <span class="font-light ml-2 text-xs text-red-600">Required</span></label>
                     <select id="level" name="level" class="block w-full px-4 py-2 mt-2 capitalize text-gray-700 bg-white border rounded-md focus:outline-none focus:ring appearance-none" required>
-                        <option value="" autofocus></option>
-                        <option value="1" {{ $user->level == '1' ? 'selected' : '' }}>Admin</option>
-                        <option value="2" {{ $user->level == '2' ? 'selected' : '' }}>Manager</option>
-                        <option value="3" {{ $user->level == '2' ? 'selected' : '' }}>Owner</option>
+                        <option value=""></option>
+                        @foreach ($roles as $role)
+                            <option value="{{ $role->id }}" @if($role->id == (old('level') ? old('level') : $user->level)) selected @endif>{{ $role->name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
