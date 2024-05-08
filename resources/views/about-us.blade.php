@@ -76,7 +76,7 @@
     <div class="sm:flex items-center max-w-screen-xl">
         <div class="sm:w-1/2 p-10">
             <div class="image object-center text-center">
-                <img src="https://cdn.discordapp.com/attachments/976824443743645696/1192365071083503636/flaut.1_2.png?ex=65a8cf82&is=65965a82&hm=f9183fea4ca358dcf057572f73030e26994e91bf27d7617cf0487ea80d910438&" alt="Flaut Image">
+                <img src="https://media.discordapp.net/attachments/976824443743645696/1192365071083503636/flaut.1_2.png?ex=663bcec2&is=663a7d42&hm=4db7c69e9666a85832dfaabffa41a2b54344a35084a71e9614bd390e0c639573&=&format=webp&quality=lossless&width=600&height=600" alt="Flaut Image">
             </div>
         </div>
         <div class="about sm:w-1/2 p-5">

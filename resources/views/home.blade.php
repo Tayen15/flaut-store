@@ -6,7 +6,7 @@
 
 {{-- Carousel --}}
 <section id="main-banner" class="relative">
-    <div class="carousel-container flex flex-col h-screen items-center justify-center bg-no-repeat bg-cover" style="background-image: url('https://cdn.discordapp.com/attachments/976824443743645696/1192125787650932856/Flaut.jpg?ex=65a7f0a8&is=65957ba8&hm=c90f5a7586c6bffda6c1734f203e22aa8ffd82118b49aff1f0212d8113aae0fd&'); background-size: cover;">
+    <div class="carousel-container flex flex-col h-screen items-center justify-center bg-no-repeat bg-cover" style="background-image: url('https://cdn.discordapp.com/attachments/889302084095197199/1237631826617569301/Flautt.jpg?ex=663c59f5&is=663b0875&hm=5a9135943cc12d162cdf86d7c2d301f8a8ee08bf86bb7762c490aa5147c14510&'); background-size: cover;">
         <div class="order-2 text-center text-white font-libre-baskerville">
             <h1 id="flaut" class="text-4xl md:text-4xl 2xl:text-5xl font-bold mb-4 text-orange-600">F L A U T.</h1>
             <h2 id="heading" class="text-4xl md:text-4xl 2xl:text-5xl font-bold mb-4">Welcome to flaut. fashion store </h2>

@@ -11,6 +11,6 @@ class CategoriesCatalog extends Model
 
     public function catalog()
     {
-        return $this->hasMany(Catalog::class, 'id_category');
+        return $this->hasMany(Catalog::class, 'category_id');
     }
 }

@@ -5,7 +5,7 @@
         <div class="relative flex items-center justify-between h-16">
             <!-- Logo -->
             <a href="{{ route('home') }}" class="flex-shrink-0 flex w-12">
-                <img src="https://cdn.discordapp.com/attachments/976824443743645696/1192365071083503636/flaut.1_2.png?ex=65a8cf82&is=65965a82&hm=f9183fea4ca358dcf057572f73030e26994e91bf27d7617cf0487ea80d910438&" alt="Logo" class="h-14 w-14 lg:h-auto lg:w-auto">
+                <img src="https://cdn.discordapp.com/attachments/976824443743645696/1196355689422004234/f.png?ex=663bd2cf&is=663a814f&hm=908abd60b14aab1c6b61ab0610e9a2a6e6bdc190ee9e0f345ef798e3b9f7a57d&" alt="Logo" class="h-14 w-14 lg:h-auto lg:w-auto">
             </a>
 
             <!-- Desktop navigation links -->
