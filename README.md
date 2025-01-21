@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="assets/images/brand.png" width="400" alt="Flaut Logo"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="public/assets/images/logo.png" width="400" alt="Flaut Logo"></a></p>
 
 ## About Flaut
 
