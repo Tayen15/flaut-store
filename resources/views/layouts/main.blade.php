@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title') - Flaut.</title>
     @vite('resources/css/app.css')
+    {{-- <link rel="stylesheet" href="assets/css/style.css"> --}}
     <script src="https://kit.fontawesome.com/86a839d15c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-..."crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-..."crossorigin="anonymous" />
     <link rel="icon" type="image/x-icon" href="assets/images/brand.png" />
     <style>
-    .font-libre-baskerville {
-        font-family: 'Libre Baskerville', serif;
-    }
+        .font-libre-baskerville {
+            font-family: 'Libre Baskerville', serif;
+        }
     </style>
     <script src="https://kit.fontawesome.com/86a839d15c.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -36,23 +39,30 @@
     <meta name="twitter:description" content="@yield('meta_description', 'Default description')">
     <meta name="twitter:image" content="@yield('meta_image', asset('assets/image/logo.png'))">
     <meta name="twitter:site" content="@your_twitter_handle">
+
 </head>
-<body class="antialiased">
-     <header>
-          @include('components.header')
-     </header>
 
-     <main>
-          @yield('content')
-     </main>
+<body class="antialiased border-collapse">
+    <header>
+        @include('components.header')
+    </header>
 
-     <footer>
-        @include('components.newsletter')
+    <main class="bg-gray-100">
+        @include('components.sidebar')
+        
+        <!-- Overlay -->
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+
+        @yield('content')
+    </main>
+
+    <footer class="bg-orange-600">
 
         @include('components.footer')
 
         @include('components.copyright')
-     </footer>
-     <script src="{{ asset('assets/js/main.js') }}?v={{ time() }}"></script>
+    </footer>
+    <script src="{{ asset('assets/js/main.js') }}?v={{ time() }}"></script>
 </body>
+
 </html>

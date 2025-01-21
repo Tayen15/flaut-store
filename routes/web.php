@@ -84,9 +84,11 @@ Route::resource('catalog', CatalogController::class);
 Route::resource('news', NewsController::class);
 Route::resource('carousel', CarouselController::class);
 
-Route::get('/about-us', function () {
+Route::get('/about', function () {
     return view('about-us');
 })->name('about-us');
+
+Route::get('/contact', function () { return view('contact'); })->name('contact');
 
 Route::get('/test-database', function () {
     try {

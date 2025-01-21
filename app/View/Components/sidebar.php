@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 
-class newsletter extends Component
+class sidebar extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class newsletter extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.newsletter');
+        return view('components.sidebar');
     }
 }

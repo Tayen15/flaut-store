@@ -1,41 +1,91 @@
-
 @section('title', 'Home')
-    
+
 @extends('layouts.main')
 @section('content')
 
-{{-- Carousel --}}
-<section id="main-banner" class="relative">
-    <div class="carousel-container flex flex-col h-screen items-center justify-center bg-no-repeat bg-cover" style="background-image: url('assets/images/bg-landing.jpg'); background-size: cover;">
-        <div class="order-2 text-center text-white font-libre-baskerville">
-            <h1 id="flaut" class="text-4xl md:text-5xl 2xl:text-5xl font-extrabold mb-4 text-orange-600">F L A U T.</h1>
-            <h2 id="heading" class="text-4xl md:text-4xl 2xl:text-5xl font-bold mb-4">Welcome to flaut. fashion store </h2>
-            <p id="subheading" class="text-base md:text-xl 2xl:text-xl mb-8">Discover many amazing fashions and more</p>
+    {{-- Hero section --}}
+    <section id="hero" class="mt-24 p-4">
+        <div class="relative overflow-hidden mx-auto mt-3 max-w-7xl">
+            <div id="carousel" class="flex transition-transform">
+                @foreach ($carouselImages as $item)
+                    <div class="min-w-full h-64 flex items-center justify-center text-2xl ">
+                        <img src="{{ $item->image_url }}" alt="{{ $item->name }}"
+                            class="h-full w-full object-cover rounded-lg shadow-lg">
+                    </div>
+                @endforeach
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="catalog" class="text-center my-14">
-    <h2 class="text-xl lg:text-2xl font-bold mb-10 uppercase "><span class="line-through text-gray-800">Collection</span></h2>
-
-    <div class="relative max-w-screen-xl mx-auto">
-        <div id="carousel" class="overflow-x-auto xl:overflow-hidden w-full">
-            <div class="flex transition-transform ease-in-out duration-300 transform">
-                @foreach ($catalogs as $catalog)
-                    <div id="#{{ $catalog->id }}" class="w-full h-full xl:h-[370px]  md:w-1/2 lg:w-1/3 xl:w-full px-2 transform left-5 right-5">
-                        <a href="{{ route('catalog.show', $catalog->id) }}">
-                            <div class="mx-1 w-96 lg:w-[250px] transform overflow-hidden rounded-lg bg-white duration-300 hover:scale-105 hover:shadow-lg">
-                                <img class="object-cover object-center w-full h-full lg:w-[250px] lg:h-[300px] md:h-[300px] xl:h-[250px]" src="{{ $catalog->image_url }}" alt="{{ $catalog->name }}">
-                                <div class="p-4 pr-2">
-                                    <h2 class="mb-2 text-lg sm:text-lg lg:text-base xl:text-lg font-medium text-gray-900 2xl:text-sm">{{ \Illuminate\Support\Str::limit(strip_tags($catalog->name), 30) }}</h2>
-
-                                    <div class="flex justify-center">
-                                        <p class="mr-3 text-lg sm:text-lg lg:text-base xl:text-lg font-semibold text-orange-600 2xl:text-base">Rp {{ number_format($catalog->price, 0, ',', '.') }}</p>
-                                        @php
-                                            $discountTotal = $catalog->price * 1.20;
-                                        @endphp
-                                        <p class="text-lg sm:text-lg lg:text-base xl:text-lg font-medium text-gray-500 line-through 2xl:text-base">Rp {{ number_format($discountTotal, 0, ',', '.') }}</p>
-                                    </div>
+    <section id="flash-sale-catalog" class="py-16">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <p class="text-base font-semibold uppercase tracking-wide text-red-600">
+                    Limited Time Offers
+                </p>
+                <h2 class="font-heading mb-4 font-bold tracking-tight text-black text-3xl sm:text-5xl">
+                    Flash Sale Catalog
+                </h2>
+                <p class="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
+                    Don't miss out on our limited-time offers and exclusive deals.
+                </p>
+            </div>
+            <div class="relative w-full h-auto rounded-2xl bg-cover bg-center flex items-center justify-center">
+                <div class="flex items-center justify-center gap-4">
+                    <div class="timer">
+                        <div
+                            class="rounded-xl bg-white backdrop-blur-sm py-3 min-w-[96px] flex items-center justify-center flex-col gap-1 px-3">
+                            <h3
+                                class="countdown-element days font-manrope font-semibold text-2xl text-black text-center">
+                            </h3>
+                            <p class="text-lg uppercase font-normal text-black mt-1 text-center w-full">Days</p>
+                        </div>
+                    </div>
+                    <div class="timer">
+                        <div
+                            class="rounded-xl bg-white backdrop-blur-sm py-3 min-w-[96px] flex items-center justify-center flex-col gap-1 px-3">
+                            <h3
+                                class="countdown-element hours font-manrope font-semibold text-2xl text-black text-center">
+                            </h3>
+                            <p class="text-lg uppercase font-normal text-black mt-1 text-center w-full">Hours</p>
+                        </div>
+                    </div>
+                    <div class="timer">
+                        <div
+                            class="rounded-xl bg-white backdrop-blur-sm py-3 min-w-[96px] flex items-center justify-center flex-col gap-1 px-3">
+                            <h3
+                                class="countdown-element minutes font-manrope font-semibold text-2xl text-black text-center">
+                            </h3>
+                            <p class="text-lg uppercase font-normal text-black mt-1 text-center w-full">Minutes</p>
+                        </div>
+                    </div>
+                    <div class="timer">
+                        <div
+                            class="rounded-xl bg-white backdrop-blur-sm py-3 min-w-[96px] flex items-center justify-center flex-col gap-1 px-3">
+                            <h3
+                                class="countdown-element seconds font-manrope font-semibold text-2xl text-black text-center">
+                            </h3>
+                            <p class="text-lg uppercase font-normal text-black mt-1 text-center w-full">Seconds</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 grid grid-cols-1 gap-y-10 gap-x-14 sm:grid-cols-2 lg:grid-cols-4">
+                @foreach ($catalogs as $product)
+                    <div class="bg-white shadow-md rounded-xl duration-500 hover:shadow-xl">
+                        <a href="{{ route('catalog.show', $product->id) }}">
+                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}"
+                                class="h-80 w-full object-cover rounded-t-xl" />
+                            <div class="p-4">
+                                <span class="text-gray-400 uppercase text-xs">{{ $product->brand }}</span>
+                                <p class="text-lg font-bold text-black truncate">{{ $product->name }}</p>
+                                <div class="flex items-center mt-2">
+                                    <p class="text-lg font-semibold text-black">Rp
+                                        {{ number_format($product->price, 0, ',', '.') }}</p>
+                                    @if ($product->discount_price)
+                                        <del class="ml-2 text-sm text-gray-600">Rp
+                                            {{ number_format($product->original_price, 0, ',', '.') }}</del>
+                                    @endif
                                 </div>
                             </div>
                         </a>
@@ -43,17 +93,6 @@
                 @endforeach
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="banner" class="text-center mt-15 w-full mt-2">
-    <h2 class="text-2xl font-bold my-7 uppercase">Our Style</h2>
-    <div class="flex flex-wrap lg:flex-nowrap lg:flex-none md:px-2 lg:px-1 py-3 justify-center items-center md:py-2  my-3">
-        @foreach ($carouselImages as $image)
-            <div class="w-full mt-3 lg:max-w-xl rounded overflow-hidden mx-2">
-                <img src="{{ $image->image_url }}" alt="{{ $image->name }}" class="w-full md:w-full xl:w-full">
-            </div>
-        @endforeach
-    </div>
-</section>
 @endsection
