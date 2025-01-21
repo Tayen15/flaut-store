@@ -6,7 +6,7 @@
 @section('content')
 
 <section id="top">
-    <div class="relative overflow-hidden bg-cover bg-no-repeat" style="background-position: 50%; background-image: url('https://cdn.discordapp.com/attachments/976824443743645696/1193144456120107098/1343c217cb27b58c.jpeg?ex=65aba55d&is=6599305d&hm=9590b881eb67d63d73f681e21b84ced2f6ccd4fbf5fddae90e30c1108fe2fdeb&'); height: 380px;">
+    <div class="relative overflow-hidden bg-cover bg-no-repeat" style="background-position: 50%; background-image: url('assets/images/bg-news.jpg'); height: 380px;">
         <div class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed" style="background-color: rgba(0, 0, 0, 0.679)">
             <div class="flex h-full items-center justify-center">
                 <div class="px-6 text-center text-white md:px-12">

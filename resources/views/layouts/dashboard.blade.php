@@ -34,7 +34,7 @@
             <div class="flex flex-wrap items-center">
                 <div class="flex flex-shrink md:w-1/3 justify-center md:justify-start text-white mr-4">
                     <a href="{{ route('dashboard.index') }}" aria-label="Home" class="ml-10 h-12 md:h-6 w-full">
-                        <img src="https://cdn.discordapp.com/attachments/976824443743645696/1192365071083503636/flaut.1_2.png?ex=65a8cf82&is=65965a82&hm=f9183fea4ca358dcf057572f73030e26994e91bf27d7617cf0487ea80d910438&" alt="Flaut Logo" class="h-full md:h-12">
+                        <img src="../assets/images/logo.png" alt="Flaut Logo" class="h-full md:h-12">
                     </a>
                 </div>
                 

@@ -14,20 +14,22 @@ class CatalogController extends Controller
     public function index(Request $request)
     {
         $query = Catalog::query();
-
+    
         $category = $request->input('category');
         if ($category) {
             $query->where('category', $category);
         }
-
+    
         $searchKeyword = $request->input('search');
         if ($searchKeyword && strlen($searchKeyword) >= 3) {
             $query->where('name', 'like', '%' . $searchKeyword . '%');
         }
     
         $catalogs = $query->get();
-        return view('catalog.index', compact('catalogs'));
+    
+        return view('catalog.index', compact('catalogs')); 
     }
+    
     public function indexAdmin(Request $request)
     {
         $query = Catalog::query();

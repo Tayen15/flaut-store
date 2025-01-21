@@ -9,6 +9,8 @@ use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HomeController;
+use App\Models\Carousel;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,18 +23,14 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::group(['middleware' => 'web'], function () {
-    Route::get('/auth', [AuthController::class, 'index'])->name('login');
-    Route::post('/auth', [AuthController::class, 'postLogin'])->name('auth');
-
-});
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/auth', [AuthController::class, 'postLogin'])->name('auth');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/real-time-changes', [DashboardController::class, 'getRealTimeChanges'])->name('dashboard.getRealTimeChanges');
 
     Route::prefix('dashboard')->group(function () {
-        // News Routes
         Route::prefix('news')->group(function () {
             Route::get('/', [NewsController::class, 'indexAdmin'])->name('dashboard.news.index');
             Route::get('/create', [NewsController::class, 'create'])->name('dashboard.news.create');
@@ -78,29 +76,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-
-Route::get('/about-us', function () {
-    return view(('about-us'));
-})->name('about-us');
+Route::get('/', [CarouselController::class, 'index'])->name('home');
 
 Route::resource('catalog', CatalogController::class);
-Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
-Route::get('/catalog/create', [CatalogController::class, 'create'])->name('catalog.create');
-
 Route::resource('news', NewsController::class);
-Route::get('/news', [NewsController::class, 'index'])->name('news.index');
-Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
-
 Route::resource('carousel', CarouselController::class);
-Route::get('/', [CarouselController::class, 'index'])->name('home');
-Route::get('/carousel/create', [CarouselController::class, 'create'])->name('carousel.create');
 
-Route::resource('profile', ProfileController::class);
-Route::resource('admin', AdminController::class);
+Route::get('/about-us', function () {
+    return view('about-us');
+})->name('about-us');
 
 Route::get('/test-database', function () {
     try {
@@ -108,4 +94,5 @@ Route::get('/test-database', function () {
         return 'Connected to the database!';
     } catch (\Exception $e) {
         return 'Unable to connect to the database. Error: ' . $e->getMessage();
-}});
+    }
+});

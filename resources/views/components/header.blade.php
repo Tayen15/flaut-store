@@ -5,14 +5,14 @@
         <div class="relative flex items-center justify-between h-16">
             <!-- Logo -->
             <a href="{{ route('home') }}" class="flex-shrink-0 flex w-12">
-                <img src="https://cdn.discordapp.com/attachments/976824443743645696/1196355689422004234/f.png?ex=663bd2cf&is=663a814f&hm=908abd60b14aab1c6b61ab0610e9a2a6e6bdc190ee9e0f345ef798e3b9f7a57d&" alt="Logo" class="h-14 w-14 lg:h-auto lg:w-auto">
+                <img src="assets/images/logo.png" alt="Logo" class="h-14 w-14 lg:h-auto lg:w-auto">
             </a>
 
             <!-- Desktop navigation links -->
             <div class="hidden sm:flex space-x-4">
                 <a id="text-nav" href="{{ route('home') }}" class="text-white hover:bg-orange-600 hover:text-white rounded-md px-3 py-2 text-xl font-medium" aria-current="page">Home</a>
-                <a id="text-nav-2" href="{{ route('catalog.index') }}" class="text-white hover:bg-orange-600 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Catalog</a>
-                <a id="text-nav-3" href="{{ route('news.index') }}" class="text-white hover:bg-orange-600 hover:text-white rounded-md px-3 py-2 text-xl font-medium">News</a>
+                <a id="text-nav" href="{{ route('catalog.index') }}" class="text-white hover:bg-orange-600 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Catalog</a>
+                <a id="text-nav" href="{{ route('news.index') }}" class="text-white hover:bg-orange-600 hover:text-white rounded-md px-3 py-2 text-xl font-medium">News</a>
             </div>
 
             <!-- Mobile menu button -->
@@ -35,8 +35,8 @@
     <div class="sm:hidden fixed w-full top-14" id="mobile-menu">
         <div class="bg-black" id="mobNavdiv">
             <a id="mob-nav" href="{{ route('home') }}" class="block text-white rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</a>
-            <a id="mob-nav-2"  href="{{ route('catalog.index') }}" class="block text-gray-300 hover:bg-orange-600 hover:text-white rounded-md px-3 py-2 text-base font-medium">Catalog</a>
-            <a id="mob-nav-3" href="{{ route('news.index') }}" class="block text-gray-300 hover:bg-orange-600 hover:text-white rounded-md px-3 py-2 text-base font-medium">News</a>
+            <a id="mob-nav"  href="{{ route('catalog.index') }}" class="block text-gray-300 hover:bg-orange-600 hover:text-white rounded-md px-3 py-2 text-base font-medium">Catalog</a>
+            <a id="mob-nav" href="{{ route('news.index') }}" class="block text-gray-300 hover:bg-orange-600 hover:text-white rounded-md px-3 py-2 text-base font-medium">News</a>
         </div>
     </div>
 </nav>

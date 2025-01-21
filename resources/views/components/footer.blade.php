@@ -1,40 +1,4 @@
-
-<div class="mt-14 mx-auto h-96 md:h-72 lg:h-48 md:px-6 p-8 bg-fixed w-full md:mb-5 bg-cover" style="background-image: url('https://cdn.discordapp.com/attachments/976824443743645696/1194923197624238131/download_1.jpeg?ex=65b21df2&is=659fa8f2&hm=483da8ae0553a06bb2c0d7a035a361f3d33c050798a62eae1e62855bbc826758&')">
-     <section class="mb-32 text-center lg:text-left" id="newsletter">
-         <div class="flex flex-wrap justify-center mt-3">
-             <div class="w-full md:w-10/12 lg:w-11/12 xl:w-10/12">
-                 <div class="grid items-center gap-x-6 lg:grid-cols-2">
-                     <div class="mb-10 lg:mb-0">
-                         <h2 class="text-3xl font-bold text-white">
-                             Do not miss any updates.
-                             <br />
-                             <span class="text-primary text-primary-400"><span class=" text-orange-600">Subscribe</span> to the newsletter</span>
-                         </h2>
-                     </div>
-                     <div class="mb-6 md:mb-0 md:flex md:flex-col">
-                         <div class="relative mb-3 w-full md:mr-3 xl:w-[490px]" data-te-input-wrapper-init>
-                             <input type="text"
-                                 class="peer block min-h-[auto] w-full rounded border-0 bg-white py-[0.32rem] px-3 leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-black dark:placeholder:text-black dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                                 id="exampleFormControlInput2" placeholder="Enter your email" />
-                             <label for="exampleFormControlInput2"
-                                 class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-black dark:peer-focus:text-primary">Enter
-                                 your email
-                             </label>
-                         </div>
-                         <button type="submit"
-                             class="inline-block rounded bg-orange-500 w-full  px-24 pt-3 pb-2.5 xl:w-[490px] text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-orange-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-orange-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-orange-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                             data-te-ripple-init data-te-ripple-color="light">
-                             Subscribe
-                         </button>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </section>
-</div>
- 
-
-
+{{-- Footer section --}}
 <div class="mx-6 md:py-10 text-center md:text-left px-20">
      <div class="grid justify-center gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div class="mt-5 md:mt-16">
@@ -186,17 +150,6 @@
                </p>
           </div>
      </div>
-</div>
-
-<div class="flex items-center justify-center border-b-2 border-white-200 p-6 dark:border-white-500 lg:justify-between">
-
-<!-- Social network icons container -->
-     
-</div>
-
-<!--Copyright section-->
-<div class="bg-black-200 p-6 text-center dark:bg-black-700">
-     <span class=" "> &copy; 2024 <span class="font-semibold">Flaut.</span></span>
 </div>
 
 <style>

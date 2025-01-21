@@ -80,7 +80,7 @@
                                             </svg>
                                         </span>
                                     </button>
-                                    <form id="delete-form-{{ $item->id }}" action="{{ route('catalog.destroy', $item->id) }}" method="POST" style="display: none;">
+                                    <form id="delete-form-{{ $item->id }}" action="{{ route('dashboard.catalog.destroy', $item->id) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                         <input type="hidden" id="confirmDeleteItemId" value="">

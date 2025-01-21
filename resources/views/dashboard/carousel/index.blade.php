@@ -60,7 +60,7 @@
                                         </svg>
                                     </span>
                                 </button>
-                                <form id="delete-form-{{ $item->id }}" action="{{ route('carousel.destroy', $item->id) }}" method="POST" style="display: none;">
+                                <form id="delete-form-{{ $item->id }}" action="{{ route('dashboard.carousel.destroy', $item->id) }}" method="POST" style="display: none;">
                                     @csrf
                                     @method('DELETE')
                                     <input type="hidden" id="confirmDeleteItemId" value="">
