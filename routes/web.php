@@ -10,6 +10,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CategoryController;
 use App\Models\Carousel;
 
 /*
@@ -22,6 +23,18 @@ use App\Models\Carousel;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::resource('catalog', CatalogController::class);
+Route::resource('news', NewsController::class);
+Route::resource('carousel', CarouselController::class);
+Route::resource('category', CategoryController::class);
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/about', function () { return view('about-us'); })->name('about-us');
+
+Route::get('/contact', function () { return view('contact'); })->name('contact');
+
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/auth', [AuthController::class, 'postLogin'])->name('auth');
@@ -75,20 +88,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
-
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-Route::get('/', [CarouselController::class, 'index'])->name('home');
-
-Route::resource('catalog', CatalogController::class);
-Route::resource('news', NewsController::class);
-Route::resource('carousel', CarouselController::class);
-
-Route::get('/about', function () {
-    return view('about-us');
-})->name('about-us');
-
-Route::get('/contact', function () { return view('contact'); })->name('contact');
 
 Route::get('/test-database', function () {
     try {

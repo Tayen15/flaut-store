@@ -58,22 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
           }
      });
 
-     function showSubMenu(event, menuId) {
-          event.preventDefault();
-          document.getElementById('main-menu').classList.add('hidden');
-          document.getElementById(menuId).classList.remove('hidden');
-     }
-
-     function showMainMenu(event) {
-          event.preventDefault();
-          document.getElementById('main-menu').classList.remove('hidden');
-          document.getElementById('kategori-menu').classList.add('hidden');
-     }
-
-     document.querySelector('[onclick*="showSubMenu"]').addEventListener('click', (event) => showSubMenu(event, 'kategori-menu'));
-     document.querySelector('[onclick*="showMainMenu"]').addEventListener('click', showMainMenu);
-
-
      // Carousel
      let currentSlide = 0;
      const carousel = document.getElementById('carousel');
@@ -113,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
           var now = new Date().getTime();
 
           // Set the date we're counting down to
-          var countDownDate = new Date("January 22, 2025 23:59:59").getTime();
+          var countDownDate = new Date("Jan 22, 2025 23:59:59").getTime();
 
           // Find the distance between now and the countdown date
           var distance = countDownDate - now;

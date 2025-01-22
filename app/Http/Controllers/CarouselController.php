@@ -12,9 +12,8 @@ class CarouselController extends Controller
 {
     public function index()
     {
-        $carouselImages = Carousel::inRandomOrder()->take(3)->get();;
-        $catalogs = Catalog::inRandomOrder()->take(4)->get();
-        return view('home', compact('carouselImages', 'catalogs'));
+        $carousel = Carousel::inRandomOrder()->take(3)->get();
+        return view('home', compact('carousel'));
     }
     
     public function indexAdmin()    

@@ -47,34 +47,3 @@
           </a>
       </div>
 </div>
-
-<style>
-    #toggleIcon {
-        transition: transform 0.3s ease-in-out;
-    }
-
-    #toggleProducts.active #toggleIcon {
-        transform: rotate(180deg);
-    }
-    #toggleLinks.active #toggleIcon {
-        transform: rotate(180deg);
-    }
-</style>
-
-<script>
-     const toggleProducts = document.getElementById('toggleProducts');
-     const sectionProducts = document.getElementById('sectionProducts');
-
-     toggleProducts.addEventListener('click', () => {
-        sectionProducts.classList.toggle('hidden');
-        toggleProducts.classList.toggle('active');
-    });
-    
-    const toggleLinks = document.getElementById('toggleLinks');
-    const sectionLinks = document.getElementById('sectionLinks');
-
-     toggleLinks.addEventListener('click', () => {
-          sectionLinks.classList.toggle('hidden');
-          toggleLinks.classList.toggle('active');
-     });
-</script>

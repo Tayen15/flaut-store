@@ -12,11 +12,9 @@ class CategoryController extends Controller
     // Menampilkan halaman admin kategori
     public function index()
     {
-        $categories = Category::with('items')->get();
+        $categories = Category::all();
     
-        return view('categories.index', [
-            'categories' => $categories,
-        ]);
+        return view('home', compact('categories'));
     }
     
     public function store(Request $request)

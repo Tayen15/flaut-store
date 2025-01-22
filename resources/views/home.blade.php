@@ -7,7 +7,7 @@
     <section id="hero" class="mt-24 p-4">
         <div class="relative overflow-hidden mx-auto mt-3 max-w-7xl">
             <div id="carousel" class="flex transition-transform">
-                @foreach ($carouselImages as $item)
+                @foreach ($carousel as $item)
                     <div class="min-w-full h-64 flex items-center justify-center text-2xl ">
                         <img src="{{ $item->image_url }}" alt="{{ $item->name }}"
                             class="h-full w-full object-cover rounded-lg shadow-lg">

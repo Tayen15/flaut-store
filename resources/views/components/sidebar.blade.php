@@ -4,7 +4,7 @@
     <div class="p-4 flex justify-between items-center">
         <h2 class="text-lg font-bold">Menu</h2>
     </div>
-    <ul id="main-menu" class="space-y-4 p-4">
+    <ul id="main-menu" class="space-y-4 p-4 transition-transform duration-300 transform translate-x-0">
         <li><a href="/" class="block hover:text-orange-600">Home</a></li>
         <li>
             <a href="#" class="hover:text-orange-600 flex justify-between items-center"
@@ -18,7 +18,7 @@
         </li>
         <li><a href="#" class="block hover:text-orange-600">Promo</a></li>
     </ul>
-    <ul id="kategori-menu" class="hidden space-y-4 p-4">
+    <ul id="kategori-menu" class="hidden space-y-4 p-4 transition-transform duration-300 transform translate-x-full">
         <li>
             <a href="#" class="flex justify-start gap-2 items-center hover:text-orange-600"
                 onclick="toggleMenu('main-menu')">
@@ -29,41 +29,46 @@
                 <span>Back</span>
             </a>
         </li>
-        <li>
-            <a href="#" class="hover:text-orange-600 flex justify-between items-center"
-                onclick="toggleMenu('fashion-pria-menu')">Fashion Pria</a>
-        </li>
-        <li><a href="#" class="hover:text-orange-600 flex justify-between items-center">Fashion Wanita</a></li>
-        <li><a href="#" class="hover:text-orange-600 flex justify-between items-center">Sepatu</a></li>
-        <li><a href="#" class="hover:text-orange-600 flex justify-between items-center">Tas</a></li>
-        <li><a href="#" class="hover:text-orange-600 flex justify-between items-center">Aksesoris</a></li>
+        @foreach ($categories as $category)
+            <li>
+                <a href="#" class="hover:text-orange-600 flex justify-between items-center capitalize"
+                    onclick="toggleMenu('{{ $category->id }}-menu')">{{ $category->name }}</a>
+            </li>
+        @endforeach
     </ul>
 
-    <ul id="fashion-pria-menu" class="hidden space-y-4 p-4">
-        <li>
-            <a href="#" class="flex justify-start gap-2 items-center hover:text-orange-600"
-                onclick="toggleMenu('kategori-menu')">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
-                    <path
-                        d="M10.7672 7.5431C11.0672 7.25744 11.0788 6.78271 10.7931 6.48276C10.5074 6.18281 10.0327 6.17123 9.73276 6.4569L10.7672 7.5431ZM4.48276 11.4569C4.18281 11.7426 4.17123 12.2173 4.4569 12.5172C4.74256 12.8172 5.21729 12.8288 5.51724 12.5431L4.48276 11.4569ZM5.51724 11.4569C5.21729 11.1712 4.74256 11.1828 4.4569 11.4828C4.17123 11.7827 4.18281 12.2574 4.48276 12.5431L5.51724 11.4569ZM9.73276 17.5431C10.0327 17.8288 10.5074 17.8172 10.7931 17.5172C11.0788 17.2173 11.0672 16.7426 10.7672 16.4569L9.73276 17.5431ZM5 11.25C4.58579 11.25 4.25 11.5858 4.25 12C4.25 12.4142 4.58579 12.75 5 12.75V11.25ZM19 12.75C19.4142 12.75 19.75 12.4142 19.75 12C19.75 11.5858 19.4142 11.25 19 11.25V12.75ZM9.73276 6.4569L4.48276 11.4569L5.51724 12.5431L10.7672 7.5431L9.73276 6.4569ZM4.48276 12.5431L9.73276 17.5431L10.7672 16.4569L5.51724 11.4569L4.48276 12.5431ZM5 12.75H19V11.25H5V12.75Z" />
-                </svg>
-                <span>Back</span>
-            </a>
-        </li>
-        <li><a href="#" class="hover:text-orange-600 flex justify-between items-center">Baju</a></li>
-        <li><a href="#" class="hover:text-orange-600 flex justify-between items-center">Celana</a></li>
-        <li><a href="#" class="hover:text-orange-600 flex justify-between items-center">Aksesoris</a></li>
-    </ul>
+    @foreach ($categories as $category)
+        <ul id="{{ $category->id }}-menu" class="hidden space-y-4 p-4 transition-transform duration-300 transform translate-x-full">
+            <li>
+                <a href="#" class="flex justify-start gap-2 items-center hover:text-orange-600"
+                    onclick="toggleMenu('kategori-menu')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                        <path
+                            d="M10.7672 7.5431C11.0672 7.25744 11.0788 6.78271 10.7931 6.48276C10.5074 6.18281 10.0327 6.17123 9.73276 6.4569L10.7672 7.5431ZM4.48276 11.4569C4.18281 11.7426 4.17123 12.2173 4.4569 12.5172C4.74256 12.8172 5.21729 12.8288 5.51724 12.5431L4.48276 11.4569ZM5.51724 11.4569C5.21729 11.1712 4.74256 11.1828 4.4569 11.4828C4.17123 11.7827 4.18281 12.2574 4.48276 12.5431L5.51724 11.4569ZM9.73276 17.5431C10.0327 17.8288 10.5074 17.8172 10.7931 17.5172C11.0788 17.2173 11.0672 16.7426 10.7672 16.4569L9.73276 17.5431ZM5 11.25C4.58579 11.25 4.25 11.5858 4.25 12C4.25 12.4142 4.58579 12.75 5 12.75V11.25ZM19 12.75C19.4142 12.75 19.75 12.4142 19.75 12C19.75 11.5858 19.4142 11.25 19 11.25V12.75ZM9.73276 6.4569L4.48276 11.4569L5.51724 12.5431L10.7672 7.5431L9.73276 6.4569ZM4.48276 12.5431L9.73276 17.5431L10.7672 16.4569L5.51724 11.4569L4.48276 12.5431ZM5 12.75H19V11.25H5V12.75Z" />
+                    </svg>
+                    <span>Back</span>
+                </a>
+            </li>
+            @foreach ($category->items as $subcategory)
+                <li><a href="#" class="hover:text-orange-600 flex justify-between items-center capitalize">{{ $subcategory->name }}</a></li>
+            @endforeach
+        </ul>
+    @endforeach
 </div>
 
 <script>
+
     function toggleMenu(menuId) {
         const menus = document.querySelectorAll('#sidebar ul');
         menus.forEach(menu => {
             if (menu.id === menuId) {
                 menu.classList.toggle('hidden');
+                menu.classList.toggle('translate-x-0');
+                menu.classList.toggle('translate-x-full');
             } else {
                 menu.classList.add('hidden');
+                menu.classList.remove('translate-x-0');
+                menu.classList.add('translate-x-full');
             }
         });
     }
