@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Catalog;
 use Illuminate\Http\Request;
-use App\Models\CategoriesCatalog;
+use App\Models\CategoriesItemCatalog as CategoriesCatalog;
+use App\Models\CategoriesItemCatalog;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;

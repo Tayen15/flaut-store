@@ -19,6 +19,6 @@ class Catalog extends Model
 
     public function category()
     {
-        return $this->belongsTo(CategoriesCatalog::class, 'category_id');
+        return $this->belongsTo(CategoriesItemCatalog::class, 'category_id');
     }
 }
