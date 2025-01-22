@@ -7,12 +7,18 @@
     <section id="hero" class="mt-24 p-4">
         <div class="relative overflow-hidden mx-auto mt-3 max-w-7xl">
             <div id="carousel" class="flex transition-transform">
-                @foreach ($carousel as $item)
-                    <div class="min-w-full h-64 flex items-center justify-center text-2xl ">
-                        <img src="{{ $item->image_url }}" alt="{{ $item->name }}"
-                            class="h-full w-full object-cover rounded-lg shadow-lg">
+                @if (!$carousel->isEmpty())
+                    @foreach ($carousel as $item)
+                        <div class="min-w-full h-64 flex items-center justify-center text-2xl ">
+                            <img src="{{ $item->image_url }}" alt="{{ $item->name }}"
+                                class="h-full w-full object-cover rounded-lg shadow-lg">
+                        </div>
+                        @endforeach
+                @else
+                    <div class="min-w-full h-64 bg-gray-500 flex items-center justify-center text-2xl text-white">
+                        No Carousel Items Available
                     </div>
-                @endforeach
+                @endif
             </div>
         </div>
     </section>
@@ -35,8 +41,7 @@
                     <div class="timer">
                         <div
                             class="rounded-xl bg-white backdrop-blur-sm py-3 min-w-[96px] flex items-center justify-center flex-col gap-1 px-3">
-                            <h3
-                                class="countdown-element days font-manrope font-semibold text-2xl text-black text-center">
+                            <h3 class="countdown-element days font-manrope font-semibold text-2xl text-black text-center">
                             </h3>
                             <p class="text-lg uppercase font-normal text-black mt-1 text-center w-full">Days</p>
                         </div>
@@ -44,8 +49,7 @@
                     <div class="timer">
                         <div
                             class="rounded-xl bg-white backdrop-blur-sm py-3 min-w-[96px] flex items-center justify-center flex-col gap-1 px-3">
-                            <h3
-                                class="countdown-element hours font-manrope font-semibold text-2xl text-black text-center">
+                            <h3 class="countdown-element hours font-manrope font-semibold text-2xl text-black text-center">
                             </h3>
                             <p class="text-lg uppercase font-normal text-black mt-1 text-center w-full">Hours</p>
                         </div>
