@@ -9,7 +9,7 @@
             <div id="carousel" class="flex transition-transform">
                 @if (!$carousel->isEmpty())
                     @foreach ($carousel as $item)
-                        <div class="min-w-full h-64 flex items-center justify-center text-2xl ">
+                        <div class="min-w-full h-96 flex items-center justify-center text-2xl ">
                             <img src="{{ $item->image_url }}" alt="{{ $item->name }}"
                                 class="h-full w-full object-cover rounded-lg shadow-lg">
                         </div>
