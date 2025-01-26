@@ -25,7 +25,7 @@
          "CACHE_DRIVER": "array",
          "LOG_CHANNEL": "stderr",
          "SESSION_DRIVER": "cookie",
-         "DB_CONNECTION": "mysql",
+         "DB_CONNECTION": "   ",
          "DB_HOST": "jv-b7.h.filess.io",
          "DB_PORT": "3306",
          "DB_DATABASE": "fashion_sortsight",
