@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
           var now = new Date().getTime();
 
           // Set the date we're counting down to
-          var countDownDate = new Date("Jan 22, 2025 23:59:59").getTime();
+          var countDownDate = new Date("Jan 25, 2025 23:59:59").getTime();
 
           // Find the distance between now and the countdown date
           var distance = countDownDate - now;

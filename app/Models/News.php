@@ -4,21 +4,38 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class News extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'category_id', 'content', 'author', 'image'];
+    protected $guarded = ['id', 'view_count'];
 
+    protected $casts = [
+        'tags' => 'array',
+    ];
 
-    public function getImageUrlAttribute()
-    {
-        return asset('storage/image/news/' . $this->image);
-    }
+    const IMAGE_PATH = 'storage/image/news/';
 
     public function category()
     {
         return $this->belongsTo(CategoriesNews::class, 'id');
     }
+
+    public function status()
+    {
+        return $this->belongsTo(NewsStatus::class, 'id');
+    }
+
+    public function image()
+    {
+        Storage::url($this->image);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id');
+    }
+    
 }
