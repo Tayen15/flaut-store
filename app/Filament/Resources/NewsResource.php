@@ -10,6 +10,7 @@ use App\Models\NewsStatus;
 use Dompdf\FrameDecorator\Text;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
@@ -29,6 +30,8 @@ use Illuminate\Support\Facades\Auth;
 class NewsResource extends Resource
 {
     protected static ?string $model = News::class;
+
+    protected static ?string $navigationLabel = 'Manage News';
 
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
@@ -79,6 +82,9 @@ class NewsResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->groups([
+
+            ])
             ->columns([
                 TextColumn::make('title')
                     ->searchable()
@@ -90,6 +96,7 @@ class NewsResource extends Resource
                     ->searchable(),
                 SelectColumn::make('status_id')
                     ->options(NewsStatus::all()->pluck('status', 'id')->toArray())
+                    ->label('Status')
                     ->searchable(),
                 ImageColumn::make('image_url')
                     ->label('Image')
