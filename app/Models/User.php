@@ -45,7 +45,7 @@ class User extends Authenticatable
 
     public function News()
     {
-        return $this->hasMany(News::class, 'author');
+        return $this->hasMany(News::class, 'author_id');
     }
 
     public function Catalogs()

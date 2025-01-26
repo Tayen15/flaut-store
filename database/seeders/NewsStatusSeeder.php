@@ -16,7 +16,7 @@ class NewsStatusSeeder extends Seeder
         $status = ['Draft', 'Published', 'Archived'];
 
         foreach ($status as $s) {
-            NewsStatus::create(['status' => $s]);
+            NewsStatus::create(['name' => $s]);
         }
     }
 }

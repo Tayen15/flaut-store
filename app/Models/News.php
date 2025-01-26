@@ -20,12 +20,12 @@ class News extends Model
 
     public function category()
     {
-        return $this->belongsTo(CategoriesNews::class, 'id');
+        return $this->belongsTo(NewsCategory::class);
     }
 
     public function status()
     {
-        return $this->belongsTo(NewsStatus::class, 'id');
+        return $this->belongsTo(NewsStatus::class);
     }
 
     public function image()

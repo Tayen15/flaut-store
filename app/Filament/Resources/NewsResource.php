@@ -23,15 +23,21 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Tables\Grouping\Group as TableGroup;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
+use Post;
+
+use function Clue\StreamFilter\fun;
 
 class NewsResource extends Resource
 {
     protected static ?string $model = News::class;
 
     protected static ?string $navigationLabel = 'Manage News';
+
+    protected static ?string $slug = 'manage-news';
 
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
@@ -52,7 +58,7 @@ class NewsResource extends Resource
                     ->label('Category')
                     ->required()
                     ->default(0)
-                    ->options(CategoriesNews::all()->pluck('name', 'id')),
+                    ->relationship('category', 'name'),
                 FileUpload::make('image_url')
                     ->label('Image')
                     ->required()
@@ -67,13 +73,14 @@ class NewsResource extends Resource
                     ->required(),
                 TagsInput::make('tags')
                     ->required()
-                    ->separator(',')
+                    ->separator(', ')
+                    ->splitKeys(['Enter', ',', 'Tab'])
                     ->label('Tags')
                     ->placeholder('Enter tags'),
                 Select::make('status_id')
                     ->required()
                     ->label('Status')
-                    ->options(NewsStatus::all()->pluck('status', 'id')),
+                    ->options(NewsStatus::all()->pluck('name', 'id')),
                 Hidden::make('author_id')
                     ->default(Auth::user()->id),
             ]);
@@ -83,19 +90,21 @@ class NewsResource extends Resource
     {
         return $table
             ->groups([
-
+                TableGroup::make('status_id')
+                    ->label('Status'),
             ])
             ->columns([
                 TextColumn::make('title')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('category.name')
+                    ->label('Category')
                     ->searchable(),
                 TextColumn::make('user.name')
                     ->label('Author')
                     ->searchable(),
                 SelectColumn::make('status_id')
-                    ->options(NewsStatus::all()->pluck('status', 'id')->toArray())
+                    ->options(NewsStatus::all()->pluck('name', 'id')->toArray())
                     ->label('Status')
                     ->searchable(),
                 ImageColumn::make('image_url')
