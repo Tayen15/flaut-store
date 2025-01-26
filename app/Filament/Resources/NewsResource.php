@@ -90,8 +90,10 @@ class NewsResource extends Resource
     {
         return $table
             ->groups([
-                TableGroup::make('status_id')
+                TableGroup::make('status.name')
                     ->label('Status'),
+                TableGroup::make('category.name')
+                    ->label('Category'),
             ])
             ->columns([
                 TextColumn::make('title')
@@ -103,9 +105,19 @@ class NewsResource extends Resource
                 TextColumn::make('user.name')
                     ->label('Author')
                     ->searchable(),
-                SelectColumn::make('status_id')
-                    ->options(NewsStatus::all()->pluck('name', 'id')->toArray())
+                TextColumn::make('status.name')
                     ->label('Status')
+                    ->badge()
+                    ->color(fn (News $news) => match ($news->status->name) {
+                        'Draft' => 'gray',
+                        'Published' => 'success',
+                        'Archived' => 'danger',
+                    })
+                    ->icon(fn (News $news) => match ($news->status->name) {
+                        'Draft' => 'heroicon-o-pencil',
+                        'Published' => 'heroicon-o-check-circle',
+                        'Archived' => 'heroicon-o-archive-box',
+                    })
                     ->searchable(),
                 ImageColumn::make('image_url')
                     ->label('Image')
