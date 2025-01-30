@@ -28,6 +28,7 @@ use Filament\Tables\Grouping\Group as TableGroup;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Post;
 
 use function Clue\StreamFilter\fun;
@@ -44,17 +45,22 @@ class NewsResource extends Resource
 
     protected static ?string $navigationGroup = 'News';
 
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('title')
                     ->required()
-                    ->placeholder('Masukkan judul berita'),
+                    ->placeholder('Masukkan judul berita')
+                    ->reactive()
+                    ->debounce(500)
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        $set('slug', Str::slug($state));
+                    }),
                 TextInput::make('slug')
                     ->required()
-                    ->placeholder('Masukkan slug berita'),
+                    ->unique('news', 'slug')
+                    ->disabled(fn ($get) => $get('title') != ''),
                 Select::make('category_id')
                     ->label('Category')
                     ->required()
