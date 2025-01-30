@@ -35,6 +35,8 @@ Route::get('/about', function () { return view('about-us'); })->name('about-us')
 
 Route::get('/contact', function () { return view('contact'); })->name('contact');
 
+Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/auth', [AuthController::class, 'postLogin'])->name('auth');

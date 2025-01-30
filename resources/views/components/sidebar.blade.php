@@ -17,6 +17,7 @@
             </a>
         </li>
         <li><a href="#" class="block hover:text-orange-600">Promo</a></li>
+        <li><a href="/news" class="block hover:text-orange-600">News</a></li>
     </ul>
     <ul id="kategori-menu" class="hidden space-y-4 p-4 transition-transform duration-300 transform translate-x-full">
         <li>

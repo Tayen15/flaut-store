@@ -2,19 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CategoriesCatalog;
 use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\CategoriesNews;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class NewsController extends Controller
 {
     public function index(Request $request)
     {
-        $query = News::query()->with('category');
-    
+        $query = News::query()->with('category')->whereHas('status', function ($q) {
+            $q->where('status_id', 2); 
+        });
+        
         $searchKeyword = $request->input('search');
         if ($searchKeyword && strlen($searchKeyword) >= 3) {
             $query->where(function ($subquery) use ($searchKeyword) {
@@ -22,131 +26,30 @@ class NewsController extends Controller
                          ->orWhere('content', 'like', '%' . $searchKeyword . '%');
             });
         }
-    
-        $news = $query->get();
-        return view('news.index', compact('news'));
-    }
-    
-    public function indexAdmin(Request $request)
-    {
-        $query = News::query()->with('category');
-    
-        $author = $request->input('author');
-    
-        $isMyNews = $author === auth()->user()->name;
-    
-        if ($author) {
-            $query->where('author', $author);
-        }
-    
-        $news = $query->get();
-
-        return view('dashboard.news.index', compact('news', 'isMyNews'));
-    }
-    
-
-    public function create()
-    {
-
-        $categories = CategoriesNews::all();
-
-        return view('dashboard.news.create', compact('categories'));
-    }
-
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'title' => 'required',
-            'category_id' => 'required',
-            'content' => 'nullable',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:10240',
-        ]);
-
         
-        try {
-            $currentTime = Carbon::now();
-            $formattedTime = $currentTime->format('Y-m-d_His');
-            
-            $imagePath = $request->file('image')->storeAs('image/news', $formattedTime . '_' . $request->file('image')->getClientOriginalName());
-            $validatedData['image'] = basename($imagePath);
-            $validatedData['author'] = Auth::user()->name;
+        $news = $query->get();
+        $categories = CategoriesCatalog::with('items')->get();
 
-    
-            News::create($validatedData);
-    
-            return redirect()
-                ->route('dashboard.news.index')
-                ->with('success', 'Successfully created news');
-        } catch (\Throwable $th) {
-            return redirect()
-                ->route('dashboard.news.index')
-                ->with('error', 'Failed to create news, try again!');
-        }
-
+        return view('news.index', compact('news', 'categories'));
     }
 
     public function show($id)
     {
         $news = News::findOrFail($id);
         $relatedArticles = News::inRandomOrder()->take(3)->get();
+        $categories = CategoriesCatalog::with('items')->get();
 
-        return view('news.show', compact('news', 'relatedArticles'));
-    }
-
-    public function edit($id)
-    {
-        $news = News::findOrFail($id);
-        $categories = CategoriesNews::all();
-
-        return view('dashboard.news.edit', compact('news', 'categories'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $validatedData = $request->validate([
-            'title' => 'required',
-            'category_id' => 'required',
-            'content' => 'nullable',
-            'image' => 'image|mimes:jpeg,png,jpg|max:10240',
-        ]);
-
-        $news = News::findOrFail($id);
-
-        if ($request->hasFile('image')) {
-            if (Storage::exists("image/news/{$news->image}")) {
-                Storage::delete("image/news/{$news->image}");
-            }
-        
-            $currentTime = Carbon::now();
-            $formattedTime = $currentTime->format('Y-m-d_His');
-        
-            $imagePath = $request->file('image')->storeAs('image/news', $formattedTime . '_' . $request->file('image')->getClientOriginalName());
-            $validatedData['image'] = basename($imagePath);
-        
-            $news->update($validatedData);
-        
-            return redirect()
-                ->route('dashboard.news.index')
-                ->with('success', 'Successfully updated news with changing image');
-        }
-        $news->update($validatedData);
-        return redirect()
-            ->route('dashboard.news.index')
-            ->with('success', 'Successfully updated news without changing image');
-    }
-
-    public function destroy($id)
-    {
-        $news = News::findOrFail($id);
-
-        if (Storage::exists("image/news/{$news->image}")) {
-            Storage::delete("image/news/{$news->image}");
-        }
+        $cacheKey = 'news_' . $news->id . '_views';
+        $views = Cache::get($cacheKey, 0);
     
-        $news->delete();
+        $views += 1;
+        Cache::put($cacheKey, $views, now()->addMinutes(10));
 
-        return redirect()
-            ->route('dashboard.news.index')
-            ->with('success', 'Successfully deleted News');
+        if ($views % 10 === 0) {
+            $news->view_count = $views;
+            $news->save();
+        }
+
+        return view('news.show', compact('news', 'relatedArticles', 'categories'));
     }
 }

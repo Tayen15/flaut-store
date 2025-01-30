@@ -10,7 +10,7 @@ class News extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id', 'view_count'];
+    protected $guarded = ['id'];
 
     protected $casts = [
         'tags' => 'array',

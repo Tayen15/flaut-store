@@ -10,55 +10,98 @@
     </div>
 </section>
 
+<div class="container mx-auto px-4 py-8">
+    <!-- Judul Berita -->
+    <h1 class="text-4xl font-bold text-orange-600 mb-4">{{ $news->title }}</h1>
 
-<div class="container mx-auto flex">
-    <section id="articles" class="md:w-full md:p-1 lg:ml-16 lg:p-5">
-        <article class="bg-white p-4 md:p-8 flex flex-col md:items-start">
-            <img src="{{ $news->image_url }}" alt="Gambar Artikel" class="mb-4 rounded-lg w-full md:w-auto md:max-h-64 lg:max-h-80 xl:max-h-96 md:mr-8">
-            
-            <div>
-                <h1 class="text-2xl md:text-3xl lg:text-4xl xl:text-3xl font-bold mb-4 uppercase">{{ $news->title }}</h1>
+    <!-- Informasi Creator, Tanggal, dan Kategori -->
+    <div class="flex items-center text-sm text-gray-600 mb-6">
+        <span>By {{ $news->user->name }}</span>
+        <span class="mx-2">•</span>
+        <span>{{ \Carbon\Carbon::parse($news->updated_at)->format('d F Y') }}</span>
+        <span class="mx-2">•</span>
+        <div class="flex space-x-2">
+            @foreach (explode(',', $news->tags) as $tag)
+                <span class="bg-orange-600 text-white px-2 py-1 rounded-full text-xs">{{ trim($tag) }}</span>
+            @endforeach
+        </div>
+        <span class="mx-2">•</span>
+        <span class="text-gray-600">{{ $news->view_count }} views</span>
+    </div>
 
-                <div class="flex items-center mb-4">
-                    <div class="flex-shrink-0 mx-1 md:mx-1">
-                        <svg fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71ZM12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z"/></svg>
-                    </div>
-                
-                    <div class="ml-1 md:mx-1">
-                        <p class="text-gray-600 mr-4 text-sm md:sm lg:text-sm xl:text-sm"> {{ $news->author }}</p>
-                    </div>
-    
-                    <div class="mr-2 md:mx-1">
-                        <p class="text-gray-800 font-semibold">/</p>
-                    </div>
+    <!-- Gambar Berita -->
+    <div class="mb-8">
+        <img src="{{ asset('storage/' . $news->image_url) }}" alt="{{ $news->title }}" class="w-full h-96 object-cover rounded-lg shadow-lg">
+    </div>
 
-                    <div class="flex-shrink-0 ml-1 md:mx-3">
-                        <svg fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"><path d="M15.09814,12.63379,13,11.42285V7a1,1,0,0,0-2,0v5a.99985.99985,0,0,0,.5.86621l2.59814,1.5a1.00016,1.00016,0,1,0,1-1.73242ZM12,2A10,10,0,1,0,22,12,10.01114,10.01114,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.00917,8.00917,0,0,1,12,20Z"/></svg>
-                    </div>
-                
-                    <div class="mx-1 md:mx-1">
-                        <p class="text-gray-600 md:mr-2 text-sm md:sm lg:text-sm xl:text-sm">{{ \Carbon\Carbon::parse($news->created_at)->format('d F Y') }}</p>
-                    </div>
-                </div>
-                
+    <!-- Deskripsi Lengkap -->
+    <div class="prose max-w-none mb-8 prosa">
+        {!! $news->content !!}
+    </div>
 
-                <div class="prosa leading-7">
-                    {!! $news->content !!}
-                </div>                          
+    <!-- Tombol Share ke Media Sosial -->
+    <div class="flex items-center space-x-4 mb-8">
+        <span class="text-gray-600">Share:</span>
+        <a href="#" class="text-gray-500 hover:text-orange-600">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <a href="#" class="text-gray-500 hover:text-orange-600">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="text-gray-500 hover:text-orange-600">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" class="text-gray-500 hover:text-orange-600">
+            <i class="fab fa-linkedin"></i>
+        </a>
+    </div>
 
-                <div class="mt-4 md:mt-8">
-                    <h2 class="text-lg md:text-xl lg:text-2xl xl:text-lg font-semibold mb-2 uppercase"><span class="mr-2"><i class="fa-solid fa-chevron-right" style="color: #ea580c;"></i></span> You might also like</h2>
-                    <ul class="list-none pl-1">
-                        @foreach ($relatedArticles as $article)
-                            <li class="mb-2">
-                                <a href="{{ route('news.show', $article->id) }}" class="text-blue-500 hover:underline">{{ $article->title }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
+    <!-- Related News -->
+    <div class="mt-12">
+        <h2 class="text-2xl font-bold text-orange-600 mb-6">Related News</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            @foreach ($relatedArticles as $related)
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <img src="{{ asset('storage/' . $related->image_url) }}" alt="{{ $related->title }}" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <span class="text-sm text-gray-600">{{ $related->category->name }}</span>
+                    <h3 class="text-xl font-semibold text-black mt-2">{{ $related->title }}</h3>
+                    <p class="text-gray-700 mt-2">{{ Str::limit($related->content, 100) }}</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-sm text-gray-600">By {{ $related->user->name }}</span>
+                        <span class="text-sm text-gray-600">{{ \Carbon\Carbon::parse($related->published_at)->format('d F Y') }}</span>
+                    </div>
+                    <a href="{{ route('news.show', $related->id) }}" class="mt-4 inline-block text-orange-600 hover:underline">Read More</a>
                 </div>
             </div>
-        </article>
-    </section>
+            @endforeach
+        </div>
+    </div>
+
+    <!-- Komentar (Opsional) -->
+    <div class="mt-12">
+        <h2 class="text-2xl font-bold text-orange-600 mb-6">Comments</h2>
+        <div class="space-y-4">
+            <!-- Form Komentar -->
+            <form action="#" method="POST" class="mb-6">
+                @csrf
+                <textarea name="comment" rows="3" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Add a comment..."></textarea>
+                <button type="submit" class="mt-2 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700">Submit</button>
+            </form>
+
+            <!-- Daftar Komentar -->
+            {{-- <div class="bg-white p-4 rounded-lg shadow">
+                <div class="flex items-center space-x-4">
+                    <img src="https://via.placeholder.com/40" alt="User" class="w-10 h-10 rounded-full">
+                    <div>
+                        <span class="font-semibold">John Doe</span>
+                        <span class="text-sm text-gray-600">• 2 days ago</span>
+                    </div>
+                </div>
+                <p class="mt-2 text-gray-700">This is a great article! Thanks for sharing.</p>
+            </div> --}}
+        </div>
+    </div>
 </div>
 
 <style>

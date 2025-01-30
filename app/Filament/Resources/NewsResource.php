@@ -9,6 +9,7 @@ use App\Models\News;
 use App\Models\NewsStatus;
 use Dompdf\FrameDecorator\Text;
 use Filament\Forms;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Hidden;
@@ -80,7 +81,15 @@ class NewsResource extends Resource
                 Select::make('status_id')
                     ->required()
                     ->label('Status')
-                    ->options(NewsStatus::all()->pluck('name', 'id')),
+                    ->options(NewsStatus::all()->pluck('name', 'id'))
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        if ($state == 2) {
+                            $set('published_at', now());
+                        }
+                    }),
+                DateTimePicker::make('published_at')
+                    ->hidden(fn ($get) => $get('status_id') != 2),
                 Hidden::make('author_id')
                     ->default(Auth::user()->id),
             ]);

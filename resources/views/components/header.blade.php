@@ -22,7 +22,7 @@
 
         <!-- Brand Logo -->
         <a href="/">
-            <img src="assets/images/brand.png" alt="Flaut" class="h-10 text-orange-600">
+            <img src="{{ asset('assets/images/brand.png') }}" alt="Flaut" class="h-10 text-orange-600">
         </a>
     </div>
 
