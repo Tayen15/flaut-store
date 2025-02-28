@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->foreignId('category_id')->constrained('news_categories')->cascadeOnDelete();
             $table->foreignId('status_id');
-            $table->foreignId('author_id')->constrained('users');
+            $table->foreignId('author_id');
             
             $table->string('slug')->unique();
 

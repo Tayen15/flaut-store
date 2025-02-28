@@ -52,7 +52,7 @@
             </svg>
             <span class="hidden md:inline">Keranjang</span>
         </a>
-        <a href="/login" class="flex items-center gap-1 text-black hover:text-orange-600">
+        <a href="/admin/login" class="flex items-center gap-1 text-black hover:text-orange-600">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="h-6 w-6" stroke="currentColor">
                 <path
                     d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"

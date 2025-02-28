@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CarouselController;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\NewsController;
