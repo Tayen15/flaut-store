@@ -18,7 +18,7 @@ return new class extends Migration
 
             $table->string('phone')->unique()->nullable();
             
-            $table->foreignId('role')->default(1);
+            $table->foreignId('role')->default(2);
             
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
