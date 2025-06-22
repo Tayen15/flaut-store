@@ -8,6 +8,7 @@ use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PageController;
 use App\Models\Carousel;
 
 /*
@@ -28,9 +29,8 @@ Route::resource('category', CategoryController::class);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/about', function () { return view('about-us'); })->name('about-us');
-
-Route::get('/contact', function () { return view('contact'); })->name('contact');
+Route::get('/about', [PageController::class, 'about'])->name('about-us');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/news/search', [NewsController::class, 'search'])->name('news.search');
