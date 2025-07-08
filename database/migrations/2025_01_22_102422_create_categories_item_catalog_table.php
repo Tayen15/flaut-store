@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('categories_item_catalogs', function (Blueprint $table) {
             $table->id();
             $table->string('name', 25);
-            $table->foreignId('category_id');
+            $table->foreignId('category_id')->unique();
             $table->timestamps();
         });
     }
