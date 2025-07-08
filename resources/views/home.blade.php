@@ -13,7 +13,7 @@
                             <img src="{{ $item->image_url }}" alt="{{ $item->name }}"
                                 class="h-full w-full object-cover rounded-lg shadow-lg">
                         </div>
-                        @endforeach
+                    @endforeach
                 @else
                     <div class="min-w-full h-64 bg-gray-500 flex items-center justify-center text-2xl text-white">
                         No Carousel Items Available
@@ -78,14 +78,14 @@
                 @foreach ($catalogs as $product)
                     <div class="bg-white shadow-md rounded-xl duration-500 hover:shadow-xl">
                         <a href="{{ route('catalog.show', $product->id) }}">
-                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}"
+                            <img src="{{ asset('storage/' . $product->primaryImage->image_url) }}" alt="{{ $product->name }}"
                                 class="h-80 w-full object-cover rounded-t-xl" />
                             <div class="p-4">
-                                <span class="text-gray-400 uppercase text-xs">{{ $product->brand }}</span>
+                                <span class="text-gray-400 uppercase text-xs">{{ $product->brand->name }}</span>
                                 <p class="text-lg font-bold text-black truncate">{{ $product->name }}</p>
                                 <div class="flex items-center mt-2">
                                     <p class="text-lg font-semibold text-black">Rp
-                                        {{ number_format($product->price, 0, ',', '.') }}</p>
+                                        {{ number_format($product->selling_price, 0, ',', '.') }}</p>
                                     @if ($product->discount_price)
                                         <del class="ml-2 text-sm text-gray-600">Rp
                                             {{ number_format($product->original_price, 0, ',', '.') }}</del>
