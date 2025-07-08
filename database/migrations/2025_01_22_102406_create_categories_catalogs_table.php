@@ -8,12 +8,20 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     */
-    public function up(): void
+     */    public function up(): void
     {
         Schema::create('categories_catalogs', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 25);
+            $table->foreignId('parent_id')->nullable()->constrained('categories_catalogs')->onDelete('cascade');
+            $table->string('name', 100);
+            $table->string('slug')->unique();
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
+            $table->string('icon')->nullable();
+            $table->integer('sort_order')->default(0);
+            $table->boolean('is_active')->default(true);
+            $table->string('meta_title')->nullable();
+            $table->text('meta_description')->nullable();
             $table->timestamps();
         });
     }
