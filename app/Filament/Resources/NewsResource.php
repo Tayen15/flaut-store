@@ -59,8 +59,8 @@ class NewsResource extends Resource
                     }),
                 TextInput::make('slug')
                     ->required()
-                    ->unique('news', 'slug')
-                    ->disabled(fn ($get) => $get('title') != ''),
+                    ->unique('news', 'slug', ignoreRecord: true)
+                    ->readOnly(fn($get) => empty($get('title'))),
                 Select::make('category_id')
                     ->label('Category')
                     ->required()
@@ -95,7 +95,7 @@ class NewsResource extends Resource
                         }
                     }),
                 DateTimePicker::make('published_at')
-                    ->hidden(fn ($get) => $get('status_id') != 2),
+                    ->hidden(fn($get) => $get('status_id') != 2),
                 Hidden::make('author_id')
                     ->default(Auth::user()->id),
             ]);
@@ -123,12 +123,12 @@ class NewsResource extends Resource
                 TextColumn::make('status.name')
                     ->label('Status')
                     ->badge()
-                    ->color(fn (News $news) => match ($news->status->name) {
+                    ->color(fn(News $news) => match ($news->status->name) {
                         'Draft' => 'gray',
                         'Published' => 'success',
                         'Archived' => 'danger',
                     })
-                    ->icon(fn (News $news) => match ($news->status->name) {
+                    ->icon(fn(News $news) => match ($news->status->name) {
                         'Draft' => 'heroicon-o-pencil',
                         'Published' => 'heroicon-o-check-circle',
                         'Archived' => 'heroicon-o-archive-box',
