@@ -30,4 +30,12 @@ class CatalogController extends Controller
     
         return view('catalog.index', compact('catalogs')); 
     }
+
+    public function show($id)
+    {
+        $catalog = Catalog::findOrFail($id);
+
+
+        return view('catalog.show', compact('catalog'));
+    }
 }
