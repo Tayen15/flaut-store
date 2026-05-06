@@ -10,7 +10,7 @@
         <hr class="mt-3">
 
         @if(session('error'))
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-3" role="alert">
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-sm relative mt-3" role="alert">
             <span class="block sm:inline">{{ session('error') }}</span>
         </div>
         @endif
@@ -19,16 +19,16 @@
             @csrf
             <div class="mt-3">
                 <label for="username" class="block text-base mb-2">Email</label>
-                <input type="text" name="email" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" value="{{ old('email') }}" placeholder="Enter Email" required/>
+                <input type="text" name="email" class="border w-full text-base px-2 py-1 focus:outline-hidden focus:ring-0 focus:border-gray-600" value="{{ old('email') }}" placeholder="Enter Email" required/>
             </div>
             <div class="my-6 relative">
                     <label class="text-black font-medium" for="password">Password</label>
                     <div class="relative">
-                        <input id="password" name="password" type="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-none focus:ring" placeholder="Enter Password" required>
+                        <input id="password" name="password" type="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:outline-hidden focus:ring-3" placeholder="Enter Password" required>
 
                         <!-- Tanda mata (eye icon) untuk menampilkan/sembunyikan kata sandi -->
                         <div class="absolute inset-y-0 right-0 flex items-center h-full pr-2">
-                            <button type="button" onclick="togglePasswordVisibility()" class="text-gray-500 focus:outline-none">
+                            <button type="button" onclick="togglePasswordVisibility()" class="text-gray-500 focus:outline-hidden">
                                 <svg class="h-6 w-6" id="eye" fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.92,11.6C19.9,6.91,16.1,4,12,4S4.1,6.91,2.08,11.6a1,1,0,0,0,0,.8C4.1,17.09,7.9,20,12,20s7.9-2.91,9.92-7.6A1,1,0,0,0,21.92,11.6ZM12,18c-3.17,0-6.17-2.29-7.9-6C5.83,8.29,8.83,6,12,6s6.17,2.29,7.9,6C18.17,15.71,15.17,18,12,18ZM12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,14Z"/></svg>
 
                                 <svg id="eye-slash" class="h-6 w-6 hidden text-blue-900" stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -11,7 +11,7 @@
                         class="bg-orange-600 h-[3px] w-7 transform transition-all duration-300 origin-left">
                     </div>
                     <div id="hamburger-middle"
-                        class="bg-orange-600 h-[3px] w-1/2 rounded transform transition-all duration-300">
+                        class="bg-orange-600 h-[3px] w-1/2 rounded-sm transform transition-all duration-300">
                     </div>
                     <div id="hamburger-bottom"
                         class="bg-orange-600 h-[3px] w-7 transform transition-all duration-300 origin-left">
@@ -30,7 +30,7 @@
     <div class="flex-1 mx-4">
         <div class="relative">
             <input type="text" placeholder="Cari"
-                class="w-full p-2 font-semibold text-gray-600 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600 hidden md:block">
+                class="w-full p-2 font-semibold text-gray-600 border rounded-md focus:outline-hidden focus:ring-2 focus:ring-orange-600 hidden md:block">
             <button class="md:hidden absolute inset-y-0 right-0 flex items-center pr-3">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="h-6 w-6">
                     <path

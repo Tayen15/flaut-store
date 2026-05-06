@@ -86,7 +86,7 @@
                         <form action="#" method="POST" class="mb-6">
                             @csrf
                             <textarea name="comment" rows="3"
-                                class="w-full p-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+                                class="w-full p-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-orange-600"
                                 placeholder="Add a comment..."></textarea>
                             <button type="submit"
                                 class="mt-2 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition duration-300">
@@ -104,7 +104,7 @@
                     <form action="{{ route('news.search') }}" method="GET">
                         <div class="relative">
                             <input type="text" name="query" placeholder="Search here..."
-                                class="w-full text-sm px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600">
+                                class="w-full text-sm px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-orange-600">
                             <button type="submit" class="absolute right-2 top-2 text-gray-500 hover:text-orange-600">
                                 <i class="fas fa-search"></i>
                             </button>

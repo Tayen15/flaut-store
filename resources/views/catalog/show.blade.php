@@ -8,12 +8,12 @@
 
                 <div class="container mx-auto mt-8 flex flex-col md:flex-row">
                     <!-- Bagian Kiri - Foto -->
-                    <div class="flex-shrink-0 w-full md:w-1/2 md:pr-8 md:mr-10">
+                    <div class="shrink-0 w-full md:w-1/2 md:pr-8 md:mr-10">
                         <img src="{{ $catalog->image_url }}" alt="{{ $catalog->name }}" class="w-full h-auto rounded-lg">
                     </div>
                 
                     <!-- Bagian Kanan - Deskripsi -->
-                    <div class="flex-grow mt-5">
+                    <div class="grow mt-5">
                         <!-- Nama Katalog -->
                         <h1 class="text-3xl font-semibold mb-2">{{ $catalog->name }}</h1>
                 
@@ -31,27 +31,27 @@
                             <div class="flex">
                                 <div class="mr-1">
                                     <input type="radio" name="size" id="sizeS" value="S" class="mr-2 hidden" />
-                                    <label for="sizeS" class="size-label w-10 h-10 text-sm border border-gray-300 rounded-md flex items-center justify-center cursor-pointer focus:outline-none ">S</label>
+                                    <label for="sizeS" class="size-label w-10 h-10 text-sm border border-gray-300 rounded-md flex items-center justify-center cursor-pointer focus:outline-hidden ">S</label>
                                 </div>
                                 
                                 <div class="mx-1">
                                     <input type="radio" name="size" id="sizeM" value="M" class="mr-2 hidden" />
-                                    <label for="sizeM" class="size-label w-10 h-10 text-sm border border-gray-300 rounded-md flex items-center justify-center cursor-pointer focus:outline-none ">M</label>
+                                    <label for="sizeM" class="size-label w-10 h-10 text-sm border border-gray-300 rounded-md flex items-center justify-center cursor-pointer focus:outline-hidden ">M</label>
                                 </div>
                                 
                                 <div class="mx-1">
                                     <input type="radio" name="size" id="sizeL" value="L" class="mr-2 hidden" />
-                                    <label for="sizeL" class="size-label w-10 h-10 text-sm border border-gray-300 rounded-md flex items-center justify-center cursor-pointer focus:outline-none ">L</label>
+                                    <label for="sizeL" class="size-label w-10 h-10 text-sm border border-gray-300 rounded-md flex items-center justify-center cursor-pointer focus:outline-hidden ">L</label>
                                 </div>
                                     
                                 <div class="mx-1">
                                     <input type="radio" name="size" id="sizeXL" value="XL" class="mr-2 hidden" />
-                                    <label for="sizeXL" class="size-label w-10 h-10 text-sm border border-gray-300 rounded-md flex items-center justify-center cursor-pointer focus:outline-none ">XL</label>
+                                    <label for="sizeXL" class="size-label w-10 h-10 text-sm border border-gray-300 rounded-md flex items-center justify-center cursor-pointer focus:outline-hidden ">XL</label>
                                 </div>
                                     
                                 <div class="mx-1">
                                     <input type="radio" name="size" id="sizeXXL" value="XXL" class="mr-2 hidden" />
-                                    <label for="sizeXXL" class="size-label w-11 h-10 text-sm border border-gray-300 rounded-md flex items-center justify-center cursor-pointer focus:outline-none">XXL</label>
+                                    <label for="sizeXXL" class="size-label w-11 h-10 text-sm border border-gray-300 rounded-md flex items-center justify-center cursor-pointer focus:outline-hidden">XXL</label>
                                 </div>
                             </div>
                         </div>
@@ -61,9 +61,9 @@
                         <div class="my-6">
                             <label for="quantity" class="block text-sm font-medium text-gray-600 mb-2">Quantity:</label>
                             <div class="flex items-center">
-                                <button id="decrement" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300">-</button>
-                                <input type="number" id="quantity" min="1" max="15" name="quantity" class="mx-2 p-2 border border-gray-300 rounded-md w-20 focus:outline-none focus:ring focus:border-blue-300 text-center" value="1">
-                                <button id="increment" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300">+</button>
+                                <button id="decrement" class="p-2 border border-gray-300 rounded-md focus:outline-hidden focus:ring-3 focus:border-blue-300">-</button>
+                                <input type="number" id="quantity" min="1" max="15" name="quantity" class="mx-2 p-2 border border-gray-300 rounded-md w-20 focus:outline-hidden focus:ring-3 focus:border-blue-300 text-center" value="1">
+                                <button id="increment" class="p-2 border border-gray-300 rounded-md focus:outline-hidden focus:ring-3 focus:border-blue-300">+</button>
                             </div>
                             <p id="subtotal" class="text-xs text-gray-500 mt-1">Subtotal: Rp {{ number_format($catalog->price, 0, ',', '.') }}</p>
                         </div>

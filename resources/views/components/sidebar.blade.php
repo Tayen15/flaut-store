@@ -1,6 +1,6 @@
 <!-- Sidebar -->
 <div id="sidebar"
-    class="fixed top-20 left-0 w-64 h-full bg-white text-black transform -translate-x-full transition-transform z-50 focus:outline-none">
+    class="fixed top-20 left-0 w-64 h-full bg-white text-black transform -translate-x-full transition-transform z-50 focus:outline-hidden">
     <div class="p-4 flex justify-between items-center">
         <h2 class="text-lg font-bold">Menu</h2>
     </div>

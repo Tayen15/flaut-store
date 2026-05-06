@@ -32,7 +32,7 @@
     <header>
         <nav aria-label="menu nav" class="bg-gray-800 pt-2 md:pt-1 pb-1 px-1 mt-0 h-auto fixed w-full z-20 top-0">
             <div class="flex flex-wrap items-center">
-                <div class="flex flex-shrink md:w-1/3 justify-center md:justify-start text-white mr-4">
+                <div class="flex shrink md:w-1/3 justify-center md:justify-start text-white mr-4">
                     <a href="{{ route('dashboard.index') }}" aria-label="Home" class="ml-10 h-12 md:h-6 w-full">
                         <img src="../assets/images/logo.png" alt="Flaut Logo" class="h-full md:h-12">
                     </a>
@@ -41,7 +41,7 @@
                 <div class="flex flex-1 md:w-1/3 justify-center md:justify-start text-white px-2 mx-3">
                     <span class="relative w-full">
                         <form action="{{ route('dashboard.index') }}" method="get">
-                            <input aria-label="search" type="text" id="search" name="search" placeholder="Search" class="w-full md:max-w-md lg:max-w-xl bg-gray-900 text-white transition border border-transparent focus:outline-none focus:border-gray-400 rounded py-3 px-2 pl-10 appearance-none leading-normal">
+                            <input aria-label="search" type="text" id="search" name="search" placeholder="Search" class="w-full md:max-w-md lg:max-w-xl bg-gray-900 text-white transition border border-transparent focus:outline-hidden focus:border-gray-400 rounded-sm py-3 px-2 pl-10 appearance-none leading-normal">
                             <div class="absolute search-icon" style="top: 1rem; left: .8rem;">
                                 <svg class="fill-current pointer-events-none text-white w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path>
@@ -69,7 +69,7 @@
                                 </button>
 
                                 {{-- Dropdown for setting --}}
-                                <div id="myDropdown" class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-100 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none invisible ">
+                                <div id="myDropdown" class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-100 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-hidden invisible ">
                                     <div class="px-4 py-2 text-gray-500 text-sm font-semibold">Login as <span class="font-bold">{{ Auth::user()->name }}</span></div>
                                     <div class="border border-gray-200"></div>
                                     <div class="py-1" role="none">

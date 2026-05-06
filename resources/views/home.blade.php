@@ -40,7 +40,7 @@
                 <div class="flex items-center justify-center gap-4">
                     <div class="timer">
                         <div
-                            class="rounded-xl bg-white backdrop-blur-sm py-3 min-w-[96px] flex items-center justify-center flex-col gap-1 px-3">
+                            class="rounded-xl bg-white backdrop-blur-xs py-3 min-w-[96px] flex items-center justify-center flex-col gap-1 px-3">
                             <h3 class="countdown-element days font-manrope font-semibold text-2xl text-black text-center">
                             </h3>
                             <p class="text-lg uppercase font-normal text-black mt-1 text-center w-full">Days</p>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="timer">
                         <div
-                            class="rounded-xl bg-white backdrop-blur-sm py-3 min-w-[96px] flex items-center justify-center flex-col gap-1 px-3">
+                            class="rounded-xl bg-white backdrop-blur-xs py-3 min-w-[96px] flex items-center justify-center flex-col gap-1 px-3">
                             <h3 class="countdown-element hours font-manrope font-semibold text-2xl text-black text-center">
                             </h3>
                             <p class="text-lg uppercase font-normal text-black mt-1 text-center w-full">Hours</p>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="timer">
                         <div
-                            class="rounded-xl bg-white backdrop-blur-sm py-3 min-w-[96px] flex items-center justify-center flex-col gap-1 px-3">
+                            class="rounded-xl bg-white backdrop-blur-xs py-3 min-w-[96px] flex items-center justify-center flex-col gap-1 px-3">
                             <h3
                                 class="countdown-element minutes font-manrope font-semibold text-2xl text-black text-center">
                             </h3>
@@ -65,7 +65,7 @@
                     </div>
                     <div class="timer">
                         <div
-                            class="rounded-xl bg-white backdrop-blur-sm py-3 min-w-[96px] flex items-center justify-center flex-col gap-1 px-3">
+                            class="rounded-xl bg-white backdrop-blur-xs py-3 min-w-[96px] flex items-center justify-center flex-col gap-1 px-3">
                             <h3
                                 class="countdown-element seconds font-manrope font-semibold text-2xl text-black text-center">
                             </h3>

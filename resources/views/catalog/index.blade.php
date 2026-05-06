@@ -8,7 +8,7 @@
     <!-- Pencarian -->
     <div class="mb-4 relative">
         <form action="{{ route('catalog.index') }}" method="GET">
-            <input type="text" name="search" class="border border-solid outline-none focus:border-gray-800 text-gray-700 px-4 py-2 rounded-md w-full transition-all duration-400 ease-in-out focus:placeholder:opacity-0" placeholder="Search">
+            <input type="text" name="search" class="border border-solid outline-hidden focus:border-gray-800 text-gray-700 px-4 py-2 rounded-md w-full transition-all duration-400 ease-in-out focus:placeholder:opacity-0" placeholder="Search">
             <button type="submit" class="absolute right-0 top-0 mt-3 mr-3">
                 <svg class="" fill="#000000" width="20px" height="20px" viewBox="-2.5 -2.5 24 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin" class="jam jam-search"><path d='M8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12zm6.32-1.094l3.58 3.58a1 1 0 1 1-1.415 1.413l-3.58-3.58a8 8 0 1 1 1.414-1.414z'/></svg>
             </button>
